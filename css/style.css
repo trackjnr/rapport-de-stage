@@ -1,0 +1,38 @@
+
+
+
+.h2 {
+    font-weight:700;
+    color:rgb(173, 41, 41);
+}
+
+#btn {
+  background-color: rgb(134, 34, 228);
+}
+
+.main-header {
+display: flex;
+flex-direction: row;
+margin: 5% auto;
+margin-right: 25%;
+width: 90%;
+background-color: white; /* Ajuste selon ton design */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+gap:50%;
+}
+
+.container {
+  width: 100%;
+  display:flex;
+justify-content: flex-end;
+}
+
+.nav  {
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+width:40%;
+
+}
+
+
