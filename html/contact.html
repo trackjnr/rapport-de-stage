@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- ✅ Meta et SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez-nous pour toute question ou collaboration. Nous sommes à votre écoute !">
+    <meta name="keywords" content="contact, assistance, formulaire, support">
+    <meta name="author" content="Trackjnr ">
+    
+    <!-- ✅ Titre optimisé -->
+    <title>Contact | MonSite</title>
+    
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    
+    <!-- ✅ Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="../index.html">
+                <img class="logo" src="../css/image/cocoba_logo.png" alt="Logo Cocoba">
+            </a>
+        </div>
+    </nav>
+<body>
+
+    <!-- ✅ Contenu principal -->
+    <main>
+        <section class="contact-container">
+            <h1>Contactez-nous</h1>
+            <p>Nous serions ravis de vous aider. Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.</p>
+
+            <!-- ✅ Formulaire de contact sécurisé et accessible -->
+            <form action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+                
+                <!-- 🔹 Champ Nom -->
+                <label for="name">Nom <span aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+                <!-- 🔹 Champ Email -->
+                <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Votre adresse e-mail" required>
+
+                <!-- 🔹 Champ Sujet -->
+                <label for="subject">Sujet</label>
+                <input type="text" id="subject" name="subject" placeholder="Objet de votre message">
+
+                <!-- 🔹 Champ Message -->
+                <label for="message">Message <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" rows="5" placeholder="Votre message ici..." required></textarea>
+
+                <!-- ✅ Bouton Envoyer -->
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- ✅ Pied de page -->
+    <footer>
+        <p>&copy; 2024 MonSite - Tous droits réservés</p>
+    </footer>
+
+    <!-- ✅ Script -->
+    <script defer src="../js/script.js"></script>
+
+</body>
+</html>
