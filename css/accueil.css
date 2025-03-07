@@ -13,7 +13,7 @@
     font-family: "Arial", sans-serif;
 }
 p { 
-    color: black;
+    color: rgb(0, 0, 0);
 }
 body {
     background-color: #f4f4f4;
@@ -42,6 +42,21 @@ nav {
     max-width: 1100px;
     margin: auto;
     padding: 0 20px;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem); /* Adaptation dynamique à l'écran */
+    font-weight: bold;
+    text-align: center;
+    color: #222; /* Couleur neutre, modifiable */
+    margin: 20px auto;
+    width: fit-content;
+    max-width: 90%;
+}
+
+h2 {
+font-size: 4vw;
+color:#222
 }
 
 .logo {
@@ -118,8 +133,9 @@ section {
     padding: 100px 20px;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
+h1 {
+    font-size: 9rem;
+color: black;
 }
 
 .hero p {

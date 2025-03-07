@@ -9,7 +9,7 @@
  * ✅ STYLES GÉNÉRAUX DE LA PAGE À PROPOS
  **************************************************************************/
 
- .about, .mission, .team {
+.about, .mission, .team {
     padding: 60px 20px;
     text-align: center;
     max-width: 1000px;

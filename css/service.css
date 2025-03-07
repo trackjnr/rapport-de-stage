@@ -33,7 +33,7 @@ body {
 /* ✅ En-tête */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1rem 5%;
     background: var(--primary-color);
