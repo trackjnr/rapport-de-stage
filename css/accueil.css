@@ -45,13 +45,7 @@ nav {
 }
 
 h1 {
-    font-size: clamp(1.8rem, 5vw, 3.5rem); /* Adaptation dynamique à l'écran */
-    font-weight: bold;
-    text-align: center;
-    color: #222; /* Couleur neutre, modifiable */
-    margin: 20px auto;
-    width: fit-content;
-    max-width: 90%;
+    
 }
 
 h2 {
