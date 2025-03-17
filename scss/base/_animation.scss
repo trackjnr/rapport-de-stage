@@ -1,0 +1,209 @@
+/* ====================================================== */
+/*  Nom du fichier    : _animations.scss                */
+/*  Auteur            : Trackozor                        */
+/*  Date de création  : 25/09/24                        */
+/*  Dernière modif.   : 08/01/25                        */
+/*  Description       : Fichier regroupant toutes les   */
+/*                      animations réutilisables       */
+/* ====================================================== */
+
+/* ====================================================== */
+/*  Effets de Fondu (Fade In / Fade Out) */
+/* ====================================================== */
+
+@keyframes fade-in {
+  from { opacity: 0; } /* Début de l'animation, élément totalement transparent */
+  to { opacity: 1; } /* Fin de l'animation, élément totalement visible */
+}
+
+@keyframes fade-out {
+  from { opacity: 1; } /* Début de l'animation, élément totalement visible */
+  to { opacity: 0; } /* Fin de l'animation, élément totalement transparent */
+}
+
+/*  Classe utilitaire */
+.fade-in {
+  animation: fade-in 0.5s ease-in-out forwards; /* Animation fluide en 0.5s */
+}
+.fade-out {
+  animation: fade-out 0.5s ease-in-out forwards; /* Animation fluide en 0.5s */
+}
+
+/* ====================================================== */
+/*  Effets de Zoom et Échelle */
+/* ====================================================== */
+
+@keyframes scale-up {
+  from { transform: scale(0.8); } /* Départ avec une taille réduite */
+  to { transform: scale(1); } /* Arrivée avec une taille normale */
+}
+
+@keyframes scale-down {
+  from { transform: scale(1); } /* Départ avec la taille normale */
+  to { transform: scale(0.8); } /* Arrivée avec une taille réduite */
+}
+
+/*  Classes utilitaires */
+.scale-up {
+  animation: scale-up 0.5s ease-in-out forwards;
+}
+.scale-down {
+  animation: scale-down 0.5s ease-in-out forwards;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); } /* Taille normale */
+  50% { transform: scale(1.1); } /* Légère augmentation de taille */
+}
+
+.pulse {
+  animation: pulse 2s infinite ease-in-out; /* Effet de pulsation répétée */
+}
+
+/* ====================================================== */
+/*  Effets de Glissement (Slide In / Slide Out) */
+/* ====================================================== */
+
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; } /* Départ en dehors de l'écran */
+  to { transform: translateX(0); opacity: 1; } /* Arrivée en position normale */
+}
+
+@keyframes slide-out {
+  from { transform: translateX(0); opacity: 1; } /* Départ en position normale */
+  to { transform: translateX(-100%); opacity: 0; } /* Disparition vers la gauche */
+}
+
+/*  Classes utilitaires */
+.slide-in {
+  animation: slide-in 0.5s ease-in-out forwards;
+}
+.slide-out {
+  animation: slide-out 0.5s ease-in-out forwards;
+}
+
+/* ====================================================== */
+/*  Effets de Rotation */
+/* ====================================================== */
+
+@keyframes rotate {
+  from { transform: rotate(0deg); } /* Début à 0° */
+  to { transform: rotate(360deg); } /* Rotation complète */
+}
+
+@keyframes rotate-reverse {
+  from { transform: rotate(360deg); } /* Début à 360° */
+  to { transform: rotate(0deg); } /* Retour à 0° */
+}
+
+/*  Classes utilitaires */
+.rotate {
+  animation: rotate 1s linear infinite; /* Rotation continue */
+}
+.rotate-reverse {
+  animation: rotate-reverse 1s linear infinite; /* Rotation continue inversée */
+}
+
+/* ====================================================== */
+/*  Effets pour la Lightbox */
+/* ====================================================== */
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateX(20px) scale(0.95); } /* Départ à droite et réduit */
+  60% { opacity: 1; transform: translateX(-3px) scale(1.02); } /* Déplacement léger */
+  100% { opacity: 1; transform: translateX(0) scale(1); } /* Stabilisation */
+}
+
+@keyframes fade-out-scale {
+  0% { opacity: 1; transform: scale(1); } /* Départ normal */
+  100% { opacity: 0; transform: scale(0.9); } /* Disparition en rétrécissant */
+}
+
+/*  Classes utilitaires */
+.fade-in-up {
+  animation: fade-in-up 0.5s ease-in-out forwards;
+}
+.fade-out-scale {
+  animation: fade-out-scale 0.5s ease-in-out forwards;
+}
+
+/* ====================================================== */
+/*  Animations de navigation Lightbox (Gauche/Droite) */
+/* ====================================================== */
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; } /* Arrivée de la droite */
+  to { transform: translateX(0); opacity: 1; } /* Arrêt en position normale */
+}
+
+@keyframes slide-out-left {
+  from { transform: translateX(0); opacity: 1; } /* Départ normal */
+  to { transform: translateX(-100%); opacity: 0; } /* Disparition à gauche */
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; } /* Arrivée de la gauche */
+  to { transform: translateX(0); opacity: 1; } /* Arrêt en position normale */
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); opacity: 1; } /* Départ normal */
+  to { transform: translateX(100%); opacity: 0; } /* Disparition à droite */
+}
+
+/*  Classes spécifiques pour la Lightbox */
+.lightbox-enter-right {
+  animation: slide-in-right 0.5s ease-in-out forwards;
+}
+.lightbox-exit-left {
+  animation: slide-out-left 0.5s ease-in-out forwards;
+}
+.lightbox-enter-left {
+  animation: slide-in-left 0.5s ease-in-out forwards;
+}
+.lightbox-exit-right {
+  animation: slide-out-right 0.5s ease-in-out forwards;
+}
+
+/* ====================================================== */
+/*  Effet de rebond (Bounce) pour les transitions */
+/* ====================================================== */
+
+@keyframes bounce-in {
+  0% { transform: scale(0.8); opacity: 0; } /* Départ réduit et transparent */
+  50% { transform: scale(1.1); opacity: 1; } /* Grossissement temporaire */
+  100% { transform: scale(1); } /* Stabilisation */
+}
+
+/*  Classe utilitaire */
+.bounce-in {
+  animation: bounce-in 0.6s ease-out forwards;
+}
+
+/* ====================================================== */
+/*  Animation Like (HeartBeat) */
+/* ====================================================== */
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); } /* Taille normale */
+  50% { transform: scale(1.2); } /* Grossissement au centre */
+}
+
+/*  Classe utilitaire */
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* ====================================================== */
+/*  Animation de Chargement (Loader) */
+/* ====================================================== */
+
+@keyframes spin {
+  from { transform: rotate(0deg); } /* Départ à 0° */
+  to { transform: rotate(360deg); } /* Rotation complète */
+}
+
+/*  Classe utilitaire */
+.spin {
+  animation: spin 1s linear infinite; /* Rotation continue */
+}
