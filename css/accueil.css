@@ -631,5 +631,29 @@ a {
 /* Définition des boutons et interactions */
 /* Styles des cartes utilisées dans l'interface */
 /* Styles du pied de page */
+/* =============================================================================
+    Projet      :   rapport-de-stage
+    Fichier     :   _accueil.scss
+    Auteur      :   Trackjnr
+    Date        :   10/03/2025
+    Version     :   1.0.0
+    Description :   Styles spécifiques à la page accueil
+============================================================================= */
+h1 {
+  margin: 5% 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 90%;
+  height: auto;
+  margin: 2% auto;
+  border-radius: 1rem;
+}
+
+/* Styles spécifiques à la page accueil */
 
 /*# sourceMappingURL=accueil.css.map */
