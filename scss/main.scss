@@ -1,10 +1,10 @@
 @import "./base/reset";
 @import "./base/variables";
-@import "./base/animations";
+@import "./base/animation";
 @import "./base/mixins";
 
 
-@import "components/header";    /* Styles du header et de la navigation */
-@import "components/button";    /* Définition des boutons et interactions */
-@import "components/cards";     /* Styles des cartes utilisées dans l'interface */
-@import "components/footer";    /* Styles du pied de page */
+@import "./components/header";    /* Styles du header et de la navigation */
+@import "./components/button";    /* Définition des boutons et interactions */
+@import "./components/cards";     /* Styles des cartes utilisées dans l'interface */
+@import "./components/footer";    /* Styles du pied de page */
