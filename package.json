@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "sass": "sass --watch scss/style.scss:css/style.css",
+    "sass":"sass --watch accueil.scss:../css/accueil.css apropos.scss:../css/apropos.css service.scss:../css/service.css ",
+
     "start": "node index.js"
   },
   "repository": {
