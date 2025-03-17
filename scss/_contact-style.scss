@@ -1,132 +1,155 @@
-// -------------------------------------------------------------------------
-// @file contact-style.scss
-// @description Styles de la page Contact - Cocoba
-// @author TrackJnr
-// @version 1.0
-// -------------------------------------------------------------------------
+$header-height: 80px;
+$hover-color: #007BFF; /* Couleur des liens au survol, modifiable */
+$button-color: #28a745; /* Couleur du bouton */
 
-// ✅ Variables globales
-$primary-color: #007bff;
-$secondary-color: #f4f4f4;
-$text-color: #333;
-$white: #ffffff;
-$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-$font-family: "Arial", sans-serif;
-
-// -------------------------------------------------------------------------
-// ✅ Reset et typographie
-// -------------------------------------------------------------------------
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: $font-family;
-}
-
-body {
-    background-color: $secondary-color;
-    color: $text-color;
-    line-height: 1.6;
-}
-
-// -------------------------------------------------------------------------
-// ✅ En-tête & Logo
-// -------------------------------------------------------------------------
+/* Header */
 header {
-    background: $white;
-    box-shadow: $shadow;
-    padding: 20px 0;
-    text-align: center;
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 1000;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-}
-
-.logo {
-    width: 150px;
-    height: auto;
-}
-
-// -------------------------------------------------------------------------
-// ✅ Contenu principal
-// -------------------------------------------------------------------------
-.contact-container {
-    max-width: 600px;
-    margin: 120px auto 40px;
-    background: $white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-h1 {
-    font-size: 2rem;
-    color: $primary-color;
-    margin-bottom: 15px;
-}
-
-p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-// -------------------------------------------------------------------------
-// ✅ Formulaire
-// -------------------------------------------------------------------------
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2vw;
-    text-align: left;
-}
-
-label {
-    font-weight: bold;
-    color: $text-color;
-}
-
-input,
-textarea {
+    left: 0;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
+    height: $header-height;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 
-textarea {
-    resize: none;
-}
+    .logo-container {
+        img {
+            height: 50px;
+        }
+    }
 
-button {
-    background: $primary-color;
-    color: $white;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-
-    &:hover {
-        background: darken($primary-color, 10%);
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        
+        li {
+            a {
+                text-decoration: none;
+                color: black;
+                font-size: 16px;
+                font-weight: 500;
+                transition: color 0.3s ease-in-out;
+                
+                &:hover {
+                    color: $hover-color;
+                }
+            }
+        }
     }
 }
 
-// -------------------------------------------------------------------------
-// ✅ Pied de page
-// -------------------------------------------------------------------------
-footer {
-    background: $white;
+/* Section Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - $header-height);
+    text-align: center;
+    background: #f8f9fa;
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #222;
+    }
+}
+
+/* Image du projet */
+.project-image {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+
+    img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Présentation du projet */
+.project-description {
     text-align: center;
     padding: 20px;
-    margin-top: 30px;
-    font-size: 0.9rem;
+    max-width: 800px;
+    margin: auto;
+
+    h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .btn-green {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: $button-color;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        transition: background 0.3s ease-in-out;
+
+        &:hover {
+            background-color: darken($button-color, 10%);
+        }
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        li {
+            a {
+                color: white;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+
+                &:hover {
+                    color: $hover-color;
+                }
+            }
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 0 20px;
+    }
+    .nav-links {
+        display: none; /* À remplacer par un menu burger plus tard */
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .project-description p {
+        font-size: 1rem;
+    }
 }
