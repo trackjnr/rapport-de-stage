@@ -13,8 +13,8 @@
     <title>Rapport de Stage | Mon Expérience</title>
 
     <!--  Favicon -->
-    <link rel="icon" href="css/image/favicon.png" type="image/png">
-
+    <link rel="icon" href="css/image/favicon.webp" type="image/webp">
+    
     <!--  Feuilles de style -->
     <link rel="stylesheet" href="./css/accueil.css">
 </head>
@@ -25,7 +25,10 @@
         <nav>
             <div class="logo-container">
                 <a href="index.html">
-                    <img class="logo" src="../assets/image/cocoba_logo.png" alt="Logo Cocoba">
+                    <picture>
+                        <source srcset="./assets/webp/cocoba_logo.webp" type="image/webp" class="logo">
+                        <img class="logo" src="./assets/image/cocoba_logo.png" alt="Logo Cocoba" loading="lazy">
+                    </picture>
                 </a>
             </div>
             <ul class="nav-links">
@@ -44,9 +47,12 @@
             <h1>Rapport de Stage</h1>
         </section>
 
-        <!--  Image du projet -->
+        <!--  Image du projet avec support WebP -->
         <section class="project-image">
-            <img src="./assets/image/cocoba_team_image.png" alt="Projet d'alimentation stabilisée industrielle">
+            <picture>
+                <source srcset="./assets/webp/cocoba_team_image.webp" type="image/webp">
+                <img src="./assets/image/cocoba_team_image.png" alt="Projet d'alimentation stabilisée industrielle" loading="lazy">
+            </picture>
         </section>
 
         <!--  Présentation du projet -->
@@ -72,22 +78,6 @@
 
     <!--  Script pour le jeu caché  -->
     <script>
-        (function() {
-            let gameActive = false;
-
-            document.addEventListener("keydown", function(event) {
-                if (event.key.toLowerCase() === "p" && !gameActive) {
-                    gameActive = true;
-                    startGame();
-                }
-            });
-
-            function startGame() {
-                let gameScript = document.createElement("script");
-                gameScript.src = "js/game.js";
-                document.body.appendChild(gameScript);
-            }
-        })();
     </script>
 
 </body>
