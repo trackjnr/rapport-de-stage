@@ -1,0 +1,19 @@
+/* =============================================================================
+    Projet      :   rapport-de-stage
+    Fichier     :   _footer.scss
+    Auteur      :   Trackjnr
+    Date        :   10/03/2025
+    Version     :   1.0.0
+    Description :   Styles spécifiques au footer
+============================================================================= */
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #22e4f12c;
+    color: black;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top:5%;
+}

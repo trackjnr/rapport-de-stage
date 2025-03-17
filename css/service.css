@@ -630,6 +630,26 @@ a {
 /* Styles du header et de la navigation */
 /* Définition des boutons et interactions */
 /* Styles des cartes utilisées dans l'interface */
+/* =============================================================================
+    Projet      :   rapport-de-stage
+    Fichier     :   _footer.scss
+    Auteur      :   Trackjnr
+    Date        :   10/03/2025
+    Version     :   1.0.0
+    Description :   Styles spécifiques au footer
+============================================================================= */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(34, 228, 241, 0.1725490196);
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 5%;
+}
+
 /* Styles du pied de page */
 
 /*# sourceMappingURL=service.css.map */

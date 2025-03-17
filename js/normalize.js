@@ -19,7 +19,7 @@
 /* 1. Imports
 /* =================================================================== */
 
-import { logEvent } from './utils.js'; // Import du module de journalisation
+import { logEvent } from "./utils.js"; // Import du module de journalisation
 
 /* ===================================================================
 /* 2. Fonction de Normalisation de Texte
@@ -42,9 +42,9 @@ import { logEvent } from './utils.js'; // Import du module de journalisation
 export function normalizeText(text, keepPunctuation = false) {
   try {
     // Vérifie que l'entrée est bien une chaîne de caractères
-    if (typeof text !== 'string') {
-      logEvent('error', 'normalizeText : entrée invalide', { text });
-      return ''; // Retourne une chaîne vide si l'entrée est invalide
+    if (typeof text !== "string") {
+      logEvent("error", "normalizeText : entrée invalide", { text });
+      return ""; // Retourne une chaîne vide si l'entrée est invalide
     }
 
     // Supprime les espaces au début et à la fin
@@ -52,32 +52,32 @@ export function normalizeText(text, keepPunctuation = false) {
 
     // Vérifie si la chaîne est vide après suppression des espaces
     if (trimmedText.length === 0) {
-      logEvent('warning', 'normalizeText : texte vide après trim');
-      return '';
+      logEvent("warning", "normalizeText : texte vide après trim");
+      return "";
     }
 
     // Initialisation de la variable locale pour stocker le texte transformé
-    let normalizedText = trimmedText.normalize('NFD'); // Décompose les caractères accentués
+    let normalizedText = trimmedText.normalize("NFD"); // Décompose les caractères accentués
 
     // Supprime les diacritiques (accents)
-    normalizedText = normalizedText.replace(/[\u0300-\u036f]/g, '');
+    normalizedText = normalizedText.replace(/[\u0300-\u036f]/g, "");
 
     // Convertit en minuscules
     normalizedText = normalizedText.toLowerCase();
 
     // Supprime les caractères spéciaux selon l'option `keepPunctuation`
     if (keepPunctuation) {
-      normalizedText = normalizedText.replace(/[^\w\s'-]/gi, ''); // Garde les tirets et apostrophes
+      normalizedText = normalizedText.replace(/[^\w\s'-]/gi, ""); // Garde les tirets et apostrophes
     } else {
-      normalizedText = normalizedText.replace(/[^\w\s]/gi, ''); // Supprime tout sauf lettres et chiffres
+      normalizedText = normalizedText.replace(/[^\w\s]/gi, ""); // Supprime tout sauf lettres et chiffres
     }
 
     // Remplace plusieurs espaces consécutifs par un seul espace
-    normalizedText = normalizedText.replace(/\s+/g, ' ');
+    normalizedText = normalizedText.replace(/\s+/g, " ");
 
     return normalizedText;
   } catch (error) {
-    logEvent('error', 'Erreur dans normalizeText', { message: error.message });
-    return ''; // Retourne une chaîne vide en cas d'erreur
+    logEvent("error", "Erreur dans normalizeText", { message: error.message });
+    return ""; // Retourne une chaîne vide en cas d'erreur
   }
 }
