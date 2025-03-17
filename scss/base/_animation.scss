@@ -12,13 +12,21 @@
 /* ====================================================== */
 
 @keyframes fade-in {
-  from { opacity: 0; } /* Début de l'animation, élément totalement transparent */
-  to { opacity: 1; } /* Fin de l'animation, élément totalement visible */
+  from {
+    opacity: 0;
+  } /* Début de l'animation, élément totalement transparent */
+  to {
+    opacity: 1;
+  } /* Fin de l'animation, élément totalement visible */
 }
 
 @keyframes fade-out {
-  from { opacity: 1; } /* Début de l'animation, élément totalement visible */
-  to { opacity: 0; } /* Fin de l'animation, élément totalement transparent */
+  from {
+    opacity: 1;
+  } /* Début de l'animation, élément totalement visible */
+  to {
+    opacity: 0;
+  } /* Fin de l'animation, élément totalement transparent */
 }
 
 /*  Classe utilitaire */
@@ -34,13 +42,21 @@
 /* ====================================================== */
 
 @keyframes scale-up {
-  from { transform: scale(0.8); } /* Départ avec une taille réduite */
-  to { transform: scale(1); } /* Arrivée avec une taille normale */
+  from {
+    transform: scale(0.8);
+  } /* Départ avec une taille réduite */
+  to {
+    transform: scale(1);
+  } /* Arrivée avec une taille normale */
 }
 
 @keyframes scale-down {
-  from { transform: scale(1); } /* Départ avec la taille normale */
-  to { transform: scale(0.8); } /* Arrivée avec une taille réduite */
+  from {
+    transform: scale(1);
+  } /* Départ avec la taille normale */
+  to {
+    transform: scale(0.8);
+  } /* Arrivée avec une taille réduite */
 }
 
 /*  Classes utilitaires */
@@ -52,8 +68,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); } /* Taille normale */
-  50% { transform: scale(1.1); } /* Légère augmentation de taille */
+  0%,
+  100% {
+    transform: scale(1);
+  } /* Taille normale */
+  50% {
+    transform: scale(1.1);
+  } /* Légère augmentation de taille */
 }
 
 .pulse {
@@ -65,13 +86,25 @@
 /* ====================================================== */
 
 @keyframes slide-in {
-  from { transform: translateX(100%); opacity: 0; } /* Départ en dehors de l'écran */
-  to { transform: translateX(0); opacity: 1; } /* Arrivée en position normale */
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  } /* Départ en dehors de l'écran */
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Arrivée en position normale */
 }
 
 @keyframes slide-out {
-  from { transform: translateX(0); opacity: 1; } /* Départ en position normale */
-  to { transform: translateX(-100%); opacity: 0; } /* Disparition vers la gauche */
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Départ en position normale */
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  } /* Disparition vers la gauche */
 }
 
 /*  Classes utilitaires */
@@ -87,13 +120,21 @@
 /* ====================================================== */
 
 @keyframes rotate {
-  from { transform: rotate(0deg); } /* Début à 0° */
-  to { transform: rotate(360deg); } /* Rotation complète */
+  from {
+    transform: rotate(0deg);
+  } /* Début à 0° */
+  to {
+    transform: rotate(360deg);
+  } /* Rotation complète */
 }
 
 @keyframes rotate-reverse {
-  from { transform: rotate(360deg); } /* Début à 360° */
-  to { transform: rotate(0deg); } /* Retour à 0° */
+  from {
+    transform: rotate(360deg);
+  } /* Début à 360° */
+  to {
+    transform: rotate(0deg);
+  } /* Retour à 0° */
 }
 
 /*  Classes utilitaires */
@@ -109,14 +150,29 @@
 /* ====================================================== */
 
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateX(20px) scale(0.95); } /* Départ à droite et réduit */
-  60% { opacity: 1; transform: translateX(-3px) scale(1.02); } /* Déplacement léger */
-  100% { opacity: 1; transform: translateX(0) scale(1); } /* Stabilisation */
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.95);
+  } /* Départ à droite et réduit */
+  60% {
+    opacity: 1;
+    transform: translateX(-3px) scale(1.02);
+  } /* Déplacement léger */
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  } /* Stabilisation */
 }
 
 @keyframes fade-out-scale {
-  0% { opacity: 1; transform: scale(1); } /* Départ normal */
-  100% { opacity: 0; transform: scale(0.9); } /* Disparition en rétrécissant */
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  } /* Départ normal */
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  } /* Disparition en rétrécissant */
 }
 
 /*  Classes utilitaires */
@@ -132,23 +188,47 @@
 /* ====================================================== */
 
 @keyframes slide-in-right {
-  from { transform: translateX(100%); opacity: 0; } /* Arrivée de la droite */
-  to { transform: translateX(0); opacity: 1; } /* Arrêt en position normale */
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  } /* Arrivée de la droite */
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Arrêt en position normale */
 }
 
 @keyframes slide-out-left {
-  from { transform: translateX(0); opacity: 1; } /* Départ normal */
-  to { transform: translateX(-100%); opacity: 0; } /* Disparition à gauche */
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Départ normal */
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  } /* Disparition à gauche */
 }
 
 @keyframes slide-in-left {
-  from { transform: translateX(-100%); opacity: 0; } /* Arrivée de la gauche */
-  to { transform: translateX(0); opacity: 1; } /* Arrêt en position normale */
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  } /* Arrivée de la gauche */
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Arrêt en position normale */
 }
 
 @keyframes slide-out-right {
-  from { transform: translateX(0); opacity: 1; } /* Départ normal */
-  to { transform: translateX(100%); opacity: 0; } /* Disparition à droite */
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  } /* Départ normal */
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  } /* Disparition à droite */
 }
 
 /*  Classes spécifiques pour la Lightbox */
@@ -170,9 +250,17 @@
 /* ====================================================== */
 
 @keyframes bounce-in {
-  0% { transform: scale(0.8); opacity: 0; } /* Départ réduit et transparent */
-  50% { transform: scale(1.1); opacity: 1; } /* Grossissement temporaire */
-  100% { transform: scale(1); } /* Stabilisation */
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  } /* Départ réduit et transparent */
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  } /* Grossissement temporaire */
+  100% {
+    transform: scale(1);
+  } /* Stabilisation */
 }
 
 /*  Classe utilitaire */
@@ -185,8 +273,13 @@
 /* ====================================================== */
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); } /* Taille normale */
-  50% { transform: scale(1.2); } /* Grossissement au centre */
+  0%,
+  100% {
+    transform: scale(1);
+  } /* Taille normale */
+  50% {
+    transform: scale(1.2);
+  } /* Grossissement au centre */
 }
 
 /*  Classe utilitaire */
@@ -199,8 +292,12 @@
 /* ====================================================== */
 
 @keyframes spin {
-  from { transform: rotate(0deg); } /* Départ à 0° */
-  to { transform: rotate(360deg); } /* Rotation complète */
+  from {
+    transform: rotate(0deg);
+  } /* Départ à 0° */
+  to {
+    transform: rotate(360deg);
+  } /* Rotation complète */
 }
 
 /*  Classe utilitaire */

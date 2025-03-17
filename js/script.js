@@ -20,10 +20,10 @@ export const canvas = document.getElementById("gameCanvas");
 export let ctx = null;
 
 if (!canvas) {
-    logEvent("error", "❌ L'élément #gameCanvas est introuvable !");
+  logEvent("error", "❌ L'élément #gameCanvas est introuvable !");
 } else {
-    ctx = canvas.getContext("2d");
-    logEvent("success", "✅ Canvas détecté et contexte 2D récupéré.");
+  ctx = canvas.getContext("2d");
+  logEvent("success", "✅ Canvas détecté et contexte 2D récupéré.");
 }
 
 /**************************************************************************
@@ -46,14 +46,17 @@ export let secretCode = "";
  * @description Initialise les événements et vérifie les dépendances.
  */
 export function initGame() {
-    try {
-        logEvent("info", "🔄 Initialisation du jeu...");
-        resetGameData();
-        initKeyboardEvents();
-        logEvent("success", "🎮 Jeu prêt à être lancé !");
-    } catch (error) {
-        logEvent("error", `Erreur lors de l'initialisation du jeu: ${error.message}`);
-    }
+  try {
+    logEvent("info", "🔄 Initialisation du jeu...");
+    resetGameData();
+    initKeyboardEvents();
+    logEvent("success", "🎮 Jeu prêt à être lancé !");
+  } catch (error) {
+    logEvent(
+      "error",
+      `Erreur lors de l'initialisation du jeu: ${error.message}`,
+    );
+  }
 }
 
 /**************************************************************************
@@ -65,11 +68,11 @@ export function initGame() {
  * @description Réinitialise les variables du jeu.
  */
 function resetGameData() {
-    logEvent("info", "🔄 Réinitialisation des données du jeu...");
-    gameRunning = false;
-    score = 0;
-    obstacles = [];
-    player = { x: 50, y: 200, width: 30, height: 30, dy: 0 };
+  logEvent("info", "🔄 Réinitialisation des données du jeu...");
+  gameRunning = false;
+  score = 0;
+  obstacles = [];
+  player = { x: 50, y: 200, width: 30, height: 30, dy: 0 };
 }
 
 /**************************************************************************
@@ -81,12 +84,14 @@ function resetGameData() {
  * @description Initialise les écouteurs d'événements clavier.
  */
 function initKeyboardEvents() {
-    try {
-        document.addEventListener("keydown", handleKeyDown);
-        logEvent("success", "🎹 Gestionnaire d'événements clavier activé.");
-    } catch (error) {
-        logEvent("error", "Erreur lors de l'ajout des événements clavier.", { error });
-    }
+  try {
+    document.addEventListener("keydown", handleKeyDown);
+    logEvent("success", "🎹 Gestionnaire d'événements clavier activé.");
+  } catch (error) {
+    logEvent("error", "Erreur lors de l'ajout des événements clavier.", {
+      error,
+    });
+  }
 }
 
 /**
@@ -95,22 +100,22 @@ function initKeyboardEvents() {
  * @param {KeyboardEvent} e - Événement de touche enfoncée.
  */
 function handleKeyDown(e) {
-    logEvent("info", `Touche pressée: ${e.code}`);
+  logEvent("info", `Touche pressée: ${e.code}`);
 
-    if (e.code === "Space" && gameRunning) {
-        player.dy = -7; // Saut du joueur
-        logEvent("success", "🕹️ Le joueur saute !");
-    }
+  if (e.code === "Space" && gameRunning) {
+    player.dy = -7; // Saut du joueur
+    logEvent("success", "🕹️ Le joueur saute !");
+  }
 
-    // Ajout du code secret pour débloquer le jeu
-    secretCode += e.key.toLowerCase();
-    logEvent("info", `Code secret en cours : ${secretCode}`);
+  // Ajout du code secret pour débloquer le jeu
+  secretCode += e.key.toLowerCase();
+  logEvent("info", `Code secret en cours : ${secretCode}`);
 
-    if (secretCode.endsWith("play")) {
-        logEvent("success", "🎮 Code secret activé, relance du jeu !");
-        startGame();
-        secretCode = ""; // Réinitialisation
-    }
+  if (secretCode.endsWith("play")) {
+    logEvent("success", "🎮 Code secret activé, relance du jeu !");
+    startGame();
+    secretCode = ""; // Réinitialisation
+  }
 }
 
 /**************************************************************************
@@ -122,14 +127,14 @@ function handleKeyDown(e) {
  * @description Vérifie la présence des éléments et des fonctions nécessaires au jeu.
  */
 function checkGameDependencies() {
-    try {
-        if (!canvas || !ctx) {
-            throw new Error("Le canvas ou son contexte est introuvable.");
-        }
-        logEvent("success", "✅ Canvas et contexte détectés.");
-    } catch (error) {
-        logEvent("error", `Vérification échouée: ${error.message}`);
+  try {
+    if (!canvas || !ctx) {
+      throw new Error("Le canvas ou son contexte est introuvable.");
     }
+    logEvent("success", "✅ Canvas et contexte détectés.");
+  } catch (error) {
+    logEvent("error", `Vérification échouée: ${error.message}`);
+  }
 }
 
 /**************************************************************************
@@ -138,4 +143,3 @@ function checkGameDependencies() {
 
 logEvent("success", "✅ Script chargé avec succès !");
 initGame();
-
