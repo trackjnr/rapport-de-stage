@@ -70,24 +70,33 @@
         <h2>Galerie du Projet</h2>
         <div class="image-grid">
           <div class="image-container">
-            <img src="../assets/image/alim.jpeg" alt="Image du projet 1" />
+            <img
+              src="../assets/image/alim.jpeg"
+              alt="Alimentation stabilisée en cours de montage"
+            />
           </div>
           <div class="image-container">
             <img
               src="../assets/image/alimdemont.jpeg"
-              alt="Image du projet 2"
+              alt="Alimentation démontée pour modification"
             />
           </div>
           <div class="image-container">
-            <img src="../assets/image/tourpc.jpeg" alt="Image du projet 3" />
+            <img
+              src="../assets/image/tourpc.jpeg"
+              alt="PC utilisé pour récupérer les composants"
+            />
           </div>
           <div class="image-container">
-            <img src="../assets/webp/decoupepc.webp" alt="Image du projet 4" />
+            <img
+              src="../assets/webp/decoupepc.webp"
+              alt="Découpe d'un boîtier pour intégration"
+            />
           </div>
           <div class="image-container">
             <img
               src="../assets/image/circuitimprimer.jpeg"
-              alt="Image du projet 5"
+              alt="Circuit imprimé conçu pour l'alimentation"
             />
           </div>
         </div>
@@ -103,6 +112,7 @@
     </script>
 
     <style>
+      /* Style du menu burger */
       .menu-toggle {
         display: none;
         font-size: 24px;
@@ -130,6 +140,48 @@
 
         .menu-toggle {
           display: block;
+        }
+      }
+
+      /* Style de la galerie d'images */
+      .project-gallery {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .image-container {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-container:hover {
+        transform: scale(1.05);
+      }
+
+      @media screen and (max-width: 768px) {
+        .image-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         }
       }
     </style>
