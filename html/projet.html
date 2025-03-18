@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -59,16 +59,65 @@
       <section class="project-gallery">
         <h2>Galerie du Projet</h2>
         <div class="image-grid">
-          <img src="../assets/image/alim.jpeg" alt="Image du projet 1" />
-          <img src="../assets/image/alimdemont.jpeg" alt="Image du projet 2" />
-          <img src="../assets/image/tourpc.jpeg" alt="Image du projet 3" />
-          <img src="../assets/image/decoupepc .jpeg" alt="Image du projet 4" />
-          <img
-            src="../assets/image/circuitimprimer.jpeg"
-            alt="Image du projet 5"
-          />
+          <div class="image-container">
+            <img src="../assets/image/alim.jpeg" alt="Image du projet 1" />
+          </div>
+          <div class="image-container">
+            <img
+              src="../assets/image/alimdemont.jpeg"
+              alt="Image du projet 2"
+            />
+          </div>
+          <div class="image-container">
+            <img src="../assets/image/tourpc.jpeg" alt="Image du projet 3" />
+          </div>
+          <div class="image-container">
+            <img src="../assets/webp/decoupepc .webp" alt="Image du projet 4" />
+          </div>
+          <div class="image-container">
+            <img
+              src="../assets/image/circuitimprimer.jpeg"
+              alt="Image du projet 5"
+            />
+          </div>
         </div>
       </section>
     </main>
+
+    <style>
+      .hero-container h1 {
+        font-size: 3rem;
+        text-align: center;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .image-container {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-container:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </body>
 </html>
