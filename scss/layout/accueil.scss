@@ -1,7 +1,7 @@
 @use "../base/reset";
 @use "../base/variables";
 @use "../base/animation";
-@use "../base/mixins";
+@use "../base/mixins" as *;
 
 @use "../components/header"; /* Styles du header et de la navigation */
 @use "../components/button"; /* Définition des boutons et interactions */

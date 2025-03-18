@@ -605,6 +605,33 @@ a {
   width: 15vw;
   height: auto;
 }
+@media (max-width: 450px) {
+  .logo {
+    width: 40%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  top: 1.5%;
+  font-weight: 700;
+}
+@media (max-width: 450px) {
+  .menu-toggle {
+    display: block;
+  }
+}
 
 .nav-links {
   position: absolute;
@@ -613,6 +640,11 @@ a {
   display: flex;
   list-style: none;
   gap: 20px;
+}
+@media (max-width: 450px) {
+  .nav-links {
+    display: none;
+  }
 }
 
 .nav-link li a {

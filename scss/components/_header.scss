@@ -6,6 +6,7 @@
     Version     :   1.0.0
     Description :   Styles spécifiques au header
 ============================================================================= */
+@use "../base/mixins" as *;
 
 .header {
   background-color: black;
@@ -22,10 +23,36 @@
   display: flex;
   align-items: center;
   margin: 2%;
+
 }
 .logo {
   width: 15vw;
   height: auto;
+
+  @include low-mobile {
+    width: 40%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+  }
+}
+// Styles du menu toggle (Burger)
+.menu-toggle {
+  display: none; // Caché en desktop
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  top: 1.5%;
+  font-weight:700;
+  @include low-mobile {
+    display: block;
+  }
 }
 
 .nav-links {
@@ -35,6 +62,9 @@
   display: flex;
   list-style: none;
   gap: 20px;
+  @include low-mobile {
+    display: none;
+  }
 }
 .nav-link li {
   a {
