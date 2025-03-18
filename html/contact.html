@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <!--  Meta et SEO -->
@@ -45,14 +45,23 @@
             </picture>
           </a>
         </div>
+
+        <!-- Toggle button (Burger) -->
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Menu"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
           <li><a href="../html/projet.html">Projet</a></li>
           <li><a href="../html/apropos.html">À Propos</a></li>
-          <li>
-            <a href="../html/conclusion.html" class="active">Conclusion</a>
-          </li>
-          <li><a href="../html/contact.html">Contact</a></li>
+          <li><a href="../html/conclusion.html">Conclusion</a></li>
+          <li><a href="../html/contact.html" class="active">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -75,6 +84,46 @@
     <footer>
       <p>&copy; 2024 MonSite - Tous droits réservés</p>
     </footer>
+
+    <!--  Script pour le menu burger -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
+    <style>
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background: white;
+          text-align: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+    </style>
 
     <!--  Script (Correction du chemin et du fichier JS) -->
     <script defer src="../js/contact.js"></script>

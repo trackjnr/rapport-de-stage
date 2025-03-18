@@ -28,6 +28,16 @@
             />
           </a>
         </div>
+        <!-- Toggle button (Burger) -->
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Menu"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
           <li><a href="../html/projet.html" class="active">Projet</a></li>
@@ -72,7 +82,7 @@
             <img src="../assets/image/tourpc.jpeg" alt="Image du projet 3" />
           </div>
           <div class="image-container">
-            <img src="../assets/webp/decoupepc .webp" alt="Image du projet 4" />
+            <img src="../assets/webp/decoupepc.webp" alt="Image du projet 4" />
           </div>
           <div class="image-container">
             <img
@@ -84,39 +94,43 @@
       </section>
     </main>
 
+    <!-- Script pour le menu burger -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
     <style>
-      .hero-container h1 {
-        font-size: 3rem;
-        text-align: center;
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
       }
 
-      .image-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        justify-content: center;
-        padding: 20px;
-      }
+      @media screen and (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background: white;
+          text-align: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-      .image-container {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease-in-out;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+        .nav-links.active {
+          display: flex;
+        }
 
-      .image-container img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .image-container:hover {
-        transform: scale(1.05);
+        .menu-toggle {
+          display: block;
+        }
       }
     </style>
   </body>
