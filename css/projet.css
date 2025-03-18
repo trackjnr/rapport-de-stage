@@ -204,18 +204,18 @@ a {
   /*  PALETTE DE COULEURS           */
   /* ================================ */
   /*  Couleurs principales */
-  --primary-color: #C6C6C6; /* Gris clair pour les éléments principaux */
-  --background-color: #7A7A7A; /* Gris foncé pour le fond global */
+  --primary-color: #c6c6c6; /* Gris clair pour les éléments principaux */
+  --background-color: #7a7a7a; /* Gris foncé pour le fond global */
   /*  Couleurs de texte */
   --text-color-primary: #000000; /* Texte principal (noir) */
-  --text-color-secondary: #FFD15B; /* Jaune pour les accents et titres */
+  --text-color-secondary: #ffd15b; /* Jaune pour les accents et titres */
   /*  Couleurs d'état (feedback utilisateur) */
-  --success-color: #4CAF50; /* Vert (succès, validation) */
-  --warning-color: #FF9800; /* Orange (avertissement, attention) */
-  --error-color: #F44336; /* Rouge (erreur, problème) */
-  --info-color: #2196F3; /* Bleu (information, conseils) */
+  --success-color: #4caf50; /* Vert (succès, validation) */
+  --warning-color: #ff9800; /* Orange (avertissement, attention) */
+  --error-color: #f44336; /* Rouge (erreur, problème) */
+  --info-color: #2196f3; /* Bleu (information, conseils) */
   /*  Couleurs pour les cartes et éléments interactifs */
-  --card-background: #FFFFFF; /* Fond des cartes (blanc) */
+  --card-background: #ffffff; /* Fond des cartes (blanc) */
   --card-shadow: rgba(0, 0, 0, 0.1); /* Ombre légère des cartes */
   /* ================================ */
   /* TYPOGRAPHIE                   */
@@ -584,25 +584,72 @@ a {
     Version     :   1.0.0
     Description :   Styles spécifiques au header
 ============================================================================= */
-/* Header */
 .header {
   background-color: black;
   color: #fff;
-  padding: 10px;
-  margin: 2%;
+  padding: 5% 5%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin: 2%;
 }
 
 .logo {
-  width: 20vw;
+  width: 15vw;
   height: auto;
-  margin-left: 10px;
+}
+
+.nav-links {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-link li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 15px;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-link li a:hover {
+  background: gray;
+  border-radius: 5px;
 }
 
 /* Styles du header et de la navigation */
 /* Définition des boutons et interactions */
 /* Styles des cartes utilisées dans l'interface */
+/* =============================================================================
+    Projet      :   rapport-de-stage
+    Fichier     :   _footer.scss
+    Auteur      :   Trackjnr
+    Date        :   10/03/2025
+    Version     :   1.0.0
+    Description :   Styles spécifiques au footer
+============================================================================= */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(34, 228, 241, 0.1725490196);
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 5%;
+}
+
 /* Styles du pied de page */
 
 /*# sourceMappingURL=projet.css.map */

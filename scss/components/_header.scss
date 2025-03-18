@@ -7,20 +7,48 @@
     Description :   Styles spécifiques au header
 ============================================================================= */
 
-/* Header */
-
 .header {
-    background-color:black;
-    color: #fff;
-    padding: 10px;
-    margin:  2%;
-    display: flex;
-    justify-content: space-between;
+  background-color: black;
+  color: #fff;
+  padding: 5% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin: 2%;
+}
 .logo {
-    width:20vw;
-    height: auto;
-    margin-left: 10px;
+  width: 15vw;
+  height: auto;
+}
+
+.nav-links {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav-link li {
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition:
+      background 0.3s,
+      color 0.3s;
+
+    &:hover {
+      background: gray;
+      border-radius: 5px;
+    }
+  }
 }

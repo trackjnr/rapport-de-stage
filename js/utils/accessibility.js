@@ -16,7 +16,6 @@
 
 import { logEvent } from "./utils.js";
 
-
 /**=============================================================================
  * SECTION : LIENS D'ACCÈS RAPIDE
  * =============================================================================
@@ -38,11 +37,19 @@ import { logEvent } from "./utils.js";
 export function enableSkipLink(skipLink, target) {
   // Vérification des paramètres : doivent être des éléments HTML valides
   if (!(skipLink instanceof HTMLElement)) {
-    logEvent("error", "enableSkipLink: `skipLink` doit être un élément HTML valide.", { skipLink });
+    logEvent(
+      "error",
+      "enableSkipLink: `skipLink` doit être un élément HTML valide.",
+      { skipLink },
+    );
     return;
   }
   if (!(target instanceof HTMLElement)) {
-    logEvent("error", "enableSkipLink: `target` doit être un élément HTML valide.", { target });
+    logEvent(
+      "error",
+      "enableSkipLink: `target` doit être un élément HTML valide.",
+      { target },
+    );
     return;
   }
 
@@ -64,9 +71,11 @@ export function enableSkipLink(skipLink, target) {
   });
 
   // Journalisation de l'activation du skip link
-  logEvent("info", "Lien d'accès rapide configuré avec succès.", { skipLink, target });
+  logEvent("info", "Lien d'accès rapide configuré avec succès.", {
+    skipLink,
+    target,
+  });
 }
-
 
 /** =============================================================================
  *  SECTION : ATTRIBUTS ARIA
@@ -86,11 +95,17 @@ export function updateAriaAttribute(element, ariaAttr, value) {
   }
 
   if (!ariaAttr.startsWith("aria-")) {
-    logEvent("warn", `updateAriaAttribute: "${ariaAttr}" n'est pas un attribut ARIA valide.`);
+    logEvent(
+      "warn",
+      `updateAriaAttribute: "${ariaAttr}" n'est pas un attribut ARIA valide.`,
+    );
   }
 
   element.setAttribute(ariaAttr, value.toString());
-  logEvent("success", `Attribut ARIA "${ariaAttr}" mis à jour avec succès.`, { element, value });
+  logEvent("success", `Attribut ARIA "${ariaAttr}" mis à jour avec succès.`, {
+    element,
+    value,
+  });
 }
 
 /** =============================================================================
@@ -126,22 +141,28 @@ export function checkColorContrast(color1, color2) {
   };
 
   const luminance = (r, g, b) => {
-    const a = [r, g, b].map((v) => (v /= 255) <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+    const a = [r, g, b].map((v) =>
+      (v /= 255) <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4),
+    );
     return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
   };
 
   const [r1, g1, b1] = hexToRgb(color1);
   const [r2, g2, b2] = hexToRgb(color2);
-  const contrastRatio = (Math.max(luminance(r1, g1, b1), luminance(r2, g2, b2)) + 0.05) / 
-                        (Math.min(luminance(r1, g1, b1), luminance(r2, g2, b2)) + 0.05);
+  const contrastRatio =
+    (Math.max(luminance(r1, g1, b1), luminance(r2, g2, b2)) + 0.05) /
+    (Math.min(luminance(r1, g1, b1), luminance(r2, g2, b2)) + 0.05);
 
-  logEvent("info", `Contraste entre ${color1} et ${color2} : ${contrastRatio.toFixed(2)}`);
+  logEvent(
+    "info",
+    `Contraste entre ${color1} et ${color2} : ${contrastRatio.toFixed(2)}`,
+  );
   return contrastRatio >= 4.5;
 }
 
 /** =============================================================================
-*   SECTION : TRAP FOCUS (PIÉGEAGE DU FOCUS)
-*   =============================================================================*/
+ *   SECTION : TRAP FOCUS (PIÉGEAGE DU FOCUS)
+ *   =============================================================================*/
 
 /**
  * Restreint le focus clavier à un conteneur donné.
@@ -154,12 +175,16 @@ export function trapFocus(container) {
     return;
   }
 
-  const focusableElements = Array.from(container.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  ));
+  const focusableElements = Array.from(
+    container.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    ),
+  );
 
   if (focusableElements.length === 0) {
-    logEvent("warn", "trapFocus: Aucun élément focusable trouvé.", { container });
+    logEvent("warn", "trapFocus: Aucun élément focusable trouvé.", {
+      container,
+    });
     return;
   }
 

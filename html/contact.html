@@ -1,63 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
+  <head>
     <!--  Meta et SEO -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contactez-nous pour toute question ou collaboration. Nous sommes à votre écoute !">
-    <meta name="keywords" content="contact, assistance, formulaire, support">
-    <meta name="author" content="Trackjnr">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contactez-nous pour toute question ou collaboration. Nous sommes à votre écoute !"
+    />
+    <meta name="keywords" content="contact, assistance, formulaire, support" />
+    <meta name="author" content="Trackjnr" />
+
     <!--  Titre optimisé -->
     <title>Contact | MonSite</title>
-    
-    <!--  Favicon (WebP avec fallback ICO) -->
-    <link rel="icon" href="../assets/favicon.webp" type="image/webp">
-    <link rel="alternate icon" href="../assets/favicon.ico" type="image/x-icon">
-    
-    <!--  Styles -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
 
+    <!--  Favicon (WebP avec fallback ICO) -->
+    <link rel="icon" href="../assets/favicon.webp" type="image/webp" />
+    <link
+      rel="alternate icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!--  Styles -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo-container">
-                <a href="../index.html">
-                    <picture>
-                        <source srcset="../assets/webp/cocoba_logo.webp" type="image/webp" class="logo">
-                        <img class="logo" src="../assets/image/cocoba_logo.png" alt="Logo Cocoba" loading="lazy">
-                    </picture>
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="../html/projet.html">Projet</a></li>
-                <li><a href="../html/apropos.html">À Propos</a></li>
-                <li><a href="../html/conclusion.html" class="active">Conclusion</a></li>
-                <li><a href="../html/contact.html">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo-container">
+          <a href="../index.html">
+            <picture>
+              <source
+                srcset="../assets/webp/cocoba_logo.webp"
+                type="image/webp"
+                class="logo"
+              />
+              <img
+                class="logo"
+                src="../assets/image/cocoba_logo.png"
+                alt="Logo Cocoba"
+                loading="lazy"
+              />
+            </picture>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="../html/projet.html">Projet</a></li>
+          <li><a href="../html/apropos.html">À Propos</a></li>
+          <li>
+            <a href="../html/conclusion.html" class="active">Conclusion</a>
+          </li>
+          <li><a href="../html/contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-    
+
     <!--  Contenu principal -->
     <main>
-        <section class="contact-container">
-            <h2>Contactez-moi</h2>
-            <p>Si vous avez la moindre question, remplissez le formulaire ci-dessous et je vous répondrai dès que possible.</p>
+      <section class="contact-container">
+        <h2>Contactez-moi</h2>
+        <p>
+          Si vous avez la moindre question, remplissez le formulaire ci-dessous
+          et je vous répondrai dès que possible.
+        </p>
 
-            <!--  Le formulaire sera injecté ici -->
-            <div id="contact"></div>
-            
-        </section>
+        <!--  Le formulaire sera injecté ici -->
+        <div id="contact"></div>
+      </section>
     </main>
 
     <!--  Pied de page -->
     <footer>
-        <p>&copy; 2024 MonSite - Tous droits réservés</p>
+      <p>&copy; 2024 MonSite - Tous droits réservés</p>
     </footer>
 
     <!--  Script (Correction du chemin et du fichier JS) -->
     <script defer src="../js/contact.js"></script>
-</body>
+  </body>
 </html>
