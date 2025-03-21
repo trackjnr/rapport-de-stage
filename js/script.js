@@ -1,9 +1,14 @@
 /** ************************************************************************
  * @file script.js
- * @description Gestion principale du jeu (initialisation, événements, logs)
+ * @description Gestion principale du jeu (alignement obstacles & difficulté progressive)
  * @author Trackozor
+<<<<<<< HEAD
  * @version 1.0
  ************************************************************************* */
+=======
+ * @version 1.7 (Correction de l'alignement des obstacles avec le joueur)
+ **************************************************************************/
+>>>>>>> 6ab11df53271101679093a6849407784dfd905fc
 
 // ✅ Importation des fonctions nécessaires
 import { startGame } from "./functions/start-game.js";
@@ -33,15 +38,29 @@ if (!canvas) {
 export let gameRunning = false;
 export let player = {
   x: 50,
+<<<<<<< HEAD
   y: 200,
   width: 30,
   height: 30,
   dy: 0,
 };
 export const gravity = 0.5;
+=======
+  y: 220,
+  width: 30,
+  height: 30,
+  dy: 0,
+  jumping: false,
+};
+export let gravity = 0.5;
+>>>>>>> 6ab11df53271101679093a6849407784dfd905fc
 export let obstacles = [];
 export let score = 0;
 export let secretCode = "";
+export let obstacleInterval;
+export let scoreInterval;
+let obstacleSpeed = 5; // Vitesse initiale des obstacles
+let spawnRate = 1200; // Temps d'apparition des obstacles (ms)
 
 /** ************************************************************************
  *                      INITIALISATION DU JEU
@@ -56,11 +75,15 @@ export function initGame() {
     logEvent("info", "🔄 Initialisation du jeu...");
     resetGameData();
     initKeyboardEvents();
+    gameRunning = true;
+    startObstacleGeneration();
+    startScoreIncrement();
+    updateGame();
     logEvent("success", "🎮 Jeu prêt à être lancé !");
   } catch (error) {
     logEvent(
       "error",
-      `Erreur lors de l'initialisation du jeu: ${error.message}`,
+      `Erreur lors de l'initialisation du jeu: ${error.message}`
     );
   }
 }
@@ -78,6 +101,7 @@ function resetGameData() {
   gameRunning = false;
   score = 0;
   obstacles = [];
+<<<<<<< HEAD
   player = {
     x: 50,
     y: 200,
@@ -85,6 +109,11 @@ function resetGameData() {
     height: 30,
     dy: 0,
   };
+=======
+  player = { x: 50, y: 220, width: 30, height: 30, dy: 0, jumping: false };
+  obstacleSpeed = 5;
+  spawnRate = 1200;
+>>>>>>> 6ab11df53271101679093a6849407784dfd905fc
 }
 
 /** ************************************************************************
@@ -114,39 +143,97 @@ function initKeyboardEvents() {
 function handleKeyDown(e) {
   logEvent("info", `Touche pressée: ${e.code}`);
 
-  if (e.code === "Space" && gameRunning) {
-    player.dy = -7; // Saut du joueur
+  if (e.code === "Space" && !player.jumping) {
+    player.dy = -7;
+    player.jumping = true;
     logEvent("success", "🕹️ Le joueur saute !");
-  }
-
-  // Ajout du code secret pour débloquer le jeu
-  secretCode += e.key.toLowerCase();
-  logEvent("info", `Code secret en cours : ${secretCode}`);
-
-  if (secretCode.endsWith("play")) {
-    logEvent("success", "🎮 Code secret activé, relance du jeu !");
-    startGame();
-    secretCode = ""; // Réinitialisation
   }
 }
 
+<<<<<<< HEAD
 /** ************************************************************************
  *                      VÉRIFICATION DES DÉPENDANCES
  ************************************************************************* */
+=======
+/**************************************************************************
+ *                      GÉNÉRATION DES OBSTACLES (ALIGNÉS AU SOL)
+ **************************************************************************/
+>>>>>>> 6ab11df53271101679093a6849407784dfd905fc
 
-/**
- * @function checkGameDependencies
- * @description Vérifie la présence des éléments et des fonctions nécessaires au jeu.
- */
-function checkGameDependencies() {
-  try {
-    if (!canvas || !ctx) {
-      throw new Error("Le canvas ou son contexte est introuvable.");
+function startObstacleGeneration() {
+  clearInterval(obstacleInterval);
+  obstacleInterval = setInterval(() => {
+    if (gameRunning) {
+      let randomHeight = Math.random() * 20 + 20; // Hauteur variable
+      let obstacle = {
+        x: canvas.width,
+        y: 220,
+        width: 20,
+        height: randomHeight,
+      };
+      obstacles.push(obstacle);
+      logEvent("info", "🚧 Nouvel obstacle ajouté !");
     }
-    logEvent("success", "✅ Canvas et contexte détectés.");
-  } catch (error) {
-    logEvent("error", `Vérification échouée: ${error.message}`);
+  }, spawnRate);
+}
+
+function startScoreIncrement() {
+  clearInterval(scoreInterval);
+  scoreInterval = setInterval(() => {
+    if (gameRunning) {
+      score += 10;
+      if (score % 100 === 0) {
+        obstacleSpeed += 1; // Augmente la vitesse des obstacles
+        spawnRate = Math.max(500, spawnRate - 50); // Réduit le temps d'apparition
+        startObstacleGeneration();
+      }
+    }
+  }, 1000);
+}
+
+function updateGame() {
+  if (!gameRunning) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  player.y += player.dy;
+  player.dy += gravity;
+  if (player.y > 220) {
+    player.y = 220;
+    player.jumping = false;
   }
+
+  ctx.fillStyle = "green";
+  ctx.fillRect(player.x, player.y, player.width, player.height);
+
+  ctx.fillStyle = "red";
+  for (let i = 0; i < obstacles.length; i++) {
+    let obs = obstacles[i];
+    obs.x -= obstacleSpeed;
+    ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+    if (obs.x + obs.width < 0) {
+      obstacles.splice(i, 1);
+    }
+
+    if (
+      player.x < obs.x + obs.width &&
+      player.x + player.width > obs.x &&
+      player.y < obs.y + obs.height &&
+      player.y + player.height > obs.y
+    ) {
+      gameRunning = false;
+      clearInterval(obstacleInterval);
+      clearInterval(scoreInterval);
+      alert("Game Over! Score: " + score);
+      document.location.reload();
+    }
+  }
+
+  ctx.fillStyle = "black";
+  ctx.font = "24px Arial";
+  ctx.fillText("Score: " + score, 20, 50);
+
+  requestAnimationFrame(updateGame);
 }
 
 /** ************************************************************************

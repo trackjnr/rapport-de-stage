@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <!--  Meta et SEO -->
@@ -22,13 +22,13 @@
     <link rel="icon" href="css/image/favicon.webp" type="image/webp" />
 
     <!--  Feuilles de style -->
-    <link rel="stylesheet" href="./css/accueil.css" />
+    <link rel="stylesheet" href="../css/accueil.css" />
   </head>
   <body>
     <header>
       <nav>
         <div class="logo-container">
-          <a href="index.html">
+          <a href="../index.html">
             <picture>
               <source
                 srcset="../assets/webp/cocoba_logo.webp"
@@ -43,12 +43,23 @@
             </picture>
           </a>
         </div>
+
+        <!-- Toggle button (Burger) -->
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Menu"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
         <ul class="nav-links">
-          <li><a href="index.html" class="active">Accueil</a></li>
-          <li><a href="html/projet.html">Projet</a></li>
-          <li><a href="html/apropos.html">À Propos</a></li>
-          <li><a href="html/conclusion.html">Conclusion</a></li>
-          <li><a href="html/contact.html">Contact</a></li>
+          <li><a href="../index.html" class="active">Accueil</a></li>
+          <li><a href="projet.html">Projet</a></li>
+          <li><a href="apropos.html">À Propos</a></li>
+          <li><a href="conclusion.html">Conclusion</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -64,5 +75,45 @@
     <section class="content">
       <p>Ce texte est dans une section bien définie.</p>
     </section>
+
+    <!-- Script pour le menu burger -->
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+      }
+    </script>
+
+    <style>
+      .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background: white;
+          text-align: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+    </style>
   </body>
 </html>
