@@ -23,7 +23,6 @@
   display: flex;
   align-items: center;
   margin: 2%;
-
 }
 .logo {
   width: 15vw;
@@ -35,7 +34,6 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-
   }
 }
 // Styles du menu toggle (Burger)
@@ -49,7 +47,7 @@
   position: absolute;
   right: 5%;
   top: 1.5%;
-  font-weight:700;
+  font-weight: 700;
   @include low-mobile {
     display: block;
   }

@@ -346,7 +346,8 @@ a {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   } /* Taille normale */
   50% {
@@ -538,7 +539,8 @@ a {
 /*  Animation Like (HeartBeat) */
 /* ====================================================== */
 @keyframes heartbeat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   } /* Taille normale */
   50% {
@@ -652,7 +654,9 @@ a {
   color: white;
   font-weight: bold;
   padding: 8px 15px;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 .nav-link li a:hover {
   background: gray;

@@ -1,3 +1,6 @@
+/* eslint-disable brace-style */
+/* eslint-disable import/extensions */
+/* eslint-disable max-len */
 /**
  * ===============================================================
  * Nom du fichier  : domSelectors.js
@@ -13,9 +16,9 @@
  * ===============================================================
  */
 
-/*==============================================*/
+/*= ============================================= */
 /*                 Import                       */
-/*==============================================*/
+/*= ============================================= */
 /**
  * Importation du module `logEvent` pour gérer la journalisation des événements.
  * Ce module est utilisé pour enregistrer les erreurs, les succès et les informations
@@ -23,17 +26,17 @@
  */
 import { logEvent } from "../utils/utils.js";
 
-/*==============================================*/
+/*= ============================================= */
 /*         Cache et Sélection Sécurisée         */
-/*==============================================*/
+/*= ============================================= */
 /**
  * Cache des sélections DOM pour améliorer les performances.
  *
  */
 const domCache = new Map();
-/*==============================================*/
+/*= ============================================= */
 /*          Clear Cache (Purge Sélecteurs)    */
-/*==============================================*/
+/*= ============================================= */
 
 /** ## DESCRIPTION ##
  * ---------------------------------------------------------------------------------------------------
@@ -56,9 +59,9 @@ export function clearDomCache() {
   logEvent("info", "Cache des sélections DOM vidé avec succès.");
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*       Sélection Sécurisée d'un Élément DOM   */
-/*==============================================*/
+/*= ============================================= */
 
 /** ## DESCRIPTION ##
  * ---------------------------------------------------------------------------------------------------
@@ -102,9 +105,9 @@ export function safeQuerySelector(
   return element;
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*       Sélection Sécurisée de Plusieurs Éléments DOM   */
-/*==============================================*/
+/*= ============================================= */
 
 /** ## DESCRIPTION ##
  * ---------------------------------------------------------------------------------------------------
@@ -143,60 +146,74 @@ export function safeQuerySelectorAll(selector) {
   return elements;
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*          Détection Dynamique de la Page      */
-/*==============================================*/
+/*= ============================================= */
 
 /** ## DESCRIPTION ##
  * ---------------------------------------------------------------------------------------------------
  *  Détecte la page active en analysant l’URL actuelle du navigateur et retourne son type.
  * ---------------------------------------------------------------------------------------------------
- *
- *
- * @function getCurrentPage
- * @returns {string} Le nom de la page détectée parmi les valeurs suivantes :
- *   - `"index"` : Page d’accueil.
- *   - `"recipe"` : Page dédiée à une recette spécifique.
- *   - `"unknown"` : Aucune correspondance trouvée.
- *
+ */
+/**
+ * Détermine la page actuelle en fonction de l'URL.
+ * @returns {string} - Le nom de la page actuelle : 'projet', 'apropos', 'contact', 'conclusion', 'index' ou 'unknown' si non reconnu.
  */
 export function getCurrentPage() {
+  // Récupère le chemin de l'URL actuelle et le met en minuscule
   const url = window.location.pathname.toLowerCase();
-  if (url.includes("recipe")) {
-    return "recipe";
+
+  // Vérifie si l'URL contient "projet"
+  if (url.includes("projet")) {
+    return "projet";
   }
+
+  // Vérifie si l'URL contient "apropos"
+  if (url.includes("apropos")) {
+    return "apropos";
+  }
+
+  // Vérifie si l'URL contient "contact"
+  if (url.includes("contact")) {
+    return "contact";
+  }
+
+  // Vérifie si l'URL contient "conclusion"
+  if (url.includes("conclusion")) {
+    return "conclusion";
+  }
+
+  // Vérifie si l'URL contient "index" ou si c'est la page d'accueil ('/')
   if (url.includes("index") || url === "/") {
     return "index";
   }
+
+  // Si aucun des cas ci-dessus n'est trouvé, retourne 'unknown'
   return "unknown";
 }
-
-/*==============================================*/
+/*= ============================================= */
 /*       Définition Structurée des Sélecteurs   */
-/*==============================================*/
-
-/** ## DESCRIPTION ##
+/*= ============================================= */
+/**
+ * ## DESCRIPTION ##
  * ---------------------------------------------------------------------------------------------------
  *  Récupère les sélecteurs DOM essentiels pour la page d’accueil (`index.html`) et les organise
  *  par catégories afin de faciliter leur utilisation et leur gestion.
  * ---------------------------------------------------------------------------------------------------
- *
  *
  * @function getIndexSelectors
  * @returns {Object} Un objet contenant les sélecteurs organisés par catégories.
  *
  * @example
  *  Initialiser les sélecteurs sur la page d’accueil :
- * const selectors = getIndexSelectors();
- * console.log(selectors.search.input); // Accède au champ de recherche
- *
- * }
+ *  const selectors = getIndexSelectors();
+ *  console.log(selectors.nav.menuButton); // Accède au bouton du menu toggle
  */
 
 export function getIndexSelectors() {
   return {
     /* ============================== */
-    /* Structure Principale        */
+    /* Structure Principale           */
     /* ============================== */
     layout: {
       body: document.body,
@@ -206,42 +223,39 @@ export function getIndexSelectors() {
     },
 
     /* ============================== */
-    /* Barre de Recherche          */
+    /* Navigation et Menu Burger      */
     /* ============================== */
-    search: {
-      form: safeQuerySelector(".search-bar"),
-      input: safeQuerySelector("#search"),
-      button: safeQuerySelector("#search-btn"),
+    nav: {
+      menuButton: safeQuerySelector(".menu-toggle"), // Bouton toggle (burger menu)
+      navLinks: safeQuerySelector(".nav-links"), // Liste des liens de navigation
+      logo: safeQuerySelector(".logo-container img"), // Logo du site
     },
 
     /* ============================== */
-    /* Filtres Dynamiques          */
+    /* Section Hero                   */
     /* ============================== */
-    filters: {
-      container: safeQuerySelector("#filters"),
-      ingredients:
-        safeQuerySelector("#ingredients-list") ||
-        waitForElement('[data-filter="ingredients"]'),
-      appliances:
-        safeQuerySelector('[data-filter="appliances"]') ||
-        waitForElement('[data-filter="appliances"]'),
-      ustensils:
-        safeQuerySelector('[data-filter="ustensils"]') ||
-        waitForElement('[data-filter="ustensils"]'),
+    hero: {
+      section: safeQuerySelector(".hero"),
+      title: safeQuerySelector(".hero h1"),
     },
 
     /* ============================== */
-    /* Recettes                    */
+    /* Section Projet                  */
     /* ============================== */
-    recipes: {
-      recipeCards: () => safeQuerySelector(".recipe-card", true),
+    project: {
+      section: safeQuerySelector(".project-description"),
+      title: safeQuerySelector(".project-description h2"),
+      description: safeQuerySelector(".project-description p"),
+      projectImage: safeQuerySelector(".project-image img"),
+      projectLink: safeQuerySelector(".project-description .btn"),
     },
 
     /* ============================== */
-    /* Compteur de Recettes        */
+    /* Pied de page                    */
     /* ============================== */
-    recipeCount: {
-      container: safeQuerySelector("#recipe-count-container"),
+    footer: {
+      container: safeQuerySelector("footer"),
+      copyright: safeQuerySelector(".footer-content p"),
     },
   };
 }
@@ -279,7 +293,7 @@ export function waitForElement(selector, timeout = 5000) {
 
     logEvent(
       "info",
-      ` Élément non trouvé, lancement de l'observation avec MutationObserver...`,
+      " Élément non trouvé, lancement de l'observation avec MutationObserver...",
     );
 
     //  Création de l'observateur pour surveiller l'ajout de l'élément dans le DOM
@@ -311,9 +325,9 @@ export function waitForElement(selector, timeout = 5000) {
     }, timeout);
   });
 }
-/*==============================================*/
+/*= ============================================= */
 /*    Vérification de la Présence des Éléments  */
-/*==============================================*/
+/*= ============================================= */
 
 /**
  * Parcourt un objet contenant des sélecteurs DOM pour vérifier leur présence et signaler ceux manquants.
@@ -368,9 +382,9 @@ export function recursiveCheck(obj, parentKey = "", missingSelectors = []) {
   return missingSelectors; // Retourne la liste des sélecteurs manquants
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*    Vérification Globale des Sélecteurs       */
-/*==============================================*/
+/*= ============================================= */
 /**
  * Vérifie la présence de tous les sélecteurs nécessaires au bon fonctionnement d’une page donnée.
  *
@@ -404,9 +418,9 @@ export function checkSelectors(selectors) {
   return missingSelectors;
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*          Chargement Dynamique des Sélecteurs */
-/*==============================================*/
+/*= ============================================= */
 /**
  * Charge dynamiquement les sélecteurs nécessaires en fonction de la page détectée.
  *
@@ -451,9 +465,9 @@ export function loadSelectorsForCurrentPage() {
 
   return selectors;
 }
-/*==============================================*/
+/*= ============================================= */
 /*        Rafraîchissement des Sélecteurs       */
-/*==============================================*/
+/*= ============================================= */
 /**
  * Réinitialise dynamiquement les sélecteurs DOM pour garantir leur validité et éviter les erreurs.
  *
@@ -488,9 +502,9 @@ export function refreshSelectors() {
   logEvent("success", "Sélecteurs DOM mis à jour avec succès.");
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*        Initialisation des Sélecteurs         */
-/*==============================================*/
+/*= ============================================= */
 /**
  * ---------------------------------------------------------------------------------------------------
  *  Initialise les sélecteurs DOM après le chargement complet de la page et empêche une double exécution.
@@ -538,9 +552,9 @@ function initializeDomSelectors() {
   window.domSelectorsLoaded = true;
 }
 
-/*==============================================*/
+/*= ============================================= */
 /*   Observation des Changements du DOM        */
-/*==============================================*/
+/*= ============================================= */
 
 /**
  * ---------------------------------------------------------------------------------------------------
@@ -584,9 +598,9 @@ document.addEventListener(
   initializeDomSelectors,
 );
 
-/*==============================================*/
+/*= ============================================= */
 /*       Export des Fonctions & Sélecteurs      */
-/*==============================================*/
+/*= ============================================= */
 
 /**
  * ---------------------------------------------------------------------------------------------------
