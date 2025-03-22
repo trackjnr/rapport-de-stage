@@ -1,0 +1,70 @@
+/* =============================================================================
+    Projet       : Rapport de Stage - TrackJnr
+    Fichier      : _conclusion.scss
+    Auteur       : Trackjnr
+    Date         : 22/03/2025
+    Version      : 1.0.0
+    Description  : Style pour la page de conclusion du rapport de stage.
+============================================================================= */
+
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* =============================================================================
+    HERO (Bannière d’intro)
+============================================================================= */
+
+.hero {
+    background: linear-gradient(to right, #22e4f12c, darken(#22e4f12c, 10%));
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+
+    .hero-container {
+        max-width: 800px;
+        margin: 0 auto;
+
+        h1 {
+        font-size: 2.5rem;
+        line-height: 1.3;
+        }
+    }
+}
+
+/* =============================================================================
+    CONTENU STRUCTURÉ
+============================================================================= */
+
+.conclusion-text {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: black;
+
+    h2 {
+        font-size: 1.6rem;
+        margin-top: 2.5rem;
+        color: red;
+        border-left: 4px solid #22e4f12c;
+        padding-left: 1rem;
+    }
+
+    p {
+        margin-top: 1rem;
+    }
+
+    strong {
+        color: black;
+    }
+
+    .signature {
+        margin-top: 3rem;
+        font-size: 1rem;
+        font-style: italic;
+        text-align: right;
+        color: white;
+    }
+}
+

@@ -1,5 +1,5 @@
 @use "../base/reset";
-@use "../base/variables";
+@use "../base/variables" as *;
 @use "../base/animation";
 @use "../base/mixins";
 
@@ -7,3 +7,4 @@
 @use "../components/button"; /* Définition des boutons et interactions */
 @use "../components/cards"; /* Styles des cartes utilisées dans l'interface */
 @use "../components/footer"; /* Styles du pied de page */
+@use "../pages/conclusion"

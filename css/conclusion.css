@@ -737,40 +737,61 @@ a {
 
 /* Styles du pied de page */
 /* =============================================================================
-    Projet      :   rapport-de-stage
-    Fichier     :   _accueil.scss
-    Auteur      :   Trackjnr
-    Date        :   10/03/2025
-    Version     :   1.0.0
-    Description :   Styles spécifiques à la page accueil
+    Projet       : Rapport de Stage - TrackJnr
+    Fichier      : _conclusion.scss
+    Auteur       : Trackjnr
+    Date         : 22/03/2025
+    Version      : 1.0.0
+    Description  : Style pour la page de conclusion du rapport de stage.
 ============================================================================= */
-h1 {
-  background-color: rgba(34, 228, 241, 0.1725490196);
-  padding: 2% 0;
-  margin: 3% 0 2% 0;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+/* =============================================================================
+    HERO (Bannière d’intro)
+============================================================================= */
+.hero {
+  background: linear-gradient(to right, rgba(34, 228, 241, 0.1725490196), rgba(13.3446808511, 198.2638297872, 210.6553191489, 0.1725490196));
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.hero .hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero .hero-container h1 {
+  font-size: 2.5rem;
+  line-height: 1.3;
 }
 
-img {
-  width: 90%;
-  height: auto;
-  margin: 2% auto;
-  border-radius: 1rem;
+/* =============================================================================
+    CONTENU STRUCTURÉ
+============================================================================= */
+.conclusion-text {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: black;
+}
+.conclusion-text h2 {
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
+  color: red;
+  border-left: 4px solid rgba(34, 228, 241, 0.1725490196);
+  padding-left: 1rem;
+}
+.conclusion-text p {
+  margin-top: 1rem;
+}
+.conclusion-text strong {
+  color: black;
+}
+.conclusion-text .signature {
+  margin-top: 3rem;
+  font-size: 1rem;
+  font-style: italic;
+  text-align: right;
+  color: white;
 }
 
-h2 {
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2% 0;
-  font-weight: 700;
-}
-
-/* Styles spécifiques à la page accueil */
-
-/*# sourceMappingURL=accueil.css.map */
+/*# sourceMappingURL=conclusion.css.map */
