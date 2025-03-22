@@ -10,11 +10,13 @@
 /* ============================== */
 /*  Conteneur global des cartes */
 /* ============================== */
+
 .container-project-cards-container {
-  display: flex;              // Affiche les cartes en flex
-  flex-direction: row;        // Les aligne horizontalement
-  flex-wrap: nowrap;          // Ne pas retourner à la ligne
-  justify-content: space-between; // Espace entre les cartes
+  display: grid;              // Affiche les cartes en flex
+  grid-template-columns: repeat(2, 45%);        // Les aligne horizontalement
+  gap:15%;
+  margin:0 auto;
+
 }
 
 
@@ -22,14 +24,9 @@
 /*  Lien englobant chaque carte */
 /* ============================== */
 .card-link {
-    display: block;;
     text-decoration: none;      // Supprime le soulignement
     color: inherit;             // Garde la couleur héritée                    // Occupe toute la largeur dispo               // Largeur spécifique de chaque carte
 
-    &:hover .card {
-    transform: translateY(-4px);  // Légère élévation au survol
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // Ombre plus forte
-    }
 }
 
 
@@ -44,7 +41,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 300px;
-    flex: 1 1 calc(33.33% - 2rem);
+    height:400px;
   
     display: flex;
     flex-direction: column;
@@ -61,7 +58,6 @@
 /* ============================== */
 .card-title {
   font-size: 1.25rem;         // Taille du texte
-  padding: 1rem 1rem 0.5rem;  // Espace autour du titre
   margin: 0;                  // Supprime la marge par défaut
   color: red;                 // Couleur rouge pour le titre
 }
@@ -73,7 +69,7 @@
 .card-image {
   img {
     width: 100%;              // Image pleine largeur
-    height: 40%;              // Hauteur proportionnelle
+    height: 70%;              // Hauteur proportionnelle
     object-fit: cover;        // Coupe proprement l’image
     border-radius: 0 0 12px 12px; // Coins arrondis en bas
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Légère ombre

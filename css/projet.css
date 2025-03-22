@@ -672,23 +672,18 @@ a {
 /*  Conteneur global des cartes */
 /* ============================== */
 .container-project-cards-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 45%);
+  gap: 15%;
+  margin: 0 auto;
 }
 
 /* ============================== */
 /*  Lien englobant chaque carte */
 /* ============================== */
 .card-link {
-  display: block;
   text-decoration: none;
   color: inherit;
-}
-.card-link:hover .card {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================== */
@@ -702,7 +697,7 @@ a {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 300px;
-  flex: 1 1 calc(33.33% - 2rem);
+  height: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -716,7 +711,6 @@ a {
 /* ============================== */
 .card-title {
   font-size: 1.25rem;
-  padding: 1rem 1rem 0.5rem;
   margin: 0;
   color: red;
 }
@@ -726,7 +720,7 @@ a {
 /* ============================== */
 .card-image img {
   width: 100%;
-  height: 40%;
+  height: 70%;
   object-fit: cover;
   border-radius: 0 0 12px 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
