@@ -5,185 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Détails du projet de création d'une alimentation stabilisée industrielle."
+      content="Détails des projets réalisés durant le stage : alimentation stabilisée et création de site web."
     />
     <meta
       name="keywords"
-      content="projet, alimentation stabilisée, récupération, électronique"
+      content="projets, alimentation stabilisée, site web, stage, électronique, développement"
     />
     <meta name="author" content="TrackJnr" />
-    <title>Projet | Rapport de Stage</title>
+    <title>Projets | Rapport de Stage</title>
     <link rel="icon" href="../css/image/favicon.png" type="image/png" />
     <link rel="stylesheet" href="../css/projet.css" />
   </head>
+
   <body>
+    <!-- En-tête -->
     <header>
-      <nav>
+      <nav aria-label="Navigation principale">
         <div class="logo-container">
           <a href="../index.html">
-            <img
-              class="logo"
-              src="../assets/image/cocoba_logo.png"
-              alt="Logo Cocoba"
-            />
+            <img class="logo" src="../assets/image/cocoba_logo.png" alt="Logo Cocoba" />
           </a>
         </div>
-        <!-- Toggle button (Burger) -->
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Menu"
-          onclick="toggleMenu()"
-        >
-          ☰
-        </button>
+
+        <button type="button" class="menu-toggle" aria-label="Menu">☰</button>
 
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
-          <li><a href="../html/projet.html" class="active">Projet</a></li>
-          <li><a href="../html/apropos.html">À Propos</a></li>
-          <li><a href="../html/conclusion.html">Conclusion</a></li>
-          <li><a href="../html/contact.html">Contact</a></li>
+          <li><a href="projet.html" class="active">Projet</a></li>
+          <li><a href="apropos.html">À Propos</a></li>
+          <li><a href="conclusion.html">Conclusion</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
+    <!-- Contenu principal -->
     <main>
       <section class="hero">
         <div class="hero-container">
-          <h1>Projet</h1>
+          <h1>Mes Projets de Stage</h1>
         </div>
       </section>
-
-      <section class="project-description">
-        <h2>Présentation du Projet</h2>
-        <p>
-          Ce projet consiste à créer une alimentation stabilisée industrielle à
-          partir d’une alimentation de PC en récupération. L'objectif est de
-          réutiliser des composants existants pour concevoir un système capable
-          de fournir une tension stable et sécurisée pour diverses applications
-          industrielles.
-        </p>
-      </section>
-
-      <section class="project-gallery">
-        <h2>Galerie du Projet</h2>
-        <div class="image-grid">
-          <div class="image-container">
-            <img
-              src="../assets/image/alim.jpeg"
-              alt="Alimentation stabilisée en cours de montage"
-            />
-          </div>
-          <div class="image-container">
-            <img
-              src="../assets/image/alimdemont.jpeg"
-              alt="Alimentation démontée pour modification"
-            />
-          </div>
-          <div class="image-container">
-            <img
-              src="../assets/image/tourpc.jpeg"
-              alt="PC utilisé pour récupérer les composants"
-            />
-          </div>
-          <div class="image-container">
-            <img
-              src="../assets/webp/decoupepc.webp"
-              alt="Découpe d'un boîtier pour intégration"
-            />
-          </div>
-          <div class="image-container">
-            <img
-              src="../assets/image/circuitimprimer.jpeg"
-              alt="Circuit imprimé conçu pour l'alimentation"
-            />
+      <section class="hero-banner">
+        <div class="hero-banner-overlay">
+          <div class="hero-banner-content">
+            <h1>Projets Réalisés en Stage</h1>
+            <p>
+              Durant mon stage chez Cocoba, j’ai mené deux projets concrets mêlant électronique et développement web. Découvrez ici leur présentation détaillée, les outils utilisés, les étapes de réalisation et des galeries illustrées.
+            </p>
           </div>
         </div>
       </section>
+      
+
+      <!-- Carte Projet 1 -->
+      <article class="project-card" id="projet-alim">
+        <h2>🔌 Projet 1 : Alimentation Stabilisée</h2>
+
+        <div class="tabs">
+          <button class="tab-button active" data-tab="resume1">Résumé</button>
+          <button class="tab-button" data-tab="materiel1">Matériel</button>
+          <button class="tab-button" data-tab="temps1">Durée & Difficulté</button>
+          <button class="tab-button" data-tab="galerie1">Galerie</button>
+          <button class="tab-button" data-tab="etapes1">Étapes</button>
+        </div>
+
+        <div class="tab-content active" id="resume1">
+          <p>
+            Ce projet consistait à transformer une alimentation d'ordinateur en alimentation stabilisée pour applications industrielles. Objectif : assurer des tensions fiables, sécurisées et constantes à partir de matériel recyclé.
+          </p>
+        </div>
+
+        <div class="tab-content" id="materiel1">
+          <ul>
+            <li>Alimentation PC ATX</li>
+            <li>Boîtier métallique</li>
+            <li>Connecteurs banane</li>
+            <li>Fer à souder, étain</li>
+            <li>Multimètre</li>
+            <li>Ventilateur + dissipateurs</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="temps1">
+          <p>🕒 Temps total estimé : <strong>6 heures</strong></p>
+          <p>⚙️ Difficulté : <strong>★★★☆☆</strong> (niveau intermédiaire)</p>
+        </div>
+
+        <div class="tab-content" id="galerie1">
+          <div class="gallery-grid">
+            <a href="../assets/image/alim.jpeg" class="lightbox"><img src="../assets/image/alim.jpeg" alt="Montage alim" /></a>
+            <a href="../assets/image/alimdemont.jpeg" class="lightbox"><img src="../assets/image/alimdemont.jpeg" alt="Démontage" /></a>
+            <a href="../assets/image/tourpc.jpeg" class="lightbox"><img src="../assets/image/tourpc.jpeg" alt="Récupération PC" /></a>
+            <a href="../assets/webp/decoupepc.webp" class="lightbox"><img src="../assets/webp/decoupepc.webp" alt="Découpe boîtier" /></a>
+            <a href="../assets/image/circuitimprimer.jpeg" class="lightbox"><img src="../assets/image/circuitimprimer.jpeg" alt="Circuit imprimé" /></a>
+          </div>
+        </div>
+
+        <div class="tab-content" id="etapes1">
+          <p>
+            👉 Découvrez toutes les étapes détaillées sur la page dédiée :
+            <a href="etapes-alim.html" class="btn">Voir les étapes</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Carte Projet 2 -->
+      <article class="project-card" id="projet-site">
+        <h2>🌐 Projet 2 : Création du Site Web</h2>
+
+        <div class="tabs">
+          <button class="tab-button active" data-tab="resume2">Résumé</button>
+          <button class="tab-button" data-tab="materiel2">Technos</button>
+          <button class="tab-button" data-tab="temps2">Durée & Difficulté</button>
+          <button class="tab-button" data-tab="galerie2">Galerie</button>
+          <button class="tab-button" data-tab="etapes2">Étapes</button>
+        </div>
+
+        <div class="tab-content active" id="resume2">
+          <p>
+            Ce second projet consistait à créer ce site web comme livrable du rapport de stage. Il présente les projets réalisés, l’équipe, le contexte du stage et permet une navigation fluide entre les pages.
+          </p>
+        </div>
+
+        <div class="tab-content" id="materiel2">
+          <ul>
+            <li>HTML5</li>
+            <li>SCSS (préprocesseur CSS)</li>
+            <li>JavaScript ES6</li>
+            <li>Lightbox JS</li>
+            <li>Images WebP & Responsive Design</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="temps2">
+          <p>🕒 Temps total estimé : <strong>12 heures</strong></p>
+          <p>⚙️ Difficulté : <strong>★★★☆☆</strong> (niveau intermédiaire)</p>
+        </div>
+
+        <div class="tab-content" id="galerie2">
+          <div class="gallery-grid">
+            <a href="../assets/image/site_capture1.png" class="lightbox"><img src="../assets/image/site_capture1.png" alt="Accueil site" /></a>
+            <a href="../assets/image/site_capture2.png" class="lightbox"><img src="../assets/image/site_capture2.png" alt="Page projet" /></a>
+          </div>
+        </div>
+
+        <div class="tab-content" id="etapes2">
+          <p>
+            👉 Les étapes de conception sont visibles ici :
+            <a href="etapes-site.html" class="btn">Voir les étapes</a>
+          </p>
+        </div>
+      </article>
     </main>
 
-    <!-- Script pour le menu burger -->
-    <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
-    </script>
+    <!-- Pied de page -->
+    <footer>
+      <p>&copy; 2024 Rapport de Stage — Réalisé par <strong>TrackJnr</strong></p>
+    </footer>
 
-    <style>
-      /* Style du menu burger */
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          background: white;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-
-      /* Style de la galerie d'images */
-      .project-gallery {
-        text-align: center;
-        padding: 20px;
-      }
-
-      .image-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        justify-content: center;
-        padding: 20px;
-      }
-
-      .image-container {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease-in-out;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .image-container img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .image-container:hover {
-        transform: scale(1.05);
-      }
-
-      @media screen and (max-width: 768px) {
-        .image-grid {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
-      }
-    </style>
+    <!-- JS -->
+    <script type="module" src="../js/projets.js"></script>
   </body>
 </html>

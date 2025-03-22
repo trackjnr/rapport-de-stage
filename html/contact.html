@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!-- Meta et SEO -->
+    <!-- Meta & SEO -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -11,30 +11,24 @@
     <meta name="keywords" content="contact, assistance, formulaire, support" />
     <meta name="author" content="TrackJnr" />
 
-    <!-- Titre optimisé -->
     <title>Contact | MonSite</title>
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/favicon.webp" type="image/webp" />
-    <link
-      rel="alternate icon"
-      href="../assets/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="alternate icon" href="../assets/favicon.ico" type="image/x-icon" />
 
-    <!-- Styles -->
+    <!-- Feuille de style externe -->
     <link rel="stylesheet" href="../css/contact.css" />
   </head>
+
   <body>
+    <!-- En-tête -->
     <header>
-      <nav>
+      <nav aria-label="Navigation principale">
         <div class="logo-container">
           <a href="../index.html">
             <picture>
-              <source
-                srcset="../assets/webp/cocoba_logo.webp"
-                type="image/webp"
-              />
+              <source srcset="../assets/webp/cocoba_logo.webp" type="image/webp" />
               <img
                 class="logo"
                 src="../assets/image/cocoba_logo.png"
@@ -45,21 +39,15 @@
           </a>
         </div>
 
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Menu"
-          onclick="toggleMenu()"
-        >
-          ☰
-        </button>
+        <!-- Bouton menu -->
+        <button type="button" class="menu-toggle" aria-label="Ouvrir ou fermer le menu">☰</button>
 
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
-          <li><a href="../html/projet.html">Projet</a></li>
-          <li><a href="../html/apropos.html">À Propos</a></li>
-          <li><a href="../html/conclusion.html">Conclusion</a></li>
-          <li><a href="../html/contact.html" class="active">Contact</a></li>
+          <li><a href="projet.html">Projet</a></li>
+          <li><a href="apropos.html">À Propos</a></li>
+          <li><a href="conclusion.html">Conclusion</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -73,9 +61,9 @@
           et je vous répondrai dès que possible.
         </p>
 
-        <!--  Formulaire de contact -->
+        <!-- Formulaire de contact -->
         <div class="form-wrapper">
-          <form id="contact-form">
+          <form id="contact-form" class="contact-form" novalidate>
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name" required />
 
@@ -92,101 +80,20 @@
       </section>
     </main>
 
+    <!-- Modales dynamiques (confirmation / erreur) -->
+    <template id="modal-success"> 
+    </template>
+
+    <template id="modal-error">
+    </template>
+
     <!-- Pied de page -->
     <footer>
       <p>&copy; 2024 MonSite - Tous droits réservés</p>
     </footer>
 
-    <!-- Script pour le menu burger -->
-    <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
-    </script>
-
-    <style>
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      .form-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .contact-form label {
-        margin-top: 10px;
-        font-weight: bold;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      .btn-submit {
-        margin-top: 15px;
-        padding: 10px;
-        background: #28a745;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      .btn-submit:hover {
-        background: #218838;
-      }
-
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          background: white;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-    </style>
-
-    <!-- Script JS pour le formulaire -->
-    <script defer src="../js/contact.js"></script>
+    <!-- Scripts JS -->
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/contact.js"></script>
   </body>
 </html>

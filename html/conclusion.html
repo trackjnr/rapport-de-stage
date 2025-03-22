@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!--  Meta et SEO -->
+    <!-- Meta & SEO -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Rapport de stage - Expérience et apprentissages."
+      content="Conclusion du rapport de stage de Lucas David chez Cocoba."
     />
     <meta
       name="keywords"
-      content="rapport de stage, expérience, apprentissage, développement web, entreprise"
+      content="rapport de stage, conclusion, apprentissage, hackerspace, Cocoba"
     />
     <meta name="author" content="TrackJnr" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!--  Titre optimisé -->
-    <title>Rapport de Stage | Mon Expérience</title>
+    <title>Conclusion | Rapport de Stage</title>
 
-    <!--  Favicon -->
-    <link rel="icon" href="css/image/favicon.webp" type="image/webp" />
+    <!-- Favicon -->
+    <link rel="icon" href="../css/image/favicon.webp" type="image/webp" />
 
-    <!--  Feuilles de style -->
-    <link rel="stylesheet" href="../css/accueil.css" />
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/conclusion.css" />
   </head>
+
   <body>
+    <!-- En-tête -->
     <header>
       <nav>
         <div class="logo-container">
           <a href="../index.html">
             <picture>
-              <source
-                srcset="../assets/webp/cocoba_logo.webp"
-                type="image/webp"
-              />
+              <source srcset="../assets/webp/cocoba_logo.webp" type="image/webp" />
               <img
                 class="logo"
                 src="../assets/image/cocoba_logo.png"
@@ -44,76 +42,71 @@
           </a>
         </div>
 
-        <!-- Toggle button (Burger) -->
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Menu"
-          onclick="toggleMenu()"
-        >
-          ☰
-        </button>
+        <button type="button" class="menu-toggle" aria-label="Menu">☰</button>
 
         <ul class="nav-links">
-          <li><a href="../index.html" class="active">Accueil</a></li>
+          <li><a href="../index.html">Accueil</a></li>
           <li><a href="projet.html">Projet</a></li>
           <li><a href="apropos.html">À Propos</a></li>
-          <li><a href="conclusion.html">Conclusion</a></li>
+          <li><a href="conclusion.html" class="active">Conclusion</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
+    <!-- Bannière -->
     <main>
       <section class="hero">
         <div class="hero-container">
-          <h1>Conclusion</h1>
+          <h1>Conclusion de mon Stage chez Cocoba</h1>
         </div>
+      </section>
+
+      <!-- Conclusion structurée -->
+      <section class="content conclusion-text">
+        <h2>Une immersion totale dans un monde nouveau</h2>
+        <p>
+          Avant ce stage, je n’avais jamais codé, jamais soudé, jamais touché un terminal ou ouvert un boîtier d’ordinateur. Arriver chez <strong>Cocoba</strong>, c’était comme atterrir dans un monde parallèle : des machines partout, du vocabulaire technique, des composants électroniques à identifier, et un rythme soutenu.
+        </p>
+
+        <h2>Un cadre exigeant mais formateur</h2>
+        <p>
+          Mon maître de stage m’a tout de suite mis dans le bain. Il était strict, précis, et parfois un peu sec… mais toujours juste et plein d’humour. Il m’a appris à me poser les bonnes questions, à être autonome, à tester, rater, recommencer, et surtout à aller au bout de mes idées. Grâce à lui, je n’ai pas seulement appris des outils, j’ai appris une méthode.
+        </p>
+
+        <h2>Des projets concrets, du zéro à la réalisation</h2>
+        <p>
+          Le premier projet, créer une alimentation stabilisée à partir d’un PC recyclé, m’a demandé beaucoup de rigueur. J’ai dû apprendre l’électronique de base, comprendre les tensions, souder proprement, et organiser un montage fonctionnel. Le deuxième projet, coder ce site, a été tout aussi formateur. En quelques jours, je suis passé de “je ne comprends rien au HTML” à “je sais structurer un site, utiliser SCSS, écrire du JS, et même créer une galerie avec lightbox”.
+        </p>
+
+        <h2>Un rapport de stage… ou plutôt un portfolio ?</h2>
+        <p>
+          Ce site web est bien plus qu’un rapport de stage. Il montre ce que j’ai appris, ce que j’ai réalisé, et surtout ce que je suis maintenant capable de faire. Il pourrait très bien servir de portfolio pour d’autres projets, ou même me représenter si je cherche un autre stage ou une formation.
+        </p>
+
+        <h2>Un avenir que je n’imaginais pas</h2>
+        <p>
+          Ce stage m’a ouvert des perspectives que je n’envisageais même pas. Il m’a donné envie d’apprendre plus, de continuer à créer, à coder, à bidouiller. Il m’a aussi donné confiance : je sais maintenant que même sans base, on peut apprendre et progresser, si on s’en donne les moyens.
+        </p>
+
+        <h2>Remerciements</h2>
+        <p>
+          Merci à toute l’équipe de Cocoba pour l’accueil, les outils, la confiance et les fous rires. Merci à mon maître de stage pour sa rigueur, sa passion et son humour caché. Grâce à vous, je termine ce stage avec fierté, motivation… et de nouvelles idées plein la tête.
+        </p>
+
+        <p class="signature">
+          <strong>Lucas David</strong><br />
+          Stagiaire – 16 ans
+        </p>
       </section>
     </main>
 
-    <section class="content">
-      <p>Ce texte est dans une section bien définie.</p>
-    </section>
+    <!-- Pied de page -->
+    <footer>
+      <p>&copy; 2024 Rapport de Stage - Réalisé par <strong>TrackJnr</strong></p>
+    </footer>
 
-    <!-- Script pour le menu burger -->
-    <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
-    </script>
-
-    <style>
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          background: white;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-    </style>
+    <!-- Scripts -->
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>
