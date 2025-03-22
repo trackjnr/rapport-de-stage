@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-use-before-define */
 /** -------------------------------------------------------------------------
 - file start-game.js
@@ -7,7 +8,7 @@
 ----------------------------------------------------------------------------*/
 
 // ✅ Importation des fonctions nécessaires
-import { logEvent } from '../utils/utils.js';
+import { logEvent } from '../../utils/utils.js';
 import { updateGame } from './update-game.js';
 /** -------------------------------------------------------------------------
 -                      VARIABLES GLOBALES DU JEU

@@ -11,7 +11,7 @@ import { getCurrentPage, domSelectors } from '../config/domSelectors.js';
 import { logEvent } from '../utils/utils.js';
 
 //  Importation des gestionnaires spécifiques par page
-import { initContactFormEvents } from '../formulaire/contactform.js';
+import { initContactFormEvents } from '../components/formulaire/contactform.js';
 
 
 /**

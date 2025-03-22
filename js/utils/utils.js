@@ -260,36 +260,7 @@ export function removeClass(element, className) {
  * @param {number} timeout - Délai maximum (par défaut : 5000ms).
  * @returns {Promise<Element>} Élément DOM résolu ou rejeté après expiration.
  */
-export function waitForElement(selector, timeout = 5000) {
-  return new Promise((resolve, reject) => {
-    // Vérifie d'abord si l'élément est déjà disponible grâce au cache
-    const cachedElement = safeQuerySelector(selector, true);
-    if (cachedElement) {
-      return resolve(cachedElement);
-    }
 
-    // Création de l'observateur pour surveiller les ajouts d'éléments
-    const observer = new MutationObserver(() => {
-      const element = safeQuerySelector(selector, true);
-      if (element) {
-        observer.disconnect(); // Arrête l'observation une fois l'élément trouvé
-        resolve(element);
-      }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Timeout pour éviter les attentes infinies
-    setTimeout(() => {
-      observer.disconnect();
-      reject(
-        new Error(
-          `waitForElement : "${selector}" introuvable après ${timeout}ms.`,
-        ),
-      );
-    }, timeout);
-  });
-}
 
 /**
  * Fonction debounce pour limiter l'exécution d'une fonction lorsqu'elle est appelée fréquemment.

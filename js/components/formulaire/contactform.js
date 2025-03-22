@@ -14,8 +14,8 @@
 /*              Imports et Config              */
 /*= ============================================= */
 
-import { logEvent, showError, removeError } from './utils.js';
-import { openConfirmationModal } from '../components/modal/modalManager.js';
+import { logEvent, showError, removeError } from '../../utils/utils.js';
+import { openConfirmationModal } from '../modal/modalManager.js';
 
 // === Définition des champs obligatoires ===
 const REQUIRED_FIELDS = ['first-name', 'last-name', 'email', 'message'];
