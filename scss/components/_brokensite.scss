@@ -1,0 +1,30 @@
+.glitch-effect {
+  animation: glitchBackground 0.15s steps(2, end) infinite;
+}
+
+@keyframes glitchBackground {
+  0% { background-color: #111; }
+  50% { background-color: #300; }
+  100% { background-color: #111; }
+}
+
+.crash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 20%;
+  z-index: 9999;
+  animation: flash 0.2s steps(2, end) infinite;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

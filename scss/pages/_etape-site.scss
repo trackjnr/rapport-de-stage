@@ -1,0 +1,139 @@
+/* ============================================================================
+    Fichier      : etapes.css
+    Auteur       : TrackJnr
+    Description  : Mise en page des étapes des projets du rapport de stage.
+============================================================================ */
+
+/* ----------------------------- BASE ----------------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    color: #e63946;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #b92c37;
+}
+
+/* ---------------------------- HEADER ---------------------------- */
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 2rem;
+}
+
+.logo-container img {
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+  margin: 0;
+}
+
+.nav-links li a {
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-links li a.active {
+    color: #e63946;
+}
+
+/* -------------------------- SECTION INTRO -------------------------- */
+
+.etapes-intro {
+    background-color: #e63946;
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.etapes-intro h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.etapes-intro p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* -------------------------- SECTIONS ÉTAPES -------------------------- */
+
+.etape {
+    background-color: #fff;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-left: 6px solid #e63946;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-width: 800px;
+}
+
+.etape h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #e63946;
+}
+
+.etape p {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* ----------------------------- FOOTER ----------------------------- */
+
+footer {
+    background-color: #f1f1f1;
+    color: #666;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+}
+
+/* --------------------------- RESPONSIVE --------------------------- */
+
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .etapes-intro h1 {
+        font-size: 1.6rem;
+    }
+
+    .etape {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}

@@ -2,15 +2,9 @@
  * @file script.js
  * @description Gestion principale du jeu (alignement obstacles & difficulté progressive)
  * @author Trackozor
-<<<<<<< HEAD
- * @version 1.0
- ************************************************************************* */
-=======
- * @version 1.7 (Correction de l'alignement des obstacles avec le joueur)
- **************************************************************************/
->>>>>>> 6ab11df53271101679093a6849407784dfd905fc
+ * ****************************************************************************/
 
-// ✅ Importation des fonctions nécessaires
+//  Importation des fonctions nécessaires
 import { startGame } from "./functions/start-game.js";
 import { logEvent } from "./utils/utils.js";
 
@@ -37,23 +31,7 @@ if (!canvas) {
 
 export let gameRunning = false;
 export let player = {
-  x: 50,
-<<<<<<< HEAD
-  y: 200,
-  width: 30,
-  height: 30,
-  dy: 0,
-};
-export const gravity = 0.5;
-=======
-  y: 220,
-  width: 30,
-  height: 30,
-  dy: 0,
-  jumping: false,
-};
-export let gravity = 0.5;
->>>>>>> 6ab11df53271101679093a6849407784dfd905fc
+  x: 50,}
 export let obstacles = [];
 export let score = 0;
 export let secretCode = "";

@@ -1,4 +1,3 @@
-/* eslint-disable brace-style */
 /* eslint-disable import/extensions */
 /* eslint-disable max-len */
 /**
@@ -24,7 +23,7 @@
  * Ce module est utilisé pour enregistrer les erreurs, les succès et les informations
  * relatives aux sélections DOM.
  */
-import { logEvent } from "../utils/utils.js";
+import { logEvent } from '../utils/utils.js';
 
 /*= ============================================= */
 /*         Cache et Sélection Sécurisée         */
@@ -34,6 +33,7 @@ import { logEvent } from "../utils/utils.js";
  *
  */
 const domCache = new Map();
+
 /*= ============================================= */
 /*          Clear Cache (Purge Sélecteurs)    */
 /*= ============================================= */
@@ -56,7 +56,7 @@ const domCache = new Map();
  */
 export function clearDomCache() {
   domCache.clear();
-  logEvent("info", "Cache des sélections DOM vidé avec succès.");
+  logEvent('info', 'Cache des sélections DOM vidé avec succès.');
 }
 
 /*= ============================================= */
@@ -96,7 +96,7 @@ export function safeQuerySelector(
   const element = document.querySelector(selector);
   if (!element) {
     if (!isOptional) {
-      logEvent("error", `Élément DOM introuvable : ${selector}`);
+      logEvent('error', `Élément DOM introuvable : ${selector}`);
     }
     return fallbackValue;
   }
@@ -128,8 +128,8 @@ export function safeQuerySelectorAll(selector) {
   if (domCache.has(selector)) {
     const cachedNodeList = domCache.get(selector);
     if (
-      cachedNodeList.length > 0 &&
-      document.body.contains(cachedNodeList[0])
+      cachedNodeList.length > 0
+      && document.body.contains(cachedNodeList[0])
     ) {
       return cachedNodeList;
     }
@@ -138,7 +138,7 @@ export function safeQuerySelectorAll(selector) {
 
   const elements = document.querySelectorAll(selector);
   if (!elements.length) {
-    logEvent("warn", `Aucun élément trouvé pour : ${selector}`);
+    logEvent('warn', `Aucun élément trouvé pour : ${selector}`);
   } else {
     domCache.set(selector, elements);
   }
@@ -150,47 +150,56 @@ export function safeQuerySelectorAll(selector) {
 /*          Détection Dynamique de la Page      */
 /*= ============================================= */
 
-/** ## DESCRIPTION ##
- * ---------------------------------------------------------------------------------------------------
- *  Détecte la page active en analysant l’URL actuelle du navigateur et retourne son type.
- * ---------------------------------------------------------------------------------------------------
- */
 /**
- * Détermine la page actuelle en fonction de l'URL.
- * @returns {string} - Le nom de la page actuelle : 'projet', 'apropos', 'contact', 'conclusion', 'index' ou 'unknown' si non reconnu.
+ * =============================================================================
+ * @function     getCurrentPage
+ * @description  Détermine dynamiquement le nom de la page actuelle en analysant l’URL.
+ *
+ * @returns {string} - Le nom de la page actuelle parmi :
+ *   - 'index'
+ *   - 'projet'
+ *   - 'apropos'
+ *   - 'contact'
+ *   - 'conclusion'
+ *   - 'etapes-alim'
+ *   - 'etapes-site'
+ *   - 'unknown' (si non reconnu)
+ *
+ * @example
+ * const currentPage = getCurrentPage();
+ * if (currentPage === 'contact') {
+ *   initContactForm();
+ * }
+ * =============================================================================
  */
 export function getCurrentPage() {
-  // Récupère le chemin de l'URL actuelle et le met en minuscule
   const url = window.location.pathname.toLowerCase();
 
-  // Vérifie si l'URL contient "projet"
-  if (url.includes("projet")) {
-    return "projet";
+  if (url.includes('etapes-site')) {
+    return 'etapes-site';
+  }
+  if (url.includes('etapes-alim')) {
+    return 'etapes-alim';
+  }
+  if (url.includes('contact')) {
+    return 'contact';
+  }
+  if (url.includes('apropos')) {
+    return 'apropos';
+  }
+  if (url.includes('contact')) {
+    return 'contact';
+  }
+  if (url.includes('conclusion')) {
+    return 'conclusion';
+  }
+  if (url.includes('index') || url === '/') {
+    return 'index';
   }
 
-  // Vérifie si l'URL contient "apropos"
-  if (url.includes("apropos")) {
-    return "apropos";
-  }
-
-  // Vérifie si l'URL contient "contact"
-  if (url.includes("contact")) {
-    return "contact";
-  }
-
-  // Vérifie si l'URL contient "conclusion"
-  if (url.includes("conclusion")) {
-    return "conclusion";
-  }
-
-  // Vérifie si l'URL contient "index" ou si c'est la page d'accueil ('/')
-  if (url.includes("index") || url === "/") {
-    return "index";
-  }
-
-  // Si aucun des cas ci-dessus n'est trouvé, retourne 'unknown'
-  return "unknown";
+  return 'unknown';
 }
+
 /*= ============================================= */
 /*       Définition Structurée des Sélecteurs   */
 /*= ============================================= */
@@ -217,45 +226,474 @@ export function getIndexSelectors() {
     /* ============================== */
     layout: {
       body: document.body,
-      header: safeQuerySelector("header"),
-      main: safeQuerySelector("main"),
-      footer: safeQuerySelector("footer"),
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
     },
 
     /* ============================== */
     /* Navigation et Menu Burger      */
     /* ============================== */
     nav: {
-      menuButton: safeQuerySelector(".menu-toggle"), // Bouton toggle (burger menu)
-      navLinks: safeQuerySelector(".nav-links"), // Liste des liens de navigation
-      logo: safeQuerySelector(".logo-container img"), // Logo du site
+      menuButton: safeQuerySelector('.menu-toggle'),
+      navLinks: safeQuerySelector('.nav-links'),
+      logo: safeQuerySelector('.logo-container img'),
     },
 
     /* ============================== */
     /* Section Hero                   */
-    /* ============================== */
     hero: {
-      section: safeQuerySelector(".hero"),
-      title: safeQuerySelector(".hero h1"),
+      section: safeQuerySelector('.hero'),
+      title: safeQuerySelector('.hero h1'),
     },
 
     /* ============================== */
-    /* Section Projet                  */
-    /* ============================== */
+    /* Section Projets                */
     project: {
-      section: safeQuerySelector(".project-description"),
-      title: safeQuerySelector(".project-description h2"),
-      description: safeQuerySelector(".project-description p"),
-      projectImage: safeQuerySelector(".project-image img"),
-      projectLink: safeQuerySelector(".project-description .btn"),
+      section: safeQuerySelector('#projets'),
+      title: safeQuerySelector('.section-title'),
+      wrapper: safeQuerySelector('#project-card-wrapper'),
+      cards: safeQuerySelectorAll('.card'),
     },
 
     /* ============================== */
-    /* Pied de page                    */
+    /* Pied de page                   */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('.footer-content p'),
+    },
+  };
+}
+
+/**
+ * ==================================================================================
+ * @function getAproposSelectors
+ * @description
+ *  Récupère tous les sélecteurs DOM nécessaires à la page "À Propos" du site.
+ *  Organise les sélections par sections fonctionnelles : présentation, mission,
+ *  valeurs, équipe, informations légales, navigation et pied de page.
+ *
+ * @returns {Object} Un objet structuré contenant les éléments DOM utilisés sur
+ *  la page "À Propos".
+ *
+ * @example
+ *  // Initialiser les sélecteurs pour la page "À Propos"
+ *  const selectors = getAproposSelectors();
+ *  console.log(selectors.team.members); // Liste des membres de l’équipe
+ * ==================================================================================
+ */
+export function getAproposSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Principale           */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation et Menu Burger      */
+    /* ============================== */
+    nav: {
+      menuButton: safeQuerySelector('.menu-toggle'),
+      navLinks: safeQuerySelector('.nav-links'),
+      logo: safeQuerySelector('.logo-container img'),
+    },
+
+    /* ============================== */
+    /* Section Présentation           */
+    about: {
+      section: safeQuerySelector('#presentation'),
+      image: safeQuerySelector('.hero-image'),
+      heading: safeQuerySelector('#presentation h1'),
+      paragraphs: safeQuerySelectorAll('#presentation p'),
+      externalLink: safeQuerySelector('#presentation a'),
+    },
+
+    /* ============================== */
+    /* Section Mission & Valeurs      */
+    mission: {
+      section: safeQuerySelector('#mission-valeurs'),
+      heading: safeQuerySelector('#mission-valeurs h2'),
+      missionList: safeQuerySelector('.mission-list'),
+      valuesList: safeQuerySelector('.values-list'),
+    },
+
+    /* ============================== */
+    /* Section Équipe                 */
+    team: {
+      section: safeQuerySelector('#equipe'),
+      heading: safeQuerySelector('#equipe h2'),
+      members: safeQuerySelectorAll('.profile-container'),
+    },
+
+    /* ============================== */
+    /* Section Légale                 */
+    legal: {
+      section: safeQuerySelector('#infos-legales'),
+      heading: safeQuerySelector('#infos-legales h2'),
+      content: safeQuerySelector('#infos-legales p'),
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
+    },
+  };
+}
+
+/**
+ * ==================================================================================
+ * @function getConclusionSelectors
+ * @description
+ *  Récupère les sélecteurs DOM nécessaires à la page "Conclusion" du rapport de stage.
+ *  Organise les éléments par sections : structure, navigation, contenu textuel, signature
+ *  et pied de page.
+ *
+ * @returns {Object} Un objet contenant les sélections DOM utilisées dans conclusion.html.
+ *
+ * @example
+ *  const selectors = getConclusionSelectors();
+ *  console.log(selectors.text.sections); // Renvoie la liste des sections <h2> et <p>
+ * ==================================================================================
+ */
+export function getConclusionSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Principale           */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation et Menu Burger      */
+    nav: {
+      menuButton: safeQuerySelector('.menu-toggle'),
+      navLinks: safeQuerySelector('.nav-links'),
+      logo: safeQuerySelector('.logo-container img'),
+    },
+
+    /* ============================== */
+    /* Section Hero (Bannière)        */
+    hero: {
+      section: safeQuerySelector('.hero'),
+      container: safeQuerySelector('.hero-container'),
+      title: safeQuerySelector('.hero h1'),
+    },
+
+    /* ============================== */
+    /* Section Texte (Conclusion)     */
+    text: {
+      section: safeQuerySelector('.conclusion-text'),
+      headings: safeQuerySelectorAll('.conclusion-text h2'),
+      paragraphs: safeQuerySelectorAll('.conclusion-text p'),
+      signature: safeQuerySelector('.signature'),
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
+    },
+  };
+}
+
+/**
+ * =============================================================================
+ * @function     getContactSelectors
+ * @description  Centralise et structure les sélecteurs DOM spécifiques à la page
+ *              `contact.html` pour un accès sécurisé via `safeQuerySelector()`.
+ *              Regroupe les sections : layout, navigation, formulaire, modales, footer.
+ *
+ * @returns {Object} - Objet contenant les éléments DOM regroupés par contexte.
+ *
+ * @example
+ * const selectors = getContactSelectors();
+ * selectors.form.email.value = "exemple@mail.com";
+ * selectors.form.submitButton.click();
+ * =============================================================================
+ */
+export function getContactSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Générale             */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation et Logo             */
+    /* ============================== */
+    nav: {
+      menuButton: safeQuerySelector('.menu-toggle'), // Bouton menu burger
+      navLinks: safeQuerySelector('.nav-links'), // Liste des liens nav
+      logo: safeQuerySelector('.logo-container img'), // Logo Cocoba
+    },
+
+    /* ============================== */
+    /* Formulaire de Contact          */
+    /* ============================== */
+    form: {
+      section: safeQuerySelector('.contact-container'), // Bloc principal
+      formWrapper: safeQuerySelector('.form-wrapper'), // Conteneur visuel
+      form: safeQuerySelector('#contact-form'), // Formulaire lui-même
+      name: safeQuerySelector('#name'), // Champ nom
+      email: safeQuerySelector('#email'), // Champ email
+      message: safeQuerySelector('#message'), // Champ message
+      submitButton: safeQuerySelector('.btn-submit'), // Bouton "Envoyer"
+      status: safeQuerySelector('#status'), // Affichage du statut
+    },
+
+    /* ============================== */
+    /* Modales dynamiques             */
+    /* ============================== */
+    modals: {
+      success: safeQuerySelector('#modal-success'), // Modale succès
+      error: safeQuerySelector('#modal-error'), // Modale erreur
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
     /* ============================== */
     footer: {
-      container: safeQuerySelector("footer"),
-      copyright: safeQuerySelector(".footer-content p"),
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
+    },
+  };
+}
+
+/**
+ * =============================================================================
+ * @function     getProjetSelectors
+ * @description  Récupère et structure les sélecteurs DOM de la page `projet.html`.
+ *               Inclut les cartes projets, les onglets dynamiques, galeries et boutons.
+ *
+ * @returns {Object} Objet structuré avec les sélecteurs DOM liés aux projets.
+ *
+ * @example
+ * const selectors = getProjetSelectors();
+ * selectors.projet1.tabs.resume.classList.add("active");
+ * =============================================================================
+ */
+export function getProjetSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Principale           */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation et Logo             */
+    /* ============================== */
+    nav: {
+      menuButton: safeQuerySelector('.menu-toggle'),
+      navLinks: safeQuerySelector('.nav-links'),
+      logo: safeQuerySelector('.logo-container img'),
+    },
+
+    /* ============================== */
+    /* Section Hero + Bannière        */
+    /* ============================== */
+    hero: {
+      section: safeQuerySelector('.hero'),
+      title: safeQuerySelector('.hero h1'),
+      banner: safeQuerySelector('.hero-banner'),
+      bannerOverlay: safeQuerySelector('.hero-banner-overlay'),
+      bannerContent: safeQuerySelector('.hero-banner-content'),
+      bannerText: safeQuerySelector('.hero-banner-content p'),
+    },
+
+    /* ============================== */
+    /* Carte Projet 1 : Alimentation  */
+    /* ============================== */
+    projet1: {
+      section: safeQuerySelector('#projet-alim'),
+      title: safeQuerySelector('#projet-alim h2'),
+      tabs: {
+        container: safeQuerySelector('#projet-alim .tabs'),
+        resume: safeQuerySelector('#resume1'),
+        materiel: safeQuerySelector('#materiel1'),
+        duree: safeQuerySelector('#temps1'),
+        galerie: safeQuerySelector('#galerie1'),
+        etapes: safeQuerySelector('#etapes1'),
+      },
+      tabButtons: safeQuerySelectorAll('#projet-alim .tab-button'),
+      images: safeQuerySelectorAll('#galerie1 img'),
+      voirEtapesBtn: safeQuerySelector('#etapes1 .btn'),
+    },
+
+    /* ============================== */
+    /* Carte Projet 2 : Site Web      */
+    /* ============================== */
+    projet2: {
+      section: safeQuerySelector('#projet-site'),
+      title: safeQuerySelector('#projet-site h2'),
+      tabs: {
+        container: safeQuerySelector('#projet-site .tabs'),
+        resume: safeQuerySelector('#resume2'),
+        materiel: safeQuerySelector('#materiel2'),
+        duree: safeQuerySelector('#temps2'),
+        galerie: safeQuerySelector('#galerie2'),
+        etapes: safeQuerySelector('#etapes2'),
+      },
+      tabButtons: safeQuerySelectorAll('#projet-site .tab-button'),
+      images: safeQuerySelectorAll('#galerie2 img'),
+      voirEtapesBtn: safeQuerySelector('#etapes2 .btn'),
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
+    /* ============================== */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
+    },
+  };
+}
+
+/**
+ * =============================================================================
+ * @function     getEtapesAlimSelectors
+ * @description  Récupère et organise les sélecteurs DOM spécifiques à la page
+ *               "Étapes - Alimentation Stabilisée".
+ *
+ * @returns {Object} Objet structuré contenant tous les éléments clés de la page.
+ *
+ * @example
+ * const selectors = getEtapesAlimSelectors();
+ * selectors.steps.step1.classList.add("highlight");
+ * =============================================================================
+ */
+export function getEtapesAlimSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Générale             */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation                     */
+    /* ============================== */
+    nav: {
+      logo: safeQuerySelector('.logo-container img'),
+      navLinks: safeQuerySelector('.nav-links'),
+    },
+
+    /* ============================== */
+    /* Titre & Introduction           */
+    /* ============================== */
+    intro: {
+      section: safeQuerySelector('.etapes-intro'),
+      title: safeQuerySelector('.etapes-intro h1'),
+      paragraph: safeQuerySelector('.etapes-intro p'),
+    },
+
+    /* ============================== */
+    /* Étapes du projet               */
+    /* ============================== */
+    steps: {
+      all: safeQuerySelectorAll('.etape'),
+      step1: safeQuerySelector('.etape:nth-of-type(2)'),
+      step2: safeQuerySelector('.etape:nth-of-type(3)'),
+      step3: safeQuerySelector('.etape:nth-of-type(4)'),
+      step4: safeQuerySelector('.etape:nth-of-type(5)'),
+      step5: safeQuerySelector('.etape:nth-of-type(6)'),
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
+    /* ============================== */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
+    },
+  };
+}
+
+/**
+ * =============================================================================
+ * @function     getEtapesSiteSelectors
+ * @description  Récupère et structure les sélecteurs DOM de la page
+ *               "Étapes - Site Web" du rapport de stage.
+ *
+ * @returns {Object} Objet structuré contenant les éléments DOM de la page.
+ *
+ * @example
+ * const selectors = getEtapesSiteSelectors();
+ * console.log(selectors.steps.step3); // Accède à l'étape "Mise en page avec SCSS"
+ * =============================================================================
+ */
+export function getEtapesSiteSelectors() {
+  return {
+    /* ============================== */
+    /* Structure Générale             */
+    /* ============================== */
+    layout: {
+      body: document.body,
+      header: safeQuerySelector('header'),
+      main: safeQuerySelector('main'),
+      footer: safeQuerySelector('footer'),
+    },
+
+    /* ============================== */
+    /* Navigation                     */
+    /* ============================== */
+    nav: {
+      logo: safeQuerySelector('.logo-container img'),
+      navLinks: safeQuerySelector('.nav-links'),
+    },
+
+    /* ============================== */
+    /* Introduction                   */
+    /* ============================== */
+    intro: {
+      section: safeQuerySelector('.etapes-intro'),
+      title: safeQuerySelector('.etapes-intro h1'),
+      paragraph: safeQuerySelector('.etapes-intro p'),
+    },
+
+    /* ============================== */
+    /* Étapes détaillées              */
+    /* ============================== */
+    steps: {
+      all: safeQuerySelectorAll('.etape'),
+      step1: safeQuerySelector('.etape:nth-of-type(2)'), // Définition arborescence
+      step2: safeQuerySelector('.etape:nth-of-type(3)'), // HTML pages
+      step3: safeQuerySelector('.etape:nth-of-type(4)'), // SCSS
+      step4: safeQuerySelector('.etape:nth-of-type(5)'), // JS interactions
+      step5: safeQuerySelector('.etape:nth-of-type(6)'), // Tests & améliorations
+    },
+
+    /* ============================== */
+    /* Pied de page                   */
+    /* ============================== */
+    footer: {
+      container: safeQuerySelector('footer'),
+      copyright: safeQuerySelector('footer p'),
     },
   };
 }
@@ -270,61 +708,47 @@ export function getIndexSelectors() {
  * - Observe les changements en temps réel avec `MutationObserver`.
  * - Gère proprement le timeout pour éviter les boucles infinies.
  *
+ * @function waitForElement
  * @param {string} selector - Sélecteur CSS de l'élément à attendre.
- * @param {number} timeout - Délai maximum (par défaut : 5000ms).
- * @returns {Promise<Element>} Élément DOM résolu ou rejeté après expiration.
+ * @param {number} [timeout=5000] - Délai maximum d’attente (en millisecondes).
+ * @returns {Promise<Element>} Élément DOM résolu ou erreur si timeout atteint.
  */
 export function waitForElement(selector, timeout = 5000) {
-  logEvent(
-    "info",
-    ` Attente de l'élément : "${selector}" (Timeout: ${timeout}ms)`,
-  );
+  logEvent('info', `Attente de l'élément : "${selector}" (Timeout: ${timeout}ms)`);
 
   return new Promise((resolve, reject) => {
-    //  Vérifie d'abord si l'élément est déjà présent dans le DOM via le cache
+    // Vérifie d'abord si l'élément est déjà présent dans le DOM via le cache
     const cachedElement = safeQuerySelector(selector, true);
     if (cachedElement) {
-      logEvent(
-        "success",
-        `Élément trouvé immédiatement via le cache : "${selector}"`,
-      );
-      return resolve(cachedElement); //  Retourne l'élément immédiatement s'il est trouvé
+      logEvent('success', `Élément trouvé immédiatement via le cache : "${selector}"`);
+      resolve(cachedElement);
+      return; //  nécessaire pour éviter le "no-promise-return" ESLint
     }
 
-    logEvent(
-      "info",
-      " Élément non trouvé, lancement de l'observation avec MutationObserver...",
-    );
+    logEvent('info', 'Élément non trouvé, lancement de l\'observation avec MutationObserver...');
 
-    //  Création de l'observateur pour surveiller l'ajout de l'élément dans le DOM
+    // Création de l'observateur pour surveiller l'ajout de l'élément dans le DOM
     const observer = new MutationObserver(() => {
-      logEvent("info", `DOM modifié, recherche de "${selector}"...`);
+      logEvent('info', `DOM modifié, recherche de "${selector}"...`);
       const element = safeQuerySelector(selector, true);
       if (element) {
-        logEvent("success", ` Élément détecté dynamiquement : "${selector}"`);
-        observer.disconnect(); //  Arrête l'observation une fois l'élément trouvé
+        logEvent('success', `Élément détecté dynamiquement : "${selector}"`);
+        observer.disconnect();
         resolve(element);
       }
     });
 
-    //  Observe tout changement dans le DOM
     observer.observe(document.body, { childList: true, subtree: true });
 
-    //  Définition d'un timeout pour éviter les attentes infinies
+    // Timeout de sécurité
     setTimeout(() => {
-      logEvent(
-        "warn",
-        ` Timeout atteint : "${selector}" non trouvé après ${timeout}ms.`,
-      );
-      observer.disconnect(); //  Arrête l'observation en cas d'échec
-      reject(
-        new Error(
-          `waitForElement : "${selector}" introuvable après ${timeout}ms.`,
-        ),
-      );
+      logEvent('warn', `Timeout atteint : "${selector}" non trouvé après ${timeout}ms.`);
+      observer.disconnect();
+      reject(new Error(`waitForElement : "${selector}" introuvable après ${timeout}ms.`));
     }, timeout);
   });
 }
+
 /*= ============================================= */
 /*    Vérification de la Présence des Éléments  */
 /*= ============================================= */
@@ -342,45 +766,41 @@ export function waitForElement(selector, timeout = 5000) {
  * @returns {Array<string>} Liste des sélecteurs manquants sous forme de chaînes de caractères.
  *
  * @example
- *  Vérifier les sélecteurs d'une page donnée :
  * const selectors = getIndexSelectors();
  * const missing = recursiveCheck(selectors);
  * if (missing.length > 0) {
  *    logEvent("warn", "Sélecteurs manquants détectés.", { missing });
  * }
  */
-export function recursiveCheck(obj, parentKey = "", missingSelectors = []) {
+export function recursiveCheck(obj, parentKey = '', missingSelectors = []) {
   logEvent(
-    "test_start",
-    `Début de la vérification des sélecteurs DOM pour : ${parentKey || "racine"}`,
+    'test_start',
+    `Début de la vérification des sélecteurs DOM pour : ${parentKey || 'racine'}`,
   );
 
   Object.entries(obj).forEach(([key, value]) => {
-    // Construit la clé complète pour suivre la hiérarchie des sélecteurs
     const fullKey = parentKey ? `${parentKey}.${key}` : key;
 
-    // Si la valeur est un objet, on applique la récursivité
-    if (typeof value === "object" && value !== null) {
-      logEvent("info", `Exploration du groupe de sélecteurs : ${fullKey}`);
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      logEvent('info', `Exploration du groupe de sélecteurs : ${fullKey}`);
       recursiveCheck(value, fullKey, missingSelectors);
-    }
-    // Si la valeur est absente (null ou undefined), elle est ajoutée à la liste des manquants
-    else if (!value) {
-      logEvent("warn", `Sélecteur manquant détecté : ${fullKey}`);
+    } else if (!value) {
+      logEvent('warn', `Sélecteur manquant détecté : ${fullKey}`);
       missingSelectors.push(fullKey);
     }
   });
 
   if (missingSelectors.length > 0) {
-    logEvent("error", "Vérification terminée : Des sélecteurs manquent.", {
+    logEvent('error', 'Vérification terminée : Des sélecteurs manquent.', {
       missingSelectors,
     });
   } else {
-    logEvent("test_end", "Vérification terminée : Aucun sélecteur manquant.");
+    logEvent('test_end', 'Vérification terminée : Aucun sélecteur manquant.');
   }
 
-  return missingSelectors; // Retourne la liste des sélecteurs manquants
+  return missingSelectors;
 }
+
 
 /*= ============================================= */
 /*    Vérification Globale des Sélecteurs       */
@@ -403,16 +823,16 @@ export function recursiveCheck(obj, parentKey = "", missingSelectors = []) {
  * }
  */
 export function checkSelectors(selectors) {
-  logEvent("info", "Début de la vérification globale des sélecteurs DOM.");
+  logEvent('info', 'Début de la vérification globale des sélecteurs DOM.');
 
   const missingSelectors = recursiveCheck(selectors);
 
   if (missingSelectors.length > 0) {
-    logEvent("error", "Sélecteurs DOM manquants détectés.", {
+    logEvent('error', 'Sélecteurs DOM manquants détectés.', {
       missingSelectors,
     });
   } else {
-    logEvent("success", "Tous les sélecteurs DOM sont présents.");
+    logEvent('success', 'Tous les sélecteurs DOM sont présents.');
   }
 
   return missingSelectors;
@@ -438,29 +858,29 @@ export function checkSelectors(selectors) {
  */
 export function loadSelectorsForCurrentPage() {
   logEvent(
-    "info",
-    "Début du chargement des sélecteurs DOM pour la page actuelle.",
+    'info',
+    'Début du chargement des sélecteurs DOM pour la page actuelle.',
   );
 
   // Détecte la page en cours
   const currentPage = getCurrentPage();
-  logEvent("info", `Page détectée : ${currentPage}`);
+  logEvent('info', `Page détectée : ${currentPage}`);
 
   // Sélection des sélecteurs en fonction de la page
   let selectors = {};
-  if (currentPage === "index") {
-    logEvent("info", "Chargement des sélecteurs pour la page d'accueil.");
+  if (currentPage === 'index') {
+    logEvent('info', "Chargement des sélecteurs pour la page d'accueil.");
     selectors = getIndexSelectors();
   } else {
-    logEvent("warn", "Aucun sélecteur spécifique défini pour cette page.");
+    logEvent('warn', 'Aucun sélecteur spécifique défini pour cette page.');
   }
 
   // Vérification des sélecteurs manquants
   const missingSelectors = checkSelectors(selectors);
   if (missingSelectors.length > 0) {
-    logEvent("error", "Sélecteurs manquants détectés.", { missingSelectors });
+    logEvent('error', 'Sélecteurs manquants détectés.', { missingSelectors });
   } else {
-    logEvent("success", "Tous les sélecteurs DOM sont présents.");
+    logEvent('success', 'Tous les sélecteurs DOM sont présents.');
   }
 
   return selectors;
@@ -486,20 +906,20 @@ export function loadSelectorsForCurrentPage() {
  * updateUI(); // Fonction qui met à jour l'affichage
  */
 export function refreshSelectors() {
-  logEvent("info", "Début du rafraîchissement des sélecteurs DOM...");
+  logEvent('info', 'Début du rafraîchissement des sélecteurs DOM...');
 
   // Purge le cache pour garantir des références valides
-  logEvent("info", "Vidage du cache des sélections DOM.");
+  logEvent('info', 'Vidage du cache des sélections DOM.');
   clearDomCache();
 
   // Recharge les sélecteurs dynamiquement en fonction de la page active
   logEvent(
-    "info",
-    "Rechargement des sélecteurs en fonction de la page active.",
+    'info',
+    'Rechargement des sélecteurs en fonction de la page active.',
   );
   Object.assign(domSelectors, loadSelectorsForCurrentPage());
 
-  logEvent("success", "Sélecteurs DOM mis à jour avec succès.");
+  logEvent('success', 'Sélecteurs DOM mis à jour avec succès.');
 }
 
 /*= ============================================= */
@@ -528,25 +948,25 @@ export function refreshSelectors() {
  * }
  */
 function initializeDomSelectors() {
-  logEvent("info", "Début de l'initialisation des sélecteurs DOM.");
+  logEvent('info', "Début de l'initialisation des sélecteurs DOM.");
 
   // Empêche une double initialisation
   if (window.domSelectorsLoaded) {
     logEvent(
-      "warn",
-      "Initialisation des sélecteurs DOM ignorée (déjà effectuée).",
+      'warn',
+      'Initialisation des sélecteurs DOM ignorée (déjà effectuée).',
     );
     return;
   }
 
   // Charge dynamiquement les sélecteurs de la page
   logEvent(
-    "info",
-    "Chargement des sélecteurs en fonction de la page actuelle.",
+    'info',
+    'Chargement des sélecteurs en fonction de la page actuelle.',
   );
   Object.assign(domSelectors, loadSelectorsForCurrentPage());
 
-  logEvent("success", "Sélecteurs DOM chargés avec succès.");
+  logEvent('success', 'Sélecteurs DOM chargés avec succès.');
 
   // Marque l'initialisation comme terminée pour éviter les répétitions
   window.domSelectorsLoaded = true;
@@ -578,8 +998,8 @@ function observeDomChanges() {
     clearTimeout(window.domUpdateTimeout);
     window.domUpdateTimeout = setTimeout(() => {
       logEvent(
-        "info",
-        "Changements détectés, rafraîchissement des sélecteurs...",
+        'info',
+        'Changements détectés, rafraîchissement des sélecteurs...',
       );
       refreshSelectors();
     }, 300);
@@ -588,12 +1008,12 @@ function observeDomChanges() {
   // Active l'observation sur tout le document pour détecter les modifications
   observer.observe(document.body, { childList: true, subtree: true });
 
-  logEvent("success", "Observation des changements du DOM activée.");
+  logEvent('success', 'Observation des changements du DOM activée.');
 }
 
 // Exécute l'observation après le chargement complet du DOM
 document.addEventListener(
-  "DOMContentLoaded",
+  'DOMContentLoaded',
   observeDomChanges,
   initializeDomSelectors,
 );

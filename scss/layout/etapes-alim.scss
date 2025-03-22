@@ -1,0 +1,10 @@
+@use "../base/reset";
+@use "../base/variables";
+@use "../base/animation";
+@use "../base/mixins";
+
+@use "../components/header"; /* Styles du header et de la navigation */
+@use "../components/button"; /* Définition des boutons et interactions */
+@use "../components/cards"; /* Styles des cartes utilisées dans l'interface */
+@use "../components/footer"; /* Styles du pied de page */
+@use "../pages/etapes-alim"; /* Styles spécifiques à la page étapes alimentaires */

@@ -1,0 +1,135 @@
+/* ============================================================================
+   Fichier      : etapes-alim.scss
+   Auteur       : TrackJnr
+   Description  : Mise en page des étapes du projet d'alimentation stabilisée.
+============================================================================ */
+
+/* --------------------- STYLES GÉNÉRAUX --------------------- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #e63946;
+  }
+  
+  a:hover {
+    color: #b92c37;
+  }
+  
+  /* --------------------- HEADER --------------------- */
+  
+  header {
+    background-color: #fff;
+    border-bottom: 2px solid #eee;
+    padding: 1rem 1.5rem;
+  }
+  
+  .logo-container img {
+    height: 50px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links li a {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .nav-links li a.active {
+    color: #e63946;
+  }
+  
+  /* --------------------- SECTION INTRO --------------------- */
+  
+  .etapes-intro {
+    text-align: center;
+    background-color: #e63946;
+    color: white;
+    padding: 3rem 1rem;
+  }
+  
+  .etapes-intro h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .etapes-intro p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* --------------------- SECTIONS ÉTAPES --------------------- */
+  
+  .etape {
+    background-color: #fff;
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 2rem;
+    border-left: 5px solid #e63946;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .etape h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #e63946;
+  }
+  
+  .etape p {
+    font-size: 1rem;
+  }
+  
+  /* --------------------- FOOTER --------------------- */
+  
+  footer {
+    background-color: #eee;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* --------------------- RESPONSIVE --------------------- */
+  
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+  
+    .etapes-intro h1 {
+      font-size: 1.6rem;
+    }
+  
+    .etapes-intro p {
+      font-size: 1rem;
+    }
+  
+    .etape {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+  }
+  
