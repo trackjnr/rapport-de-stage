@@ -23,8 +23,7 @@
 /* ============================== */
 .card-link {
   text-decoration: none;      // Supprime le soulignement
-  color: inherit;             // Garde la couleur héritée
-  flex: 1;                    // Occupe toute la largeur dispo
+  color: inherit;             // Garde la couleur héritée                    // Occupe toute la largeur dispo
   width: 40%;                 // Largeur spécifique de chaque carte
 
   &:hover .card {
