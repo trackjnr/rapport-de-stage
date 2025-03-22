@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!--  Meta et SEO -->
+    <!-- Meta & SEO -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -14,22 +14,22 @@
     />
     <meta name="author" content="TrackJnr" />
 
-    <!--  Titre optimisé -->
+    <!-- Titre optimisé -->
     <title>À Propos | Cocoba</title>
 
-    <!--  Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="../css/image/cocoba_logo.png" type="image/png" />
 
-    <!--  Styles -->
+    <!-- Feuilles de style -->
     <link rel="stylesheet" href="../css/apropos.css" />
   </head>
 
   <body>
-    <!--  En-tête avec navigation et logo -->
+    <!-- En-tête avec navigation -->
     <header>
-      <nav>
+      <nav aria-label="Navigation principale">
         <div class="logo-container">
-          <a href="../index.html">
+          <a href="../index.html" aria-label="Retour à l'accueil">
             <img
               class="logo"
               src="../assets/image/cocoba_logo.png"
@@ -38,16 +38,16 @@
           </a>
         </div>
 
-        <!-- Toggle button (Burger) -->
+        <!-- Bouton menu burger -->
         <button
           type="button"
           class="menu-toggle"
-          aria-label="Menu"
-          onclick="toggleMenu()"
+          aria-label="Ouvrir ou fermer le menu"
         >
           ☰
         </button>
 
+        <!-- Liens de navigation -->
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
           <li><a href="../html/projet.html">Projet</a></li>
@@ -58,9 +58,10 @@
       </nav>
     </header>
 
+    <!-- Contenu principal -->
     <main>
-      <!--  Section Présentation de l'entreprise -->
-      <section class="about">
+      <!-- Présentation -->
+      <section class="about" id="presentation">
         <div class="hero-image-container">
           <img
             src="../assets/image/banniere.png"
@@ -76,8 +77,8 @@
         </p>
       </section>
 
-      <!--  Section Mission & Valeurs -->
-      <section class="mission">
+      <!-- Mission et valeurs -->
+      <section class="mission" id="mission-valeurs">
         <h2>Notre Mission</h2>
         <p>
           Notre objectif est d'offrir des solutions digitales innovantes et
@@ -87,27 +88,15 @@
 
         <h2>Nos Valeurs</h2>
         <ul class="values-list">
-          <li>
-            <strong>Innovation</strong> : Toujours à la pointe des nouvelles
-            technologies.
-          </li>
-          <li>
-            <strong>Collaboration</strong> : Une approche centrée sur le client
-            et l'écoute active.
-          </li>
-          <li>
-            <strong>Performance</strong> : Des solutions optimisées et
-            évolutives.
-          </li>
-          <li>
-            <strong>Responsabilité</strong> : Un engagement pour un numérique
-            plus éthique et durable.
-          </li>
+          <li><strong>Innovation</strong> : Toujours à la pointe des nouvelles technologies.</li>
+          <li><strong>Collaboration</strong> : Une approche centrée sur le client et l'écoute active.</li>
+          <li><strong>Performance</strong> : Des solutions optimisées et évolutives.</li>
+          <li><strong>Responsabilité</strong> : Un engagement pour un numérique plus éthique et durable.</li>
         </ul>
       </section>
 
-      <!--  Section Notre Équipe -->
-      <section class="team">
+      <!-- Équipe -->
+      <section class="team" id="equipe">
         <h2>Notre Équipe</h2>
         <div class="team-grid">
           <div class="profile-container">
@@ -117,10 +106,7 @@
               class="team-link"
               rel="noopener noreferrer"
             >
-              <img
-                src="../assets/image/TrackJNR_logo.png"
-                alt="Lucas David - CEO"
-              />
+              <img src="../assets/image/TrackJNR_logo.png" alt="Lucas David - CEO" />
               <h3>Lucas David</h3>
               <p>Stagiaire et créateur du site</p>
             </a>
@@ -147,7 +133,7 @@
       </section>
     </main>
 
-    <!--  Pied de page -->
+    <!-- Pied de page -->
     <footer>
       <p>
         &copy; 2024 Cocoba - Tous droits réservés | Conçu par
@@ -155,88 +141,7 @@
       </p>
     </footer>
 
-    <!--  Script pour le menu burger -->
-    <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
-    </script>
-
-    <style>
-      .hero-image-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .hero-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 10px;
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        justify-content: center;
-        padding: 20px;
-      }
-
-      .profile-container {
-        background: #f9f9f9;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .profile-container img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-
-      .profile-container:hover {
-        transform: scale(1.05);
-      }
-
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          background: white;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-    </style>
+    <!-- Script externe -->
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>

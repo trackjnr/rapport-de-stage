@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!--  Meta et SEO -->
+    <!-- Meta & SEO -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -16,26 +15,26 @@
     <meta name="author" content="TrackJnr" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!--  Titre optimisé -->
+    <!-- Titre optimisé -->
     <title>Rapport de Stage | Mon Expérience</title>
 
-    <!--  Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="css/image/favicon.webp" type="image/webp" />
 
-    <!--  Feuilles de style -->
+    <!-- Feuilles de style -->
     <link rel="stylesheet" href="./css/accueil.css" />
   </head>
+
   <body>
-    <!--  Header avec navigation -->
+    <!-- Header avec navigation -->
     <header>
-      <nav>
+      <nav aria-label="Navigation principale">
         <div class="logo-container">
-          <a href="index.html">
+          <a href="index.html" aria-label="Retour à l'accueil">
             <picture>
               <source
                 srcset="./assets/webp/cocoba_logo.webp"
                 type="image/webp"
-                class="logo"
               />
               <img
                 class="logo"
@@ -46,16 +45,17 @@
             </picture>
           </a>
         </div>
-        <!-- Toggle button (Burger) -->
+
+        <!-- Bouton burger -->
         <button
           type="button"
           class="menu-toggle"
-          aria-label="Menu"
-          onclick="toggleMenu()"
+          aria-label="Ouvrir ou fermer le menu"
         >
           ☰
         </button>
 
+        <!-- Liens de navigation -->
         <ul class="nav-links">
           <li><a href="index.html" class="active">Accueil</a></li>
           <li><a href="html/projet.html">Projet</a></li>
@@ -66,13 +66,13 @@
       </nav>
     </header>
 
-    <!--  Section Hero -->
+    <!-- Section Hero -->
     <main>
       <section class="hero">
         <h1>Rapport de Stage</h1>
       </section>
 
-      <!--  Image du projet avec support WebP -->
+      <!-- Image du projet -->
       <section class="project-image">
         <picture>
           <source
@@ -87,22 +87,57 @@
         </picture>
       </section>
 
-      <!--  Présentation du projet -->
-      <section class="project-description">
-        <h2>Mon Projet</h2>
-        <p>
-          Mon objectif était de créer une alimentation stabilisée industrielle à
-          partir d’une alimentation de PC recyclée.
-        </p>
-        <p>
-          Ce projet a nécessité une approche technique précise et une
-          optimisation des composants pour garantir une efficacité maximale.
-        </p>
-        <a href="html/projet.html" class="btn btn-green">Voir le projet</a>
+    <!-- Description des projets -->
+      <section class="project-cards-section" id="projets">
+        <div class="container project-cards-container">
+          <h2 class="section-title">Mes Projets de Stage</h2>
+
+          <div class="card-wrapper" id="project-card-wrapper">
+            <!-- Carte Projet 1 -->
+            <a href="html/projet.html#alimentation" class="card-link" id="card-alimentation">
+              <article class="card card-alimentation" role="article">
+                <div class="card-image">
+                  <img
+                    src="./assets/webp/projet_alim_pc.webp"
+                    alt="Alimentation stabilisée réalisée à partir d’un PC"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">🔌 Alimentation Stabilisée</h3>
+                  <p class="card-text">
+                    Conception d'une alimentation industrielle fiable à partir d'une alimentation de PC recyclée. Analyse, adaptation des tensions, sécurisation du montage.
+                  </p>
+                </div>
+              </article>
+            </a>
+
+            <!-- Carte Projet 2 -->
+            <a href="html/projet.html#siteweb" class="card-link" id="card-siteweb">
+              <article class="card card-siteweb" role="article">
+                <div class="card-image">
+                  <img
+                    src="./assets/webp/projet_site_web.webp"
+                    alt="Capture du site web rapport de stage"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">🌐 Développement Web</h3>
+                  <p class="card-text">
+                    Réalisation d’un site web complet pour présenter le rapport de stage de façon moderne et interactive en HTML, SCSS et JS.
+                  </p>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
       </section>
+
+
     </main>
 
-    <!--  Pied de page -->
+    <!-- Footer -->
     <footer>
       <div class="footer-content">
         <p>
@@ -112,47 +147,7 @@
       </div>
     </footer>
 
-    <!--  Script pour le menu burger -->
-    <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
-    </script>
-
-    <!-- ✅ Ajout du script avec type="module" pour éviter l'erreur -->
-    <script type="module" src="./js/script.js"></script>
-
-    <style>
-      .menu-toggle {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 100%;
-          background: white;
-          text-align: center;
-          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-    </style>
+    <!-- Script principal externe -->
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
