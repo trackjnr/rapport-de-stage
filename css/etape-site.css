@@ -669,7 +669,7 @@ a {
 /*  Description       : Styles des cartes projets (cards) */
 /* ====================================================== */
 /* ============================== */
-/* 🧱 Conteneur global des cartes */
+/*  Conteneur global des cartes */
 /* ============================== */
 .container-project-cards-container {
   display: flex;
@@ -679,13 +679,12 @@ a {
 }
 
 /* ============================== */
-/* 🔗 Lien englobant chaque carte */
+/*  Lien englobant chaque carte */
 /* ============================== */
 .card-link {
+  display: block;
   text-decoration: none;
   color: inherit;
-  flex: 1;
-  width: 40%;
 }
 .card-link:hover .card {
   transform: translateY(-4px);
@@ -693,21 +692,27 @@ a {
 }
 
 /* ============================== */
-/* 📦 Structure principale d'une carte */
+/*  Structure principale d'une carte */
 /* ============================== */
 .card {
   background-color: #fff;
-  width: 30%;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  flex: 1 1 calc(33.33% - 2rem);
   display: flex;
   flex-direction: column;
 }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
 /* ============================== */
-/* 📝 Titre de la carte           */
+/*  Titre de la carte           */
 /* ============================== */
 .card-title {
   font-size: 1.25rem;
@@ -717,7 +722,7 @@ a {
 }
 
 /* ============================== */
-/* 🖼️ Image de la carte           */
+/*  Image de la carte           */
 /* ============================== */
 .card-image img {
   width: 100%;
@@ -728,7 +733,7 @@ a {
 }
 
 /* ============================== */
-/* 🧾 Contenu textuel de la carte */
+/*  Contenu textuel de la carte */
 /* ============================== */
 .card-content {
   padding: 0.5rem 1rem 1rem;

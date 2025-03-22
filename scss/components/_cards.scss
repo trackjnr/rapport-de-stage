@@ -22,14 +22,14 @@
 /*  Lien englobant chaque carte */
 /* ============================== */
 .card-link {
-  text-decoration: none;      // Supprime le soulignement
-  color: inherit;             // Garde la couleur héritée                    // Occupe toute la largeur dispo
-  width: 40%;                 // Largeur spécifique de chaque carte
+    display: block;;
+    text-decoration: none;      // Supprime le soulignement
+    color: inherit;             // Garde la couleur héritée                    // Occupe toute la largeur dispo               // Largeur spécifique de chaque carte
 
-  &:hover .card {
+    &:hover .card {
     transform: translateY(-4px);  // Légère élévation au survol
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // Ombre plus forte
-  }
+    }
 }
 
 
@@ -37,15 +37,23 @@
 /*  Structure principale d'une carte */
 /* ============================== */
 .card {
-  background-color: #fff;             // Fond blanc
-  width: 30%;                         // Largeur par défaut
-  border-radius: 12px;                // Coins arrondis
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Ombre douce
-  transition: transform 0.3s ease, box-shadow 0.3s ease; // Animations fluides
-  overflow: hidden;                   // Cache les débordements
-  display: flex;                      // Contenu en colonne
-  flex-direction: column;            // Organisation verticale
-}
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    flex: 1 1 calc(33.33% - 2rem);
+  
+    display: flex;
+    flex-direction: column;
+  
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  }
 
 
 /* ============================== */
