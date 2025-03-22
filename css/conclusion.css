@@ -662,33 +662,53 @@ a {
 /* Styles du header et de la navigation */
 /* Définition des boutons et interactions */
 /* ====================================================== */
-/*  Nom du fichier    : _cards.scss                */
-/* Auteur            : Trackjnr                       */
-/* Date de création  : 25/09/24                        */
-/*  Dernière modif.   : 08/01/25                        */
-/*  Description       : Fichier regroupant tout les mixins    */
+/*  Nom du fichier    : _cards.scss                       */
+/*  Auteur            : TrackJnr                          */
+/*  Date de création  : 25/09/24                          */
+/*  Dernière modif.   : 08/01/25                          */
+/*  Description       : Styles des cartes projets (cards) */
 /* ====================================================== */
+/* ============================== */
+/* 🧱 Conteneur global des cartes */
+/* ============================== */
+.container-project-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+/* ============================== */
+/* 🔗 Lien englobant chaque carte */
+/* ============================== */
 .card-link {
   text-decoration: none;
   color: inherit;
   flex: 1;
+  width: 40%;
 }
 .card-link:hover .card {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* ============================== */
+/* 📦 Structure principale d'une carte */
+/* ============================== */
 .card {
   background-color: #fff;
+  width: 30%;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
+/* ============================== */
+/* 📝 Titre de la carte           */
+/* ============================== */
 .card-title {
   font-size: 1.25rem;
   padding: 1rem 1rem 0.5rem;
@@ -696,14 +716,20 @@ a {
   color: red;
 }
 
+/* ============================== */
+/* 🖼️ Image de la carte           */
+/* ============================== */
 .card-image img {
   width: 100%;
-  height: auto;
+  height: 40%;
   object-fit: cover;
   border-radius: 0 0 12px 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ============================== */
+/* 🧾 Contenu textuel de la carte */
+/* ============================== */
 .card-content {
   padding: 0.5rem 1rem 1rem;
   flex: 1;

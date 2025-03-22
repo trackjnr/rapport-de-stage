@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "sass": "sass --watch scss/layout/accueil.scss:css/accueil.css scss/layout/apropos.scss:css/apropos.css scss/layout/projet.scss:css/projet.css scss/layout/contact.scss:css/contact.css scss/layout/conclusion.scss:css/conclusion.css scss/layout/etape-site.scss:css/etape-site.css scss/layout/etapes-alim.scss:css/etapes-alim.css ",
+    "sass": "sass --watch scss/layout/accueil.scss:css/accueil.css scss/layout/apropos.scss:css/apropos.css scss/layout/projet.scss:css/projet.css scss/layout/contact.scss:css/contact.css scss/layout/conclusion.scss:css/conclusion.css scss/layout/etape-site.scss:css/etape-site.css scss/layout/etape-alim.scss:css/etape-alim.css ",
     "start": "node index.js"
   },
   "repository": {
