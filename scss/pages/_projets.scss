@@ -16,7 +16,7 @@
 ============================================================================= */
 
 .hero {
-    background-color: $primary-color;
+    background-color: #22e4f12c;
     color: white;
     text-align: center;
     padding: 3rem 1rem;
@@ -75,7 +75,7 @@
     h2 {
         margin-top: 0;
         font-size: 1.8rem;
-        color: $primary-color;
+        color: red;
     }
 
     .tabs {
@@ -93,12 +93,12 @@
         transition: background 0.2s ease;
 
         &.active {
-            background-color: $primary-color;
+            background-color: #22e4f12c;;
             color: white;
         }
 
         &:hover {
-            background-color: lighten($primary-color, 10%);
+            background-color: lighten#09e7f72c;
             color: white;
         }
         }
@@ -119,7 +119,7 @@
     }
 
     .btn {
-        background-color: $success-color;
+        background-color: green;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 8px;
@@ -127,7 +127,7 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-        background-color: darken($success-color, 10%);
+        background-color: darken(green, 10%);
         }
     }
 }
