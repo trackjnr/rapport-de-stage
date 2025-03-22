@@ -774,35 +774,40 @@ a {
   padding: 0 1.5rem;
   font-family: Arial, sans-serif;
   text-align: center;
+  line-height: 1.6;
+  color: #444;
 }
 
 .contact-container h2 {
   font-size: 2rem;
-  color: #e63946;
+  color: #444;
   margin-bottom: 1rem;
 }
 
 .contact-container p {
   margin-bottom: 2rem;
-  color: #333;
+  color: #000000;
 }
 
 .form-wrapper {
   background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: bax-shadown 0.3s ease;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
+  align-items: stretch;
+  width: 100%;
 }
 
 .contact-form label {
-  font-weight: bold;
-  text-align: left;
+  font-weight: 600;
+  color: #333 font-size 1rem;
 }
 
 .contact-form input,
@@ -813,21 +818,40 @@ a {
   font-size: 1rem;
   width: 100%;
   resize: vertical;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #22e4f1;
+  box-shadow: 0 0 5px rgba(34, 228, 241, 0.5);
 }
 
 .btn-submit {
-  background-color: #28a745;
+  background-color: #22e4f1;
   color: white;
   font-weight: bold;
-  padding: 0.75rem;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .btn-submit:hover {
-  background-color: #218838;
+  background-color: rgb(13.3446808511, 198.2638297872, 210.6553191489);
+}
+.btn-submit:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(34, 228, 241, 0.6);
+}
+.btn-submit:active {
+  transform: scale(0.98);
 }
 
 /* ------------------------------ MODALES ---------------------------------- */
@@ -836,26 +860,36 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: linear-gradient(120deg, #ffffff, #f0faff);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   z-index: 9999;
-  text-align: center;
-  max-width: 300px;
+  text-align: left;
+  max-width: 440px;
+  width: 90%;
   animation: fadeIn 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .modal.success {
   border-left: 5px solid #28a745;
+  padding-left: 1rem;
+  color: #155724 font-weight 500;
 }
 
 .modal.error {
   border-left: 5px solid #dc3545;
+  padding-left: 1rem;
+  color: #721c24;
+  font-weight: 500;
 }
 
 .modal p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
 }
 
 .btn-close {
