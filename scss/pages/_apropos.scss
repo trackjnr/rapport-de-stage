@@ -1,167 +1,196 @@
 /* =============================================================================
-   Fichier      : apropos.css
-   Auteur       : TrackJnr
-   Description  : Styles de la page À Propos (sans variables SCSS)
+    Projet       : Rapport de Stage - TrackJnr
+    Fichier      : _apropos.scss
+    Auteur       : Trackjnr
+    Date         : 22/03/2025
+    Version      : 1.0.0
+    Description  : Styles SCSS pour la page À Propos
 ============================================================================= */
 
-/* ------------------------- SECTION PRÉSENTATION -------------------------- */
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* =============================================================================
+    SECTION PRÉSENTATION
+============================================================================= */
 
 .about {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-    color: #333;
-    font-family: Arial, sans-serif;
-  }
-  
-  .about h1 {
-    font-size: 2rem;
-    color: #e63946;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
     margin: 2rem 0 1rem;
   }
-  
-  .about p {
+
+  p {
     margin-bottom: 1.5rem;
     line-height: 1.7;
   }
-  
-  .about a {
-    color: #e63946;
+
+  a {
+    color: #22e4f1;
     text-decoration: underline;
+
+    &:hover {
+      color: darken(#22e4f1, 10%);
+    }
   }
-  
-  .about a:hover {
-    color: #b92c37;
-  }
-  
-  /* ---------------------------- IMAGE DE BANNIÈRE -------------------------- */
-  
-  .hero-image-container {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .hero-image-container .hero-image {
+}
+
+/* =============================================================================
+    IMAGE DE BANNIÈRE
+============================================================================= */
+
+.hero-image-container {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .hero-image {
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
-  
-  /* ----------------------------- SECTION MISSION --------------------------- */
-  
-  .mission {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-  }
-  
-  .mission h2 {
+}
+
+/* =============================================================================
+    SECTION MISSION & VALEURS
+============================================================================= */
+
+.mission {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+
+  h2 {
     font-size: 1.6rem;
-    color: #e63946;
+    color: #2c3e50;
     margin: 2rem 0 1rem;
-    border-left: 4px solid #ff9a9a;
+    border-left: 4px solid #22e4f12c;
     padding-left: 1rem;
+    text-align: center;
   }
-  
-  .mission p {
+
+  p {
     margin-bottom: 1rem;
   }
-  
-  .mission ul {
+
+  ul {
     list-style: disc;
     padding-left: 2rem;
     margin-bottom: 2rem;
+    text-align: left;
   }
-  
-  .mission li {
+
+  li {
     margin-bottom: 0.5rem;
   }
-  
-  /* ------------------------------- ÉQUIPE ---------------------------------- */
-  
-  .team {
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-    text-align: center;
-  }
-  
-  .team h2 {
+}
+
+/* =============================================================================
+    SECTION ÉQUIPE
+============================================================================= */
+
+.team {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+
+  h2 {
     font-size: 1.6rem;
-    color: #e63946;
+    color: #2c3e50;
     margin-bottom: 2rem;
   }
-  
+
   .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
   }
-  
+
   .profile-container {
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #444;
+    }
   }
-  
-  .profile-container:hover {
-    transform: scale(1.03);
-  }
-  
-  .profile-container img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .profile-container h3 {
-    color: #e63946;
-    margin-bottom: 0.5rem;
-  }
-  
-  .profile-container p {
-    font-size: 0.95rem;
-    color: #444;
-  }
-  
-  /* ---------------------------- INFOS LÉGALES ----------------------------- */
-  
-  .legal-info {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-    font-size: 0.95rem;
-    color: #333;
-  }
-  
-  .legal-info h2 {
+}
+
+/* =============================================================================
+    SECTION INFOS LÉGALES
+============================================================================= */
+
+.legal-info {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+
+  h2 {
     font-size: 1.5rem;
-    color: #e63946;
+    color: #2c3e50;
     margin-bottom: 1rem;
   }
-  
-  .legal-info p {
+
+  p {
     line-height: 1.6;
     background: #f7f7f7;
     padding: 1.5rem;
-    border-left: 4px solid #e63946;
+    border-left: 4px solid #22e4f1;
     border-radius: 10px;
   }
-  
-  /* ----------------------------- RESPONSIVE ------------------------------- */
-  
-  @media screen and (max-width: 768px) {
-    .about,
-    .mission,
-    .team,
-    .legal-info {
-      padding: 0 1rem;
-    }
-  
-    .team-grid {
-      grid-template-columns: 1fr;
-    }
+}
+
+/* =============================================================================
+    RESPONSIVE DESIGN
+============================================================================= */
+
+@media screen and (max-width: 768px) {
+  .about,
+  .mission,
+  .team,
+  .legal-info {
+    padding: 0 1rem;
   }
-  
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about h1,
+  .mission h2,
+  .team h2,
+  .legal-info h2 {
+    font-size: 1.3rem;
+  }
+}

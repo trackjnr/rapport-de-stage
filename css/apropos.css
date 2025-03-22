@@ -763,152 +763,154 @@ a {
 
 /* Styles du pied de page */
 /* =============================================================================
-   Fichier      : apropos.css
-   Auteur       : TrackJnr
-   Description  : Styles de la page À Propos (sans variables SCSS)
+    Projet       : Rapport de Stage - TrackJnr
+    Fichier      : _apropos.scss
+    Auteur       : Trackjnr
+    Date         : 22/03/2025
+    Version      : 1.0.0
+    Description  : Styles SCSS pour la page À Propos
 ============================================================================= */
-/* ------------------------- SECTION PRÉSENTATION -------------------------- */
+/* =============================================================================
+    SECTION PRÉSENTATION
+============================================================================= */
 .about {
   max-width: 900px;
   margin: 3rem auto;
   padding: 0 1.5rem;
   color: #333;
   font-family: Arial, sans-serif;
+  text-align: center;
 }
-
 .about h1 {
-  font-size: 2rem;
-  color: #e63946;
+  font-size: 2.5rem;
+  color: #2c3e50;
   margin: 2rem 0 1rem;
 }
-
 .about p {
   margin-bottom: 1.5rem;
   line-height: 1.7;
 }
-
 .about a {
-  color: #e63946;
+  color: #22e4f1;
   text-decoration: underline;
 }
-
 .about a:hover {
-  color: #b92c37;
+  color: rgb(13.3446808511, 198.2638297872, 210.6553191489);
 }
 
-/* ---------------------------- IMAGE DE BANNIÈRE -------------------------- */
+/* =============================================================================
+    IMAGE DE BANNIÈRE
+============================================================================= */
 .hero-image-container {
   text-align: center;
   margin-bottom: 3rem;
 }
-
 .hero-image-container .hero-image {
   max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* ----------------------------- SECTION MISSION --------------------------- */
+/* =============================================================================
+    SECTION MISSION & VALEURS
+============================================================================= */
 .mission {
   max-width: 900px;
   margin: 3rem auto;
   padding: 0 1.5rem;
+  text-align: center;
 }
-
 .mission h2 {
   font-size: 1.6rem;
-  color: #e63946;
+  color: #2c3e50;
   margin: 2rem 0 1rem;
-  border-left: 4px solid #ff9a9a;
+  border-left: 4px solid rgba(34, 228, 241, 0.1725490196);
   padding-left: 1rem;
+  text-align: center;
 }
-
 .mission p {
   margin-bottom: 1rem;
 }
-
 .mission ul {
   list-style: disc;
   padding-left: 2rem;
   margin-bottom: 2rem;
+  text-align: left;
 }
-
 .mission li {
   margin-bottom: 0.5rem;
 }
 
-/* ------------------------------- ÉQUIPE ---------------------------------- */
+/* =============================================================================
+    SECTION ÉQUIPE
+============================================================================= */
 .team {
   max-width: 1000px;
   margin: 3rem auto;
   padding: 0 1.5rem;
   text-align: center;
 }
-
 .team h2 {
   font-size: 1.6rem;
-  color: #e63946;
+  color: #2c3e50;
   margin-bottom: 2rem;
 }
-
-.team-grid {
+.team .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
 }
-
-.profile-container {
+.team .profile-container {
   background-color: #fff;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
-
-.profile-container:hover {
+.team .profile-container:hover {
   transform: scale(1.03);
 }
-
-.profile-container img {
+.team .profile-container img {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
-
-.profile-container h3 {
-  color: #e63946;
+.team .profile-container h3 {
+  color: #2c3e50;
   margin-bottom: 0.5rem;
 }
-
-.profile-container p {
+.team .profile-container p {
   font-size: 0.95rem;
   color: #444;
 }
 
-/* ---------------------------- INFOS LÉGALES ----------------------------- */
+/* =============================================================================
+    SECTION INFOS LÉGALES
+============================================================================= */
 .legal-info {
   max-width: 900px;
   margin: 3rem auto;
   padding: 0 1.5rem;
   font-size: 0.95rem;
   color: #333;
+  text-align: center;
 }
-
 .legal-info h2 {
   font-size: 1.5rem;
-  color: #e63946;
+  color: #2c3e50;
   margin-bottom: 1rem;
 }
-
 .legal-info p {
   line-height: 1.6;
   background: #f7f7f7;
   padding: 1.5rem;
-  border-left: 4px solid #e63946;
+  border-left: 4px solid #22e4f1;
   border-radius: 10px;
 }
 
-/* ----------------------------- RESPONSIVE ------------------------------- */
+/* =============================================================================
+    RESPONSIVE DESIGN
+============================================================================= */
 @media screen and (max-width: 768px) {
   .about,
   .mission,
@@ -918,6 +920,12 @@ a {
   }
   .team-grid {
     grid-template-columns: 1fr;
+  }
+  .about h1,
+  .mission h2,
+  .team h2,
+  .legal-info h2 {
+    font-size: 1.3rem;
   }
 }
 /* Styles spécifiques à la page à propos */
