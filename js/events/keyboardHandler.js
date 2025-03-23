@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 /**
  * =============================================================================
@@ -55,7 +57,7 @@ const KEY_BLOCK_DELAY = 300;
  *
  * @throws {Error} Capture et log toute erreur critique dans la gestion du blocage.
  */
-function blockKeyInput() {
+export function blockKeyInput() {
   try {
     // Vérifie si une touche est déjà bloquée afin d'éviter un double blocage inutile.
     if (isKeyBlocked) {
@@ -479,21 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
   logEvent('success', ' Gestionnaire de navigation clavier activé pour la galerie.');
 });
 /** ************************************************************************
- * 🎹 initKeyboardEvents - Active les contrôles clavier pour sauter
- * ************************************************************************ */
-/**
- * @function initKeyboardEvents
- * @description Initialise les écouteurs clavier pour gérer le saut
- */
-export function initKeyboardEvents() {
-  try {
-    document.addEventListener('keydown', handleKeyDown);
-    logEvent('success', "🎹 Gestionnaire d'événements clavier activé.");
-  } catch (error) {
-    logEvent('error', "Erreur lors de l'ajout des événements clavier.", { error });
-  }
-}
-/** ************************************************************************
  * 🎯 handleKeyDown - Gère les actions lors de la pression d'une touche
  * ************************************************************************ */
 /**
@@ -509,4 +496,50 @@ export function handleKeyDown(e) {
     player.jumping = true;
     logEvent('success', '🕹️ Le joueur saute !');
   }
+}/** ************************************************************************
+ * 🎹 initKeyboardEvents - Active les contrôles clavier pour sauter
+ * ************************************************************************ */
+/**
+ * @function initKeyboardEvents
+ * @description Initialise les écouteurs clavier pour gérer le saut
+ */
+export function initKeyboardEvents() {
+  try {
+    document.addEventListener('keydown', handleKeyDown);
+    logEvent('success', "🎹 Gestionnaire d'événements clavier activé.");
+  } catch (error) {
+    logEvent('error', "Erreur lors de l'ajout des événements clavier.", { error });
+  }
+}
+
+/**
+ * =============================================================================
+ * @function initKeyboardControls
+ * Initialise les touches de contrôle pour le jeu (saut, pause, etc.)
+ * =============================================================================
+ */
+export function initKeyboardControls() {
+  document.addEventListener('keydown', (event) => {
+    try {
+      switch (event.code) {
+      case 'Space':
+      case 'ArrowUp':
+        event.preventDefault();
+        handlePlayerJump();
+        break;
+
+      case 'KeyP':
+        // (Optionnel) Gestion future pour pause ou debug
+        logEvent('info', '[Clavier] Touche Pause (P) détectée');
+        break;
+
+      default:
+        break;
+      }
+    } catch (err) {
+      logEvent('error', `Erreur dans initKeyboardControls : ${err.message}`, { err });
+    }
+  });
+
+  logEvent('success', '[Clavier] Contrôles clavier initGame activés.');
 }

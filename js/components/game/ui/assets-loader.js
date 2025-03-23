@@ -30,7 +30,7 @@ export const loadedAssets = {};
  * @returns {Promise<void>} - Résolue quand tous les assets sont chargés
  * ============================================================================
  */
-export function loadAllGameAssets() {
+export function loadAssets() {
   return new Promise((resolve, reject) => {
     let loadedCount = 0;
     const totalAssets = Object.keys(assetsToLoad).length;

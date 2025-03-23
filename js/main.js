@@ -11,7 +11,7 @@
 import { initializeGlobalEventListeners } from './events/eventListeners.js';
 import { refreshSelectors } from './config/domSelectors.js';
 import { logEvent } from './utils/utils.js';
-import { initGameMain } from './main1.js'; // ✅ Import statique propre
+import { initGameMain } from './components/game/core/game-init.js';
 
 /**
  * =============================================================================
