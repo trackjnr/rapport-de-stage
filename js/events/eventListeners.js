@@ -83,7 +83,10 @@ function bindContactEvents() {
  * ============================================================================
  */
 function bindProjetEvents() {
-  logEvent('info', '[Projet] Activation des onglets dynamiques (à implémenter)');
+  logEvent('info', '[Projet] Initialisation des onglets dynamiques');
+  setupTabSwitching();
+  setupLightbox();
+
 }
 
 /** ============================================================================
@@ -155,7 +158,7 @@ function dispatchPageSpecificListeners() {
  * ============================================================================
  * Gère les clics sur les onglets de chaque carte projet
  */
-function setupTabSwitching() {
+export function setupTabSwitching() {
   const allTabButtons = document.querySelectorAll('.tab-button');
 
   if (!allTabButtons.length) {
@@ -580,13 +583,6 @@ function initKeyboardEvents() {
 
     bindGlobalEvents();
     dispatchPageSpecificListeners();
-
-    // Ces deux lignes sont spécifiques à la page "projet"
-    if (getCurrentPage() === 'projet') {
-      setupTabSwitching();
-      setupLightbox();
-    }
-
     // Ces fonctions doivent être appelées uniquement si leurs éléments existent
     initModalConfirm();
     setupContactFormEvents();
