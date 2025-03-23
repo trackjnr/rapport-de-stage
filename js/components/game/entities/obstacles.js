@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-plusplus */
-/* ============================================================================
+/** ============================================================================
  * Fichier         : obstacles.js
  * Rôle            : Création, gestion et suppression des obstacles
  * Auteur          : TrackJnr
@@ -46,4 +46,12 @@ export function updateObstacles() {
       obstacles.splice(i, 1);
     }
   }
+}
+/**
+ * @function resetObstacles
+ * @description Vide complètement la liste des obstacles.
+ * Appelée lors de la réinitialisation du jeu.
+ */
+export function resetObstacles() {
+  obstacles.length = 0;
 }

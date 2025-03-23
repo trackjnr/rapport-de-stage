@@ -22,7 +22,7 @@ import {
 } from "../components/modal/modalManager.js";
 
 /*------------------ Médias ------------------*/
-import { handleMediaSort } from "../components/sort/sortlogic.js";
+
 import {
   openLightbox,
   showPreviousMedia,
@@ -30,13 +30,12 @@ import {
   closeLightbox,
 } from "../components/lightbox/lightbox.js";
 
-/*------------------ Données ------------------*/
-import { fetchMedia } from "../data/dataFetcher.js";
+
 
 /*------------------ UI & Accessibilité ------------------*/
 
-import { trapFocus } from "../utils/accessibility.js";
-import { initvalidform } from "../utils/contactForm.js";
+
+import { initvalidform } from "../components/formulaire/contactform.js";
 
 /*------------------ Clavier ------------------*/
 import { KEY_CODES } from "../config/constants.js";

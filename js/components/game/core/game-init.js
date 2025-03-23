@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/extensions */
-/* ============================================================================
+/** ============================================================================
  * Fichier         : game-init.js
  * Rôle            : Initialisation complète du jeu caché
  * Auteur          : TrackJnr
@@ -16,8 +16,8 @@ import { startGameLoop } from './game-loop.js';
 import { logEvent } from '../../../utils/utils.js';
 
 // == Variables internes ====================================
-let canvas; let
-  ctx;
+export let canvas;
+export let ctx;
 
 /**
  * =============================================================================

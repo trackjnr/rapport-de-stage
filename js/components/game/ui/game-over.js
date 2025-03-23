@@ -15,7 +15,7 @@ import { getStats } from '../core/game-stats.js';
  * @function drawGameOver
  * @description Affiche un écran "Game Over" semi-transparent avec le score.
  */
-export function drawGameOver() {
+export function triggerGameOver() {
   const { score } = getStats();
 
   // Fond assombri

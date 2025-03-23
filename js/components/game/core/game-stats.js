@@ -48,6 +48,21 @@ export function incrementScore() {
 
   return score;
 }
+/**
+ * @function updateScore
+ * @description Met à jour l'affichage du score sur le canvas.
+ * Appelée dans la boucle de jeu à chaque frame.
+ * 
+ * @param {CanvasRenderingContext2D} ctx - Le contexte 2D du canvas
+ */
+export function updateScore(ctx) {
+  const { score } = getStats();
+
+  ctx.fillStyle = '#fff'; // Blanc ou à adapter selon ton fond
+  ctx.font = '20px "Press Start 2P", monospace'; // Style arcade
+  ctx.textAlign = 'left';
+  ctx.fillText(`Score : ${score}`, 20, 30);
+}
 
 /**
  * @function getStats
