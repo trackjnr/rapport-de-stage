@@ -892,6 +892,19 @@ a {
   transform: scale(1.03);
 }
 
+.tab-content {
+  display: none;
+}
+
+.tab-content:not(.hidden) {
+  display: block;
+}
+
+.tab-button.active {
+  background-color: #2196F3;
+  color: white;
+}
+
 /* Styles spécifiques à la page projet */
 
 /*# sourceMappingURL=projet.css.map */

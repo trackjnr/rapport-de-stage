@@ -13,8 +13,6 @@ import { initvalidform } from '../components/formulaire/contactform.js';
 import { initGameMain } from '../components/game/core/game-init.js';
 import { handleKeyboardEvent } from './keyboardHandler.js';
 import {
-  handleModalOpen,
-  handleModalClose,
   handleModalConfirm,
   handleFormSubmit,
 } from './eventHandler.js';
@@ -26,8 +24,8 @@ import {
 function bindGlobalEvents() {
   logEvent('info', '[Global] Initialisation des écouteurs globaux');
 
-  const menuBtn = domSelectors?.nav?.menuButton;
-  const navLinks = domSelectors?.nav?.navLinks;
+  const menuBtn = domSelectors.nav.menuButton;
+  const {navLinks} = domSelectors.nav;
 
   if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
@@ -54,7 +52,7 @@ function bindIndexEvents() {
     });
   });
 
-  const gameLauncher = domSelectors?.game?.gameLauncher;
+  const {gameLauncher} = domSelectors.game;
   if (gameLauncher) {
     gameLauncher.addEventListener('click', () => {
       logEvent('info', '[Index] Lancement du jeu caché');
@@ -68,7 +66,7 @@ function bindIndexEvents() {
  * ============================================================================
  */
 function bindContactEvents() {
-  const contactForm = domSelectors?.contact?.form;
+  const contactForm = domSelectors.contact.form;
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -152,51 +150,49 @@ function dispatchPageSpecificListeners() {
       logEvent('warn', `[Router] Aucun bind prévu pour : "${currentPage}"`);
   }
 }
-/**
- * ============================================================================
- * Fonction : setupTabSwitching
- * ============================================================================
- * Gère les clics sur les onglets de chaque carte projet
- */
-export function setupTabSwitching() {
-  const allTabButtons = document.querySelectorAll('.tab-button');
+// ============================
+// Fonction : setupTabSwitching
+// ============================
 
-  if (!allTabButtons.length) {
-    logEvent('warn', '[Projet] Aucun bouton d’onglet détecté');
+export function setupTabSwitching() {
+  const allTabButtons = document.querySelectorAll(".tab-button");
+  const allTabContents = document.querySelectorAll(".tab-content");
+
+  if (!allTabButtons.length || !allTabContents.length) {
+    console.warn("Aucun onglet trouvé à initialiser.");
     return;
   }
 
   allTabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const projectCard = button.closest('.project-card');
-      const targetTab = button.dataset.tab;
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-tab");
 
-      if (!projectCard || !targetTab) {
-        return;
-      }
+      if (!targetId) return;
 
-      // Désactive tous les boutons & contenus de cette carte
-      const tabButtons = projectCard.querySelectorAll('.tab-button');
-      const tabContents = projectCard.querySelectorAll('.tab-content');
+      // Récupère le conteneur parent de la carte projet
+      const projectCard = button.closest(".project-card");
 
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      tabContents.forEach(content => content.classList.remove('active'));
+      // 🔹 Onglets et contenus dans ce seul projet
+      const tabButtons = projectCard.querySelectorAll(".tab-button");
+      const tabContents = projectCard.querySelectorAll(".tab-content");
 
-      // Active le bon onglet
-      button.classList.add('active');
-      const targetContent = projectCard.querySelector(`#${targetTab}`);
+      // 🔄 Désactive tous les boutons
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+
+      // 🔄 Masque tous les contenus
+      tabContents.forEach(content => content.classList.remove("active"));
+
+      // ✅ Active le bouton cliqué
+      button.classList.add("active");
+
+      // ✅ Affiche le bon contenu
+      const targetContent = projectCard.querySelector(`#${targetId}`);
       if (targetContent) {
-        targetContent.classList.add('active');
-        logEvent('info', `[Projet] Onglet activé : ${targetTab}`);
-      } else {
-        logEvent('error', `[Projet] Contenu introuvable pour #${targetTab}`);
+        targetContent.classList.add("active");
       }
     });
   });
-
-  logEvent('success', '[Projet] Onglets interactifs initialisés');
 }
-
 /**
  * ============================================================================
  * Fonction : setupLightbox

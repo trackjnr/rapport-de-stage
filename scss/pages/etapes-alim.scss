@@ -4,66 +4,13 @@
    Description  : Mise en page des étapes du projet d'alimentation stabilisée.
 ============================================================================ */
 
-/* --------------------- STYLES GÉNÉRAUX --------------------- */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #e63946;
-  }
-  
-  a:hover {
-    color: #b92c37;
-  }
-  
-  /* --------------------- HEADER --------------------- */
-  
-  header {
-    background-color: #fff;
-    border-bottom: 2px solid #eee;
-    padding: 1rem 1.5rem;
-  }
-  
-  .logo-container img {
-    height: 50px;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .nav-links li a {
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .nav-links li a.active {
-    color: #e63946;
-  }
-  
   /* --------------------- SECTION INTRO --------------------- */
   
   .etapes-intro {
     text-align: center;
-    background-color: #e63946;
-    color: white;
+    background-color:  #22e4f12c;
+    color: black;
     padding: 3rem 1rem;
   }
   
@@ -85,7 +32,7 @@ body {
     margin: 2rem auto;
     max-width: 800px;
     padding: 2rem;
-    border-left: 5px solid #e63946;
+    border-left: 5px solid  #22e3f1;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
@@ -93,7 +40,7 @@ body {
   .etape h2 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    color: #e63946;
+    color:  #22e3f1;
   }
   
   .etape p {
@@ -110,26 +57,7 @@ body {
     color: #666;
   }
   
-  /* --------------------- RESPONSIVE --------------------- */
+ 
   
-  @media screen and (max-width: 768px) {
-    .nav-links {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 1rem;
-    }
-  
-    .etapes-intro h1 {
-      font-size: 1.6rem;
-    }
-  
-    .etapes-intro p {
-      font-size: 1rem;
-    }
-  
-    .etape {
-      margin: 1rem;
-      padding: 1.5rem;
-    }
-  }
+
   
