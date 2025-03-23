@@ -63,6 +63,11 @@ h2 {
     overflow: hidden;
     transition: transform 0.3s ease;
 
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     &:hover {
       transform: translateY(-5px);
     }
@@ -87,6 +92,20 @@ h2 {
         font-size: 1rem;
         line-height: 1.6;
       }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .project-cards-section {
+    .card-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      max-width: 90%;
+      min-height: unset;
+      height: auto;
     }
   }
 }
