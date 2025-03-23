@@ -15,7 +15,11 @@
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/favicon.webp" type="image/webp" />
-    <link rel="alternate icon" href="../assets/favicon.ico" type="image/x-icon" />
+    <link
+      rel="alternate icon"
+      href="../assets/favicon.ico"
+      type="image/x-icon"
+    />
 
     <!-- Feuille de style externe -->
     <link rel="stylesheet" href="../css/contact.css" />
@@ -28,7 +32,10 @@
         <div class="logo-container">
           <a href="../index.html">
             <picture>
-              <source srcset="../assets/webp/cocoba_logo.webp" type="image/webp" />
+              <source
+                srcset="../assets/webp/cocoba_logo.webp"
+                type="image/webp"
+              />
               <img
                 class="logo"
                 src="../assets/image/cocoba_logo.png"
@@ -40,7 +47,13 @@
         </div>
 
         <!-- Bouton menu -->
-        <button type="button" class="menu-toggle" aria-label="Ouvrir ou fermer le menu">☰</button>
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Ouvrir ou fermer le menu"
+        >
+          ☰
+        </button>
 
         <ul class="nav-links">
           <li><a href="../index.html">Accueil</a></li>
@@ -81,11 +94,9 @@
     </main>
 
     <!-- Modales dynamiques (confirmation / erreur) -->
-    <template id="modal-success"> 
-    </template>
+    <template id="modal-success"> </template>
 
-    <template id="modal-error">
-    </template>
+    <template id="modal-error"> </template>
 
     <!-- Pied de page -->
     <footer>
@@ -93,7 +104,7 @@
     </footer>
 
     <!-- Scripts JS -->
-    <script type="module" src="../js/main.js"></script>
-    
+    <script type="module" src="../js/utils/utils.js"></script>
+    <script type="module" src="../js/formulaire/contactForm.js"></script>
   </body>
 </html>

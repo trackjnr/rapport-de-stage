@@ -15,16 +15,16 @@
 /*              Imports et Config              */
 /*= ============================================= */
 
-import { logEvent, showError, removeError } from '../../utils/utils.js';
-import { openConfirmationModal } from '../modal/modalManager.js';
+import { logEvent, showError, removeError } from "../utils/utils.js";
+import { openConfirmationModal } from "../modal/modalManager.js";
 
 // === Définition des champs obligatoires ===
-const REQUIRED_FIELDS = ['first-name', 'last-name', 'email', 'message'];
+const REQUIRED_FIELDS = ["first-name", "last-name", "email", "message"];
 const FIELD_NAMES = {
-  'first-name': 'Prénom',
-  'last-name': 'Nom',
-  email: 'E-mail',
-  message: 'Message',
+  "first-name": "Prénom",
+  "last-name": "Nom",
+  email: "E-mail",
+  message: "Message",
 };
 /*= ============================================================================================== */
 /*                                 ======= Validation des champs =======                         */
@@ -67,14 +67,15 @@ export function validateTextField(field, fieldId) {
 
     // Récupère la valeur et supprime les espaces inutiles
     const value = field.value.trim();
-    const fieldName = FIELD_NAMES[fieldId] || 'Champ'; // Nom du champ pour affichage clair
-    let errorMessage = '';
+    const fieldName = FIELD_NAMES[fieldId] || "Champ"; // Nom du champ pour affichage clair
+    let errorMessage = "";
 
     //  Autorisation stricte : Seulement lettres, espaces, apostrophes, tirets
-    const VALID_NAME_REGEX = /^(?!.*[\s'-]{2})[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+    const VALID_NAME_REGEX =
+      /^(?!.*[\s'-]{2})[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
 
     // === Vérification des conditions ===
-    if (value === '') {
+    if (value === "") {
       errorMessage = `⚠️ Le ${fieldName} est requis.`;
     } else if (value.length < 2) {
       errorMessage = `⚠️ Le ${fieldName} doit contenir au moins 2 caractères.`;
@@ -87,18 +88,18 @@ export function validateTextField(field, fieldId) {
     // === Gestion des erreurs ===
     if (errorMessage) {
       showError(errorMessage, field); // Affiche le message d'erreur
-      logEvent('warn', ` Validation échouée pour ${fieldName}.`, {
+      logEvent("warn", ` Validation échouée pour ${fieldName}.`, {
         errorMessage,
         value,
       });
       return false;
     }
     removeError(field); // Supprime l'erreur si tout est OK
-    logEvent('success', `Validation réussie pour ${fieldName}.`, { value });
+    logEvent("success", `Validation réussie pour ${fieldName}.`, { value });
     return true;
   } catch (error) {
     // Capture et journalisation de l'erreur en cas de problème inattendu
-    logEvent('error', `Erreur critique lors de la validation de ${fieldId}`, {
+    logEvent("error", `Erreur critique lors de la validation de ${fieldId}`, {
       message: error.message,
       stack: error.stack,
     });
@@ -140,7 +141,7 @@ export function validateEmail(field) {
 
     // Récupère la valeur et supprime les espaces inutiles
     const value = field.value.trim();
-    let errorMessage = '';
+    let errorMessage = "";
 
     // Format d'email standard (nom@domaine.ext)
     const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -154,29 +155,29 @@ export function validateEmail(field) {
     ];
 
     // === Vérification des conditions ===
-    if (value === '') {
+    if (value === "") {
       errorMessage = "⚠️ L'e-mail est requis.";
     } else if (!EMAIL_REGEX.test(value)) {
-      errorMessage = '❌ Adresse e-mail invalide.';
+      errorMessage = "❌ Adresse e-mail invalide.";
     } else if (FORBIDDEN_PATTERNS.some((pattern) => pattern.test(value))) {
-      errorMessage = '❌ Adresse e-mail suspecte détectée.';
+      errorMessage = "❌ Adresse e-mail suspecte détectée.";
     }
 
     // === Gestion des erreurs ===
     if (errorMessage) {
       showError(errorMessage, field); // Affiche le message d'erreur
-      logEvent('warn', " Validation échouée pour l'e-mail.", {
+      logEvent("warn", " Validation échouée pour l'e-mail.", {
         errorMessage,
         value,
       });
       return false;
     }
     removeError(field); // Supprime l'erreur si tout est OK
-    logEvent('success', " Validation réussie pour l'e-mail.", { value });
+    logEvent("success", " Validation réussie pour l'e-mail.", { value });
     return true;
   } catch (error) {
     // Capture et journalisation de l'erreur en cas de problème inattendu
-    logEvent('error', "Erreur critique lors de la validation de l'e-mail", {
+    logEvent("error", "Erreur critique lors de la validation de l'e-mail", {
       message: error.message,
       stack: error.stack,
     });
@@ -209,25 +210,25 @@ export function validateEmail(field) {
 export function checkHoneypot() {
   try {
     // Récupération sécurisée de l'élément Honeypot
-    const honeypotField = document.getElementById('hidden-field');
+    const honeypotField = document.getElementById("hidden-field");
 
     if (!honeypotField) {
-      throw new Error(' Champ Honeypot introuvable dans le DOM !');
+      throw new Error(" Champ Honeypot introuvable dans le DOM !");
     }
 
     // Vérification du contenu du champ Honeypot
     const honeypotValue = honeypotField.value.trim();
 
-    if (honeypotValue !== '') {
-      logEvent('error', 'Spam détecté via Honeypot !', { honeypotValue });
+    if (honeypotValue !== "") {
+      logEvent("error", "Spam détecté via Honeypot !", { honeypotValue });
       return false; // Bloque l'envoi du formulaire en cas de spam détecté
     }
 
-    logEvent('success', 'Honeypot validé, pas de spam détecté.');
+    logEvent("success", "Honeypot validé, pas de spam détecté.");
     return true; // Aucun spam détecté, formulaire valide
   } catch (error) {
     // Capture et journalisation des erreurs
-    logEvent('error', 'Erreur lors de la vérification du Honeypot.', {
+    logEvent("error", "Erreur lors de la vérification du Honeypot.", {
       message: error.message,
       stack: error.stack,
     });
@@ -265,7 +266,7 @@ export function checkHoneypot() {
 export function isMessageSafe(message) {
   try {
     // Vérification que le message est bien une chaîne de caractères
-    if (typeof message !== 'string') {
+    if (typeof message !== "string") {
       throw new Error("Le message à vérifier n'est pas une chaîne valide.");
     }
 
@@ -295,17 +296,17 @@ export function isMessageSafe(message) {
     // Vérification du message en le comparant aux motifs interdits
     for (const pattern of forbiddenPatterns) {
       if (pattern.test(sanitizedMessage)) {
-        logEvent('error', 'Message suspect détecté !', { message });
+        logEvent("error", "Message suspect détecté !", { message });
         return false; // Bloque l'envoi du message suspect
       }
     }
 
     // Message validé avec succès
-    logEvent('success', ' Message validé et sécurisé.', { sanitizedMessage });
+    logEvent("success", " Message validé et sécurisé.", { sanitizedMessage });
     return true; // Autorise l'envoi du message
   } catch (error) {
     // Capture et journalisation des erreurs inattendues
-    logEvent('error', 'Erreur lors de la validation du message.', {
+    logEvent("error", "Erreur lors de la validation du message.", {
       message: error.message,
       stack: error.stack,
     });
@@ -354,11 +355,11 @@ export function validateMessageField(field) {
     const MAX_LENGTH = 500;
     const MIN_LENGTH = 10;
 
-    let errorMessage = '';
+    let errorMessage = "";
 
     // Vérification de la sécurité du message (XSS, SQLi, etc.)
     if (!isMessageSafe(value)) {
-      errorMessage = ' Le message contient du code suspect et a été bloqué.';
+      errorMessage = " Le message contient du code suspect et a été bloqué.";
     }
     // Vérification de la longueur minimale
     else if (value.length < MIN_LENGTH) {
@@ -372,7 +373,7 @@ export function validateMessageField(field) {
     // Si une erreur est détectée, l'afficher et enregistrer l'échec
     if (errorMessage) {
       showError(errorMessage, field);
-      logEvent('warn', ' Validation échouée pour le message.', {
+      logEvent("warn", " Validation échouée pour le message.", {
         errorMessage,
         value,
       });
@@ -380,11 +381,11 @@ export function validateMessageField(field) {
     }
     // Supprime l'erreur si le message est valide
     removeError(field);
-    logEvent('success', ' Validation réussie pour le message.', { value });
+    logEvent("success", " Validation réussie pour le message.", { value });
     return true;
   } catch (error) {
     // Capture et journalise toute erreur inattendue
-    logEvent('error', 'Erreur lors de la validation du message.', {
+    logEvent("error", "Erreur lors de la validation du message.", {
       message: error.message,
       stack: error.stack,
     });
@@ -425,14 +426,14 @@ export function validateForm() {
     const field = document.getElementById(fieldId);
 
     if (!field) {
-      logEvent('error', 'Champ introuvable : `${fieldId}`');
+      logEvent("error", "Champ introuvable : `${fieldId}`");
       return;
     }
 
     // Validation selon le type de champ
-    if (fieldId === 'message') {
+    if (fieldId === "message") {
       isValid = validateMessageField(field) && isValid;
-    } else if (fieldId === 'email') {
+    } else if (fieldId === "email") {
       isValid = validateEmail(field) && isValid;
     } else {
       isValid = validateTextField(field, fieldId) && isValid;
@@ -440,7 +441,7 @@ export function validateForm() {
   });
 
   // Log final de la validation
-  logEvent('info', 'Résultat final de la validation du formulaire.', {
+  logEvent("info", "Résultat final de la validation du formulaire.", {
     isValid,
   });
 
@@ -471,20 +472,20 @@ export function validateForm() {
  */
 
 export function initvalidform() {
-  logEvent('info', 'Soumission du formulaire détectée.');
+  logEvent("info", "Soumission du formulaire détectée.");
 
   // Déclenche la validation complète du formulaire
   const formValid = validateForm();
 
   if (formValid) {
     // Formulaire valide : affiche la confirmation
-    logEvent('success', 'Formulaire valide. Affichage de la confirmation.');
+    logEvent("success", "Formulaire valide. Affichage de la confirmation.");
     openConfirmationModal(); // Affiche la modale de confirmation
   } else {
     // Formulaire invalide : journalisation de l'erreur
     logEvent(
-      'error',
-      'Validation échouée : le formulaire contient des erreurs.',
+      "error",
+      "Validation échouée : le formulaire contient des erreurs."
     );
   }
 }
