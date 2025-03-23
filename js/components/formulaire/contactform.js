@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/extensions */
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable import/no-unresolved */

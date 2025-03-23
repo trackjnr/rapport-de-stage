@@ -298,3 +298,108 @@ export function sanitizeText(text) {
     return charMap[char] || char;
   });
 }
+/*===============================================================================================*/
+/*                                 ======= Messages erreurs =======                              */
+/*===============================================================================================*/
+
+/* ============ Fonction pour afficher un message d'erreur et ajouter une bordure rouge ============*/
+
+/**
+ * Affiche un message d'erreur et applique une bordure rouge au champ cible.
+ *
+ * @param {string} message - Message d'erreur à afficher.
+ * @param {HTMLElement} inputElement - Champ d'entrée associé à l'erreur.
+ */
+export function showError(message, inputElement) {
+  try {
+    // === Validation des paramètres ===
+    if (!message || !(inputElement instanceof HTMLElement)) {
+      logEvent("error", "Paramètres invalides dans showError.", {
+        message,
+        inputElement,
+      });
+      return;
+    }
+
+    // === Log : Début de l'affichage de l'erreur ===
+    logEvent("info", "Affichage d'une erreur.", {
+      field: inputElement.id || "non défini",
+      message,
+    });
+
+    // === Suppression des erreurs existantes (pour éviter les doublons) ===
+    removeError(inputElement);
+
+    // === Création et ajout du message d'erreur ===
+    const errorTooltip = document.createElement("div");
+    errorTooltip.classList.add("error-modal"); // Classe CSS pour styliser le message d'erreur
+    errorTooltip.textContent = message; // Ajout du texte d'erreur
+
+    // Applique une bordure rouge au champ d'entrée
+    inputElement.classList.add("error-input");
+
+    // Ajoute le message d'erreur en tant qu'enfant de l'élément parent
+    const { parentElement } = inputElement;
+    if (parentElement) {
+      parentElement.appendChild(errorTooltip);
+    } else {
+      logEvent("error", "Impossible de trouver l'élément parent.", {
+        field: inputElement.id || "non défini",
+      });
+    }
+
+    // === Log : Succès de l'ajout ===
+    logEvent("success", "Message d'erreur ajouté.", {
+      field: inputElement.id || "non défini",
+      message,
+    });
+  } catch (error) {
+    // === Gestion des erreurs ===
+    logEvent("error", "Erreur dans showError.", { error: error.message });
+  }
+}
+
+/* ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============ */
+/**
+ * Supprime un message d'erreur et retire la bordure rouge du champ cible.
+ *
+ * @param {HTMLElement} inputElement - Champ d'entrée associé à l'erreur.
+ */
+export function removeError(inputElement) {
+  try {
+    // === Validation du paramètre ===
+    if (!(inputElement instanceof HTMLElement)) {
+      logEvent("error", "Paramètre invalide dans removeError.", {
+        inputElement,
+      });
+      return;
+    }
+
+    // === Suppression du message d'erreur ===
+    const { parentElement } = inputElement;
+    if (parentElement) {
+      const errorTooltip = parentElement.querySelector(".error-modal");
+      if (errorTooltip) {
+        errorTooltip.remove(); // Supprime l'élément du DOM
+        logEvent("success", "Message d'erreur supprimé.", {
+          field: inputElement.id || "non défini",
+        });
+      }
+    } else {
+      logEvent("error", "Impossible de trouver l'élément parent.", {
+        field: inputElement.id || "non défini",
+      });
+    }
+
+    // === Suppression de la classe de bordure rouge ===
+    inputElement.classList.remove("error-input");
+
+    // === Log : Succès de la suppression ===
+    logEvent("success", "Erreur visuelle supprimée.", {
+      field: inputElement.id || "non défini",
+    });
+  } catch (error) {
+    // === Gestion des erreurs ===
+    logEvent("error", "Erreur dans removeError.", { error: error.message });
+  }
+}
