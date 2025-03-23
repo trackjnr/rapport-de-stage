@@ -766,9 +766,13 @@ a {
     Fichier     :   _accueil.scss
     Auteur      :   Trackjnr
     Date        :   10/03/2025
-    Version     :   1.0.0
-    Description :   Styles spécifiques à la page accueil
+    Version     :   1.0.1
+    Description :   Styles spécifiques à la page accueil (version corrigée)
 ============================================================================= */
+body {
+  background-color: #ffffff;
+}
+
 h1 {
   background-color: rgba(34, 228, 241, 0.1725490196);
   padding: 2% 0;
@@ -805,30 +809,28 @@ h2 {
   margin-bottom: 2rem;
   color: #2c3e50;
 }
-.project-cards-section .container-project-cards-container {
-  display: flex;
-  justify-content: center;
-}
 .project-cards-section .card-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
-  padding: 0 1rem;
   max-width: 1100px;
   margin: 0 auto;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 .project-cards-section .card {
+  flex: 1 1 300px;
+  max-width: 400px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  min-height: 450px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 .project-cards-section .card:hover {
   transform: translateY(-5px);
@@ -847,6 +849,10 @@ h2 {
 }
 .project-cards-section .card .card-content {
   padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .project-cards-section .card .card-content .card-title {
   font-size: 1.2rem;
@@ -857,21 +863,19 @@ h2 {
   color: #444;
   font-size: 1rem;
   line-height: 1.6;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 768px) {
   .project-cards-section .card-wrapper {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
   }
   .project-cards-section .card {
     width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-  }
-  .project-cards-section .card-image {
-    height: 180px;
-  }
-  .project-cards-section .card-image img {
-    height: 100%;
   }
 }
 /* Styles spécifiques à la page accueil */

@@ -3,9 +3,14 @@
     Fichier     :   _accueil.scss
     Auteur      :   Trackjnr
     Date        :   10/03/2025
-    Version     :   1.0.0
-    Description :   Styles spécifiques à la page accueil
+    Version     :   1.0.1
+    Description :   Styles spécifiques à la page accueil (version corrigée)
 ============================================================================= */
+
+body {
+  background-color: #ffffff; // corrige le !important rouge
+}
+
 h1 {
   background-color: #22e4f12c;
   padding: 2% 0;
@@ -16,12 +21,14 @@ h1 {
   justify-content: center;
   font-weight: 700;
 }
+
 img {
   width: 70%;
   height: auto;
   margin: 2% auto;
   border-radius: 1rem;
 }
+
 h2 {
   font-size: 1.5rem;
   display: flex;
@@ -41,33 +48,29 @@ h2 {
     color: #2c3e50;
   }
 
-  .container-project-cards-container {
-    display: flex;
-    justify-content: center;
-  }
-
   .card-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
-    padding: 0 1rem;
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 1rem;
     box-sizing: border-box;
   }
 
   .card {
+    flex: 1 1 300px;
+    max-width: 400px;
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-
-    min-height: 450px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 
     &:hover {
       transform: translateY(-5px);
@@ -89,6 +92,10 @@ h2 {
 
     .card-content {
       padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .card-title {
         font-size: 1.2rem;
@@ -100,27 +107,25 @@ h2 {
         color: #444;
         font-size: 1rem;
         line-height: 1.6;
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
     }
   }
 }
+
+// RESPONSIVE MOBILE
 @media screen and (max-width: 768px) {
   .project-cards-section {
     .card-wrapper {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: center;
     }
 
     .card {
       width: 100%;
+      max-width: 100%;
       margin: 0 auto;
-    }
-
-    .card-image {
-      height: 180px;
-
-      img {
-        height: 100%;
-      }
     }
   }
 }
