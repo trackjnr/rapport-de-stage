@@ -1,3 +1,8 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-import-assign */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable import/extensions */
 /** ************************************************************************
  * @file update-game.js
@@ -17,27 +22,6 @@ import {
 } from './start-game.js';
 import { logEvent } from '../../utils/utils.js';
 
-/** ************************************************************************
- * 🌀 updateGame - Boucle principale du jeu (appelée à chaque frame)
- ************************************************************************* */
-/**
- * @function updateGame
- * @description Met à jour l'état du jeu à chaque frame.
- */
-export function updateGame() {
-  if (!gameRunning) return;
-
-  // Efface l'écran pour redessiner une nouvelle frame
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  updatePlayer(); // Met à jour le joueur
-  updateObstacles(); // Fait défiler les obstacles
-  checkCollisions(); // Vérifie les collisions
-
-  displayScore(); // Affiche le score
-
-  requestAnimationFrame(updateGame); // Relance la frame suivante
-}
 
 /** ************************************************************************
  * 👾 updatePlayer - Mouvements verticaux et gravité du joueur
@@ -137,4 +121,27 @@ function checkCollisions() {
       break;
     }
   }
+}
+/** ************************************************************************
+ * 🌀 updateGame - Boucle principale du jeu (appelée à chaque frame)
+ ************************************************************************* */
+/**
+ * @function updateGame
+ * @description Met à jour l'état du jeu à chaque frame.
+ */
+export function updateGame() {
+  if (!gameRunning) {
+    return;
+  }
+
+  // Efface l'écran pour redessiner une nouvelle frame
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  updatePlayer(); // Met à jour le joueur
+  updateObstacles(); // Fait défiler les obstacles
+  checkCollisions(); // Vérifie les collisions
+
+  displayScore(); // Affiche le score
+
+  requestAnimationFrame(updateGame); // Relance la frame suivante
 }

@@ -10,10 +10,9 @@
  */
 
 import { ctx, canvas } from '../core/game-init.js';
-import { player } from '../entities/player.js';
 import { obstacles } from '../entities/obstacles.js';
 import { getStats } from '../core/game-stats.js';
-
+import { renderPlayer } from '../entities/player.js';
 /**
  * @function renderGame
  * @description Dessine l’arrière-plan, le joueur, les obstacles et le score.
@@ -29,8 +28,7 @@ export function renderGame() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   // === Joueur ===
-  ctx.fillStyle = player.color;
-  ctx.fillRect(player.x, player.y, player.width, player.height);
+  renderPlayer();
 
   // === Obstacles ===
   for (const obs of obstacles) {
