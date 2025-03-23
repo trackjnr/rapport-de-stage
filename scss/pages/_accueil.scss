@@ -37,7 +37,6 @@ h2 {
   margin: 2% 0;
   font-weight: 700;
 }
-
 .project-cards-section {
   padding: 4rem 1rem;
   text-align: center;
@@ -48,7 +47,7 @@ h2 {
     color: #2c3e50;
   }
 
-  .card-wrapper {
+  .container-project-cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -59,9 +58,14 @@ h2 {
     box-sizing: border-box;
   }
 
-  .card {
+  .card-link {
+    text-decoration: none;
     flex: 1 1 300px;
     max-width: 400px;
+    width: 100%;
+  }
+
+  .card {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -113,19 +117,14 @@ h2 {
     }
   }
 }
-
-// RESPONSIVE MOBILE
 @media screen and (max-width: 768px) {
-  .project-cards-section {
-    .card-wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
+  .container-project-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .card {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-    }
+  .card-link {
+    max-width: 100%;
+    width: 100%;
   }
 }

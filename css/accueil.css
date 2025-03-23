@@ -809,7 +809,7 @@ h2 {
   margin-bottom: 2rem;
   color: #2c3e50;
 }
-.project-cards-section .card-wrapper {
+.project-cards-section .container-project-cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -819,9 +819,13 @@ h2 {
   padding: 0 1rem;
   box-sizing: border-box;
 }
-.project-cards-section .card {
+.project-cards-section .card-link {
+  text-decoration: none;
   flex: 1 1 300px;
   max-width: 400px;
+  width: 100%;
+}
+.project-cards-section .card {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -868,14 +872,13 @@ h2 {
 }
 
 @media screen and (max-width: 768px) {
-  .project-cards-section .card-wrapper {
+  .container-project-cards-container {
     flex-direction: column;
     align-items: center;
   }
-  .project-cards-section .card {
-    width: 100%;
+  .card-link {
     max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 /* Styles spécifiques à la page accueil */
