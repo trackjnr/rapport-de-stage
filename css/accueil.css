@@ -824,6 +824,10 @@ h2 {
   width: 100%;
   overflow: hidden;
   transition: transform 0.3s ease;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .project-cards-section .card:hover {
   transform: translateY(-5px);
@@ -847,6 +851,17 @@ h2 {
   line-height: 1.6;
 }
 
+@media screen and (max-width: 768px) {
+  .project-cards-section .card-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-cards-section .card {
+    max-width: 90%;
+    min-height: unset;
+    height: auto;
+  }
+}
 /* Styles spécifiques à la page accueil */
 
 /*# sourceMappingURL=accueil.css.map */
