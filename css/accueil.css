@@ -822,7 +822,6 @@ h2 {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
   width: 100%;
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -861,15 +860,17 @@ h2 {
 }
 
 @media screen and (max-width: 768px) {
-  .card {
-    max-width: 100%;
+  .project-cards-section .card-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .project-cards-section .card {
     width: 100%;
     margin: 0 auto;
   }
-  .card-image {
+  .project-cards-section .card-image {
     height: 180px;
   }
-  .card-image img {
+  .project-cards-section .card-image img {
     height: 100%;
   }
 }
