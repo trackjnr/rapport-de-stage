@@ -16,8 +16,8 @@
 ============================================================================= */
 
 .hero {
-  background-color: #22e4f12c;
-  color: white;
+  background-color: #0000002c;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 3rem 1rem;
 
@@ -28,7 +28,7 @@
 }
 
 /* =============================================================================
-   HERO BANNIÈRE
+  HERO BANNIÈRE
 ============================================================================= */
 
 .hero-banner {
@@ -37,7 +37,7 @@
   position: relative;
 
   .hero-banner-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(27, 164, 168, 0.5);
     padding: 4rem 2rem;
     text-align: center;
     color: white;
@@ -74,7 +74,7 @@
   h2 {
     margin-top: 0;
     font-size: 1.8rem;
-    color: red;
+    color: rgb(0, 0, 0);
   }
 
   .tabs {
@@ -92,12 +92,12 @@
       transition: background 0.2s ease;
 
       &.active {
-        background-color: #22e4f12c;
-        color: white;
+        background-color: #16e4f32c;
+        color: rgb(0, 0, 0);
       }
 
       &:hover {
-        background-color: lighten#09e7f72c;
+        background-color: lighten(#09e7f72c, 10%);
         color: white;
       }
     }

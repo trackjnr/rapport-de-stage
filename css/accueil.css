@@ -796,6 +796,57 @@ h2 {
   font-weight: 700;
 }
 
+.project-cards-section {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.project-cards-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+.project-cards-section .container-project-cards-container {
+  display: flex;
+  justify-content: center;
+}
+.project-cards-section .card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1100px;
+}
+.project-cards-section .card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.project-cards-section .card:hover {
+  transform: translateY(-5px);
+}
+.project-cards-section .card .card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.project-cards-section .card .card-content {
+  padding: 1rem;
+}
+.project-cards-section .card .card-content .card-title {
+  font-size: 1.2rem;
+  color: #22e4f1;
+  margin-bottom: 0.5rem;
+}
+.project-cards-section .card .card-content .card-text {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 /* Styles spécifiques à la page accueil */
 
 /*# sourceMappingURL=accueil.css.map */

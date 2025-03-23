@@ -8,23 +8,23 @@
  * ============================================================================
  */
 
-import { initializeGameCanvas } from './core/game-init.js';
-import { setupGameState } from './core/game-state.js';
-import { startGameLoop } from './core/game-loop.js';
-import { loadAssets } from './ui/assets-loader.js';
-import { initKeyboardControls } from './events/keyboard-events.js';
-import { log } from './utils/log.js';
+import { initializeGameCanvas } from './components/game/core/game-init.js';
+import { setupGameState } from './components/game/core/game-stats.js';
+import { startGameLoop } from './components/game/core/game-loop.js';
+import { loadAssets } from './components/game/ui/assets-loader.js';
+import { initKeyboardControls } from './events/keyboardHandler.js';
+import { logEvent } from './utils/utils.js';
 
 /**
  * @function initGameMain
  * @description Fonction d'entrée exportée (appelée depuis main.js au Alt+G)
  */
 export function initGameMain() {
-  log('🚀 Initialisation du jeu caché...', 'info');
+  logEvent(' Initialisation du jeu caché...', 'info');
 
   // Étape 1 : Charge tous les assets graphiques
   loadAssets().then(() => {
-    log('🖼️ Assets chargés avec succès.', 'success');
+    logEvent(' Assets chargés avec succès.', 'success');
 
     // Étape 2 : Préparation du canvas, joueur, fond, etc.
     initializeGameCanvas();
@@ -38,8 +38,8 @@ export function initGameMain() {
     // Étape 5 : Lancement de la boucle principale
     startGameLoop();
 
-    log('🎮 Jeu "Cyber Hackrunner" lancé !', 'success');
+    logEvent(' Jeu "Cyber Hackrunner" lancé !', 'success');
   }).catch((err) => {
-    log(`❌ Échec du chargement des assets : ${err.message}`, 'error');
+    logEvent(`❌ Échec du chargement des assets : ${err.message}`, 'error');
   });
 }

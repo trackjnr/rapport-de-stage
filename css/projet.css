@@ -775,8 +775,8 @@ a {
     SECTION HERO
 ============================================================================= */
 .hero {
-  background-color: rgba(34, 228, 241, 0.1725490196);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.1725490196);
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 3rem 1rem;
 }
@@ -786,7 +786,7 @@ a {
 }
 
 /* =============================================================================
-   HERO BANNIÈRE
+  HERO BANNIÈRE
 ============================================================================= */
 .hero-banner {
   background-size: cover;
@@ -794,7 +794,7 @@ a {
   position: relative;
 }
 .hero-banner .hero-banner-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 164, 168, 0.5);
   padding: 4rem 2rem;
   text-align: center;
   color: white;
@@ -826,7 +826,7 @@ a {
 .project-card h2 {
   margin-top: 0;
   font-size: 1.8rem;
-  color: red;
+  color: rgb(0, 0, 0);
 }
 .project-card .tabs {
   display: flex;
@@ -843,11 +843,11 @@ a {
   transition: background 0.2s ease;
 }
 .project-card .tabs .tab-button.active {
-  background-color: rgba(34, 228, 241, 0.1725490196);
-  color: white;
+  background-color: rgba(22, 228, 243, 0.1725490196);
+  color: rgb(0, 0, 0);
 }
 .project-card .tabs .tab-button:hover {
-  background-color: lighten rgba(9, 231, 247, 0.1725490196);
+  background-color: rgba(58.3937007874, 235.8188976378, 248.6062992126, 0.1725490196);
   color: white;
 }
 .project-card .tab-content {
