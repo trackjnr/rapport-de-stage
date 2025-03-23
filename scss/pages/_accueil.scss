@@ -105,20 +105,22 @@ h2 {
   }
 }
 @media screen and (max-width: 768px) {
-  .card {
-    width: 100%;
-    margin: 0 auto;
-  }
+  .project-cards-section {
+    .card-wrapper {
+      grid-template-columns: 1fr;
+    }
 
-  .card-wrapper {
-    grid-template-columns: 1fr; // 🔥 1 colonne en mobile
-  }
+    .card {
+      width: 100%;
+      margin: 0 auto;
+    }
 
-  .card-image {
-    height: 180px;
+    .card-image {
+      height: 180px;
 
-    img {
-      height: 100%;
+      img {
+        height: 100%;
+      }
     }
   }
 }

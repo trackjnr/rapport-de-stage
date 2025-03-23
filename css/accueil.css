@@ -860,17 +860,17 @@ h2 {
 }
 
 @media screen and (max-width: 768px) {
-  .card {
+  .project-cards-section .card-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .project-cards-section .card {
     width: 100%;
     margin: 0 auto;
   }
-  .card-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .card-image {
+  .project-cards-section .card-image {
     height: 180px;
   }
-  .card-image img {
+  .project-cards-section .card-image img {
     height: 100%;
   }
 }
