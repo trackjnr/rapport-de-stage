@@ -19,16 +19,13 @@
 
 }
 
-
 /* ============================== */
 /*  Lien englobant chaque carte */
 /* ============================== */
 .card-link {
     text-decoration: none;      // Supprime le soulignement
-    color: inherit;             // Garde la couleur héritée                    // Occupe toute la largeur dispo               // Largeur spécifique de chaque carte
-
+    color: inherit;             
 }
-
 
 /* ============================== */
 /*  Structure principale d'une carte */
@@ -41,7 +38,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 300px;
-    height:400px;
+    max-height:400px;
   
     display: flex;
     flex-direction: column;
@@ -69,7 +66,7 @@
 .card-image {
   img {
     width: 100%;              // Image pleine largeur
-    height: 70%;              // Hauteur proportionnelle
+    max-height:300px;              // Hauteur proportionnelle
     object-fit: cover;        // Coupe proprement l’image
     border-radius: 0 0 12px 12px; // Coins arrondis en bas
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Légère ombre
@@ -82,7 +79,7 @@
 /* ============================== */
 .card-content {
   padding: 0.5rem 1rem 1rem;  // Espace intérieur
-  flex: 1;                    // Prend la hauteur restante
+  max-height:200px;
 
   .card-text {
     font-size: 1rem;          // Taille du texte

@@ -94,62 +94,6 @@ h2 {
     &:hover {
       transform: translateY(-5px);
     }
-
-    .card-image {
-      width: 100%;
-      height: 180px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-      }
-    }
-
-    .card-content {
-      padding: 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .card-title {
-        font-size: 1.2rem;
-        color: #22e4f1;
-        margin-bottom: 0.5rem;
-      }
-
-      .card-text {
-        color: #444;
-        font-size: 1rem;
-        line-height: 1.6;
-        overflow-wrap: break-word;
-        word-break: break-word;
-      }
-    }
-  }
+  
 }
-
-@media screen and (max-width: 768px) {
-  .container-project-cards-container {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .card-link {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 100%;
-  }
 }
