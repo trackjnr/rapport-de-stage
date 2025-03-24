@@ -886,11 +886,13 @@ main {
 }
 
 @media (max-width: 768px) {
-  .project-card {
+  #projet-alim {
     margin-bottom: 4rem;
   }
   .tab-content .btn {
-    margin-bottom: 2rem;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 3rem !important;
   }
 }
 /* =============================================================================
