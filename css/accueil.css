@@ -778,9 +778,12 @@ main {
     Fichier     :   _accueil.scss
     Auteur      :   Trackjnr
     Date        :   10/03/2025
-    Version     :   1.0.2 (fix responsive full width mobile)
+    Version     :   1.0.3 (ajout gestion canvas JS et améliorations spacing)
     Description :   Styles spécifiques à la page accueil
 ============================================================================= */
+/* ======================================== */
+/*          RESET & GLOBAL SETTINGS         */
+/* ======================================== */
 html,
 body {
   width: 100vw;
@@ -789,6 +792,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: white;
 }
 
 *,
@@ -797,6 +801,9 @@ body {
   box-sizing: inherit;
 }
 
+/* ======================================== */
+/*                TYPOGRAPHIE              */
+/* ======================================== */
 h1 {
   background-color: rgba(34, 228, 241, 0.1725490196);
   padding: 2% 0;
@@ -808,13 +815,6 @@ h1 {
   font-weight: 700;
 }
 
-img {
-  width: 70%;
-  height: auto;
-  margin: 2% auto;
-  border-radius: 1rem;
-}
-
 h2 {
   font-size: 1.5rem;
   display: flex;
@@ -824,6 +824,19 @@ h2 {
   font-weight: 700;
 }
 
+/* ======================================== */
+/*                  IMAGES                 */
+/* ======================================== */
+img {
+  width: 70%;
+  height: auto;
+  margin: 2% auto;
+  border-radius: 1rem;
+}
+
+/* ======================================== */
+/*              SECTION PROJETS            */
+/* ======================================== */
 .project-cards-section {
   padding: 4rem 1rem;
   text-align: center;
@@ -864,6 +877,38 @@ h2 {
 }
 .project-cards-section .card:hover {
   transform: translateY(-5px);
+}
+
+/* ======================================== */
+/*         CANVAS / JEU SECRET KEY         */
+/* ======================================== */
+#gameCanvas {
+  display: none;
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: 2rem auto;
+  background-color: #000;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#gameCanvas.show {
+  display: block;
+  opacity: 1;
+}
+
+/* ======================================== */
+/*                FOOTER                   */
+/* ======================================== */
+footer {
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  background-color: #e6fafa;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 /* Styles spécifiques à la page accueil */
