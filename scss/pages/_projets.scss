@@ -130,6 +130,15 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 4rem;
+  }
+
+  .tab-content .btn {
+    margin-bottom: 2rem;
+  }
+}
 
 /* =============================================================================
     GALERIE DU PROJET
@@ -145,10 +154,9 @@
     width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease;
-    margin:20% 0;
+    margin: 20% 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transform: rotate(90deg);
-
 
     &:hover {
       transform: scale(1.03);
@@ -175,4 +183,3 @@
     transform: translateY(0);
   }
 }
-

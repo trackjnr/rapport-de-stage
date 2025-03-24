@@ -885,6 +885,14 @@ main {
   background-color: #004d00;
 }
 
+@media (max-width: 768px) {
+  .project-card {
+    margin-bottom: 4rem;
+  }
+  .tab-content .btn {
+    margin-bottom: 2rem;
+  }
+}
 /* =============================================================================
     GALERIE DU PROJET
 ============================================================================= */
