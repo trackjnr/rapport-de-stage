@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /**
  * ============================================================================
  * Fichier         : eventListeners.js
@@ -7,6 +8,7 @@
  * ============================================================================
  */
 
+// eslint-disable-next-line import/extensions
 import { getCurrentPage, domSelectors } from '../config/domSelectors.js';
 import { logEvent } from '../utils/utils.js';
 import { initvalidform } from '../components/formulaire/contactform.js';
@@ -25,7 +27,7 @@ function bindGlobalEvents() {
   logEvent('info', '[Global] Initialisation des écouteurs globaux');
 
   const menuBtn = domSelectors.nav.menuButton;
-  const {navLinks} = domSelectors.nav;
+  const { navLinks } = domSelectors.nav;
 
   if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
@@ -46,13 +48,13 @@ function bindGlobalEvents() {
  */
 function bindIndexEvents() {
   const cards = document.querySelectorAll('.card-link');
-  cards.forEach(card => {
+  cards.forEach((card) => {
     card.addEventListener('click', () => {
       logEvent('info', '[Index] Navigation vers un projet');
     });
   });
 
-  const {gameLauncher} = domSelectors.game;
+  const { gameLauncher } = domSelectors.game;
   if (gameLauncher) {
     gameLauncher.addEventListener('click', () => {
       logEvent('info', '[Index] Lancement du jeu caché');
@@ -84,7 +86,6 @@ function bindProjetEvents() {
   logEvent('info', '[Projet] Initialisation des onglets dynamiques');
   setupTabSwitching();
   setupLightbox();
-
 }
 
 /** ============================================================================
@@ -92,8 +93,8 @@ function bindProjetEvents() {
  * ============================================================================
  */
 function bindAproposEvents() {
-  const teamLinks = domSelectors?.apropos?.teamLinks || [];
-  teamLinks.forEach(link => {
+  const teamLinks = domSelectors.apropos.teamLinks || [];
+  teamLinks.forEach((link) => {
     link.addEventListener('mouseenter', () => {
       link.classList.add('hovered');
     });
@@ -102,7 +103,7 @@ function bindAproposEvents() {
     });
   });
 
-  const externalLink = domSelectors?.apropos?.externalLink;
+  const { externalLink } = domSelectors.apropos;
   if (externalLink) {
     externalLink.addEventListener('click', () => {
       logEvent('info', '[À Propos] Redirection vers site externe');
@@ -129,25 +130,25 @@ function dispatchPageSpecificListeners() {
   logEvent('info', `[Router] Dispatch vers : ${currentPage}`);
 
   switch (currentPage) {
-    case 'index':
-      bindIndexEvents();
-      break;
-    case 'contact':
-      bindContactEvents();
-      break;
-    case 'projet':
-      bindProjetEvents();
-      break;
-    case 'apropos':
-      bindAproposEvents();
-      break;
-    case 'conclusion':
-    case 'etapes-alim':
-    case 'etapes-site':
-      bindStaticPagesEvents(currentPage);
-      break;
-    default:
-      logEvent('warn', `[Router] Aucun bind prévu pour : "${currentPage}"`);
+  case 'index':
+    bindIndexEvents();
+    break;
+  case 'contact':
+    bindContactEvents();
+    break;
+  case 'projet':
+    bindProjetEvents();
+    break;
+  case 'apropos':
+    bindAproposEvents();
+    break;
+  case 'conclusion':
+  case 'etapes-alim':
+  case 'etapes-site':
+    bindStaticPagesEvents(currentPage);
+    break;
+  default:
+    logEvent('warn', `[Router] Aucun bind prévu pour : "${currentPage}"`);
   }
 }
 // ============================
@@ -155,40 +156,40 @@ function dispatchPageSpecificListeners() {
 // ============================
 
 export function setupTabSwitching() {
-  const allTabButtons = document.querySelectorAll(".tab-button");
-  const allTabContents = document.querySelectorAll(".tab-content");
+  const allTabButtons = document.querySelectorAll('.tab-button');
+  const allTabContents = document.querySelectorAll('.tab-content');
 
   if (!allTabButtons.length || !allTabContents.length) {
-    console.warn("Aucun onglet trouvé à initialiser.");
+    console.warn('Aucun onglet trouvé à initialiser.');
     return;
   }
 
-  allTabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const targetId = button.getAttribute("data-tab");
+  allTabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-tab');
 
       if (!targetId) return;
 
       // Récupère le conteneur parent de la carte projet
-      const projectCard = button.closest(".project-card");
+      const projectCard = button.closest('.project-card');
 
       // 🔹 Onglets et contenus dans ce seul projet
-      const tabButtons = projectCard.querySelectorAll(".tab-button");
-      const tabContents = projectCard.querySelectorAll(".tab-content");
+      const tabButtons = projectCard.querySelectorAll('.tab-button');
+      const tabContents = projectCard.querySelectorAll('.tab-content');
 
       // 🔄 Désactive tous les boutons
-      tabButtons.forEach(btn => btn.classList.remove("active"));
+      tabButtons.forEach((btn) => btn.classList.remove('active'));
 
       // 🔄 Masque tous les contenus
-      tabContents.forEach(content => content.classList.remove("active"));
+      tabContents.forEach((content) => content.classList.remove('active'));
 
       // ✅ Active le bouton cliqué
-      button.classList.add("active");
+      button.classList.add('active');
 
       // ✅ Affiche le bon contenu
       const targetContent = projectCard.querySelector(`#${targetId}`);
       if (targetContent) {
-        targetContent.classList.add("active");
+        targetContent.classList.add('active');
       }
     });
   });
@@ -197,7 +198,7 @@ export function setupTabSwitching() {
  * ============================================================================
  * Fonction : setupLightbox
  * ============================================================================
- * Initialise les comportements de la lightbox 
+ * Initialise les comportements de la lightbox
  */
 function setupLightbox() {
   const lightboxLinks = document.querySelectorAll('a.lightbox');
@@ -207,8 +208,8 @@ function setupLightbox() {
     return;
   }
 
-  lightboxLinks.forEach(link => {
-    link.addEventListener('click', event => {
+  lightboxLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
       event.preventDefault();
       const imageSrc = link.getAttribute('href');
       openLightbox(imageSrc);
@@ -230,26 +231,23 @@ function setupLightbox() {
  */
 export function initModal() {
   try {
-      logEvent("info", "➡ Initialisation de la modale de contact...");
+    logEvent('info', '➡ Initialisation de la modale de contact...');
 
-      // Vérification immédiate de la présence du bouton de contact
-      const contactButton = document.querySelector(".contact-button");
+    // Vérification immédiate de la présence du bouton de contact
+    const contactButton = document.querySelector('.contact-button');
 
-      if (contactButton) {
-          logEvent("info", " Bouton de contact trouvé immédiatement.");
-          attachModalEvents(); // Attache directement les événements si le bouton est présent
-      } else {
-          logEvent("warning", " Bouton de contact non trouvé. Activation de l'observation DOM...");
-          observeDOMForContactButton(); // Lance un observateur pour détecter son apparition
-      }
-
+    if (contactButton) {
+      logEvent('info', ' Bouton de contact trouvé immédiatement.');
+      attachModalEvents(); // Attache directement les événements si le bouton est présent
+    } else {
+      logEvent('warning', " Bouton de contact non trouvé. Activation de l'observation DOM...");
+      observeDOMForContactButton(); // Lance un observateur pour détecter son apparition
+    }
   } catch (error) {
-      logEvent("error", " initModal : Erreur lors de l'initialisation de la modale.", { error });
-      throw new Error(`Erreur critique dans initModal : ${error.message}`);
+    logEvent('error', " initModal : Erreur lors de l'initialisation de la modale.", { error });
+    throw new Error(`Erreur critique dans initModal : ${error.message}`);
   }
 }
-
-
 
 /**
 * =============================================================================
@@ -267,89 +265,90 @@ export function initModal() {
 */
 export function attachModalEvents() {
   try {
-      logEvent("info", "Attachement des événements de la modale...");
+    logEvent('info', 'Attachement des événements de la modale...');
 
-      // Récupération dynamique du bouton de contact
-      const contactButton = document.querySelector(".contact-button");
+    // Récupération dynamique du bouton de contact
+    const contactButton = document.querySelector('.contact-button');
 
-      if (!contactButton) {
-          logEvent("error", "Bouton de contact introuvable.");
-          return;
-      }
+    if (!contactButton) {
+      logEvent('error', 'Bouton de contact introuvable.');
+      return;
+    }
 
-      // Empêche l'attachement multiple
-      if (!contactButton.dataset.eventAttached) {
-          contactButton.dataset.eventAttached = "true";
-          contactButton.addEventListener("click", () => {
-              logEvent("info", "Clic sur le bouton Contact.");
-              handleModalOpen();
-          });
-          logEvent("success", "Événement attaché au bouton Contact.");
-      }
-
-      // Récupération des éléments principaux de la modale
-      const { modalOverlay, contactForm, closeButton, form, confirmationModal, spamModal } = domSelectors.modal;
-
-      if (!modalOverlay || !contactForm || !closeButton || !form) {
-          logEvent("error", "Certains éléments de la modale sont introuvables.");
-          return;
-      }
-
-      // Attachement des événements de fermeture de la modale
-      attachEvent(closeButton, "click", handleModalClose);
-      attachEvent(modalOverlay, "click", handleModalClose);
-
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
-              logEvent("info", "Touche Échap détectée, fermeture de la modale.");
-              handleModalClose();
-          }
+    // Empêche l'attachement multiple
+    if (!contactButton.dataset.eventAttached) {
+      contactButton.dataset.eventAttached = 'true';
+      contactButton.addEventListener('click', () => {
+        logEvent('info', 'Clic sur le bouton Contact.');
+        handleModalOpen();
       });
+      logEvent('success', 'Événement attaché au bouton Contact.');
+    }
 
-      // Attachement des événements au formulaire de contact
-      if (form) {
-          // Bouton d'envoi du formulaire
-          if (form.submitButton && !form.submitButton.dataset.eventAttached) {
-              form.submitButton.dataset.eventAttached = "true";
-              attachEvent(form.submitButton, "click", (event) => {
-                  event.preventDefault();
-                  logEvent("info", "Formulaire soumis.");
-                  handleFormSubmit();
-              });
-              logEvent("success", "Événement attaché au bouton d'envoi du formulaire.");
-          }
+    // Récupération des éléments principaux de la modale
+    const {
+      modalOverlay, contactForm, closeButton, form, confirmationModal, spamModal,
+    } = domSelectors.modal;
 
-          // Gestion des champs du formulaire avec logs de saisie
-          const formFields = [
-              { element: form.firstName, logMessage: "Saisie du prénom." },
-              { element: form.lastName, logMessage: "Saisie du nom." },
-              { element: form.email, logMessage: "Saisie de l'email." },
-              { element: form.messageField, logMessage: "Saisie du message." },
-          ];
+    if (!modalOverlay || !contactForm || !closeButton || !form) {
+      logEvent('error', 'Certains éléments de la modale sont introuvables.');
+      return;
+    }
 
-          formFields.forEach(({ element, logMessage }) => {
-              if (element && !element.dataset.eventAttached) {
-                  element.dataset.eventAttached = "true";
-                  attachEvent(element, "input", () => logEvent("info", logMessage));
-              }
-          });
+    // Attachement des événements de fermeture de la modale
+    attachEvent(closeButton, 'click', handleModalClose);
+    attachEvent(modalOverlay, 'click', handleModalClose);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        logEvent('info', 'Touche Échap détectée, fermeture de la modale.');
+        handleModalClose();
+      }
+    });
+
+    // Attachement des événements au formulaire de contact
+    if (form) {
+      // Bouton d'envoi du formulaire
+      if (form.submitButton && !form.submitButton.dataset.eventAttached) {
+        form.submitButton.dataset.eventAttached = 'true';
+        attachEvent(form.submitButton, 'click', (event) => {
+          event.preventDefault();
+          logEvent('info', 'Formulaire soumis.');
+          handleFormSubmit();
+        });
+        logEvent('success', "Événement attaché au bouton d'envoi du formulaire.");
       }
 
-      // Gestion de la confirmation après soumission du formulaire
-      if (confirmationModal?.confirmButton) {
-          attachEvent(confirmationModal.confirmButton, "click", handleModalClose);
-      }
+      // Gestion des champs du formulaire avec logs de saisie
+      const formFields = [
+        { element: form.firstName, logMessage: 'Saisie du prénom.' },
+        { element: form.lastName, logMessage: 'Saisie du nom.' },
+        { element: form.email, logMessage: "Saisie de l'email." },
+        { element: form.messageField, logMessage: 'Saisie du message.' },
+      ];
 
-      // Gestion de la modale de détection de spam
-      if (spamModal?.closeButton) {
-          attachEvent(spamModal.closeButton, "click", handleModalClose);
-      }
+      formFields.forEach(({ element, logMessage }) => {
+        if (element && !element.dataset.eventAttached) {
+          element.dataset.eventAttached = 'true';
+          attachEvent(element, 'input', () => logEvent('info', logMessage));
+        }
+      });
+    }
 
-      logEvent("success", "Tous les événements de la modale sont attachés avec succès.");
-  
+    // Gestion de la confirmation après soumission du formulaire
+    if (confirmationModal.confirmButton) {
+      attachEvent(confirmationModal.confirmButton, 'click', handleModalClose);
+    }
+
+    // Gestion de la modale de détection de spam
+    if (spamModal.closeButton) {
+      attachEvent(spamModal.closeButton, 'click', handleModalClose);
+    }
+
+    logEvent('success', 'Tous les événements de la modale sont attachés avec succès.');
   } catch (error) {
-      logEvent("error", "Une erreur est survenue lors de l'attachement des événements de la modale.", { error });
-      throw new Error(`Erreur critique dans attachModalEvents : ${error.message}`);
+    logEvent('error', "Une erreur est survenue lors de l'attachement des événements de la modale.", { error });
+    throw new Error(`Erreur critique dans attachModalEvents : ${error.message}`);
   }
 }
 
@@ -368,42 +367,41 @@ export function attachModalEvents() {
 */
 function observeDOMForContactButton() {
   try {
-      logEvent("info", "Initialisation de l'observation du DOM pour le bouton de contact...");
+    logEvent('info', "Initialisation de l'observation du DOM pour le bouton de contact...");
 
-      // Création de l'observateur
-      const observer = new MutationObserver((mutations, obs) => {
-          try {
-              // Recherche du bouton de contact dans le DOM
-              const button = document.querySelector(".contact-button");
+    // Création de l'observateur
+    const observer = new MutationObserver((mutations, obs) => {
+      try {
+        // Recherche du bouton de contact dans le DOM
+        const button = document.querySelector('.contact-button');
 
-              if (button) {
-                  logEvent("success", "Bouton de contact détecté par MutationObserver.");
+        if (button) {
+          logEvent('success', 'Bouton de contact détecté par MutationObserver.');
 
-                  // Attache les événements nécessaires à la modale
-                  attachModalEvents();
+          // Attache les événements nécessaires à la modale
+          attachModalEvents();
 
-                  // Arrête l'observation une fois que le bouton a été trouvé
-                  obs.disconnect();
-                  logEvent("info", "MutationObserver arrêté après détection du bouton.");
-              }
-          } catch (error) {
-              logEvent("error", "Erreur lors de l'observation du DOM.", { error });
-              obs.disconnect(); // Assure l'arrêt de l'observateur en cas d'erreur
-              throw new Error(`Erreur critique dans observeDOMForContactButton : ${error.message}`);
-          }
-      });
+          // Arrête l'observation une fois que le bouton a été trouvé
+          obs.disconnect();
+          logEvent('info', 'MutationObserver arrêté après détection du bouton.');
+        }
+      } catch (error) {
+        logEvent('error', "Erreur lors de l'observation du DOM.", { error });
+        obs.disconnect(); // Assure l'arrêt de l'observateur en cas d'erreur
+        throw new Error(`Erreur critique dans observeDOMForContactButton : ${error.message}`);
+      }
+    });
 
-      // Définition des paramètres d'observation
-      observer.observe(document.body, {
-          childList: true, // Surveille l'ajout/suppression d'éléments dans le body
-          subtree: true, // Inclut tous les nœuds enfants
-      });
+    // Définition des paramètres d'observation
+    observer.observe(document.body, {
+      childList: true, // Surveille l'ajout/suppression d'éléments dans le body
+      subtree: true, // Inclut tous les nœuds enfants
+    });
 
-      logEvent("info", "Observation du DOM activée pour détecter le bouton de contact.");
-
+    logEvent('info', 'Observation du DOM activée pour détecter le bouton de contact.');
   } catch (error) {
-      logEvent("error", "Échec de l'initialisation de l'observation du DOM.", { error });
-      throw new Error(`Erreur critique lors du lancement de observeDOMForContactButton : ${error.message}`);
+    logEvent('error', "Échec de l'initialisation de l'observation du DOM.", { error });
+    throw new Error(`Erreur critique lors du lancement de observeDOMForContactButton : ${error.message}`);
   }
 }
 
@@ -422,38 +420,35 @@ function observeDOMForContactButton() {
 */
 export function initModalConfirm() {
   try {
-      logEvent("info", "Initialisation de l'événement de confirmation...");
+    logEvent('info', "Initialisation de l'événement de confirmation...");
 
-      // Sélectionne le bouton de confirmation dans le DOM
-      const confirmButton = document.querySelector(".confirm-btn");
+    // Sélectionne le bouton de confirmation dans le DOM
+    const confirmButton = document.querySelector('.confirm-btn');
 
-      // Vérification de l'existence du bouton
-      if (!confirmButton) {
-          logEvent("error", "Bouton de confirmation introuvable.");
-          throw new Error("Le bouton de confirmation n'a pas été trouvé dans le DOM.");
-      }
+    // Vérification de l'existence du bouton
+    if (!confirmButton) {
+      logEvent('error', 'Bouton de confirmation introuvable.');
+      throw new Error("Le bouton de confirmation n'a pas été trouvé dans le DOM.");
+    }
 
-      // Empêche l'attachement multiple de l'événement
-      if (confirmButton.dataset.eventAttached) {
-          logEvent("warn", "L'événement de confirmation est déjà attaché.");
-          return;
-      }
+    // Empêche l'attachement multiple de l'événement
+    if (confirmButton.dataset.eventAttached) {
+      logEvent('warn', "L'événement de confirmation est déjà attaché.");
+      return;
+    }
 
-      // Marque le bouton pour éviter les attachements multiples
-      confirmButton.dataset.eventAttached = "true";
+    // Marque le bouton pour éviter les attachements multiples
+    confirmButton.dataset.eventAttached = 'true';
 
-      // Attache l'événement "click" au bouton de confirmation
-      attachEvent(confirmButton, "click", handleModalConfirm);
+    // Attache l'événement "click" au bouton de confirmation
+    attachEvent(confirmButton, 'click', handleModalConfirm);
 
-      logEvent("success", "Événement de confirmation attaché avec succès.");
-
+    logEvent('success', 'Événement de confirmation attaché avec succès.');
   } catch (error) {
-      logEvent("error", `Erreur critique dans initModalConfirm : ${error.message}`);
-      throw new Error(`Erreur lors de l'initialisation de la confirmation : ${error.message}`);
+    logEvent('error', `Erreur critique dans initModalConfirm : ${error.message}`);
+    throw new Error(`Erreur lors de l'initialisation de la confirmation : ${error.message}`);
   }
 }
-
-
 
 /** =============================================================================
 * Fonction : setupContactFormEvents
@@ -470,38 +465,35 @@ export function initModalConfirm() {
 */
 export function setupContactFormEvents() {
   try {
-      logEvent("info", "Initialisation des événements du formulaire de contact...");
+    logEvent('info', 'Initialisation des événements du formulaire de contact...');
 
-      // Récupération sécurisée de l'élément du champ message
-      const { messageField, charCounter } = domSelectors.modal.form;
+    // Récupération sécurisée de l'élément du champ message
+    const { messageField, charCounter } = domSelectors.modal.form;
 
-      // Vérification de l'existence du champ "message"
-      if (!messageField) {
-          logEvent("error", "Champ 'message' introuvable. Vérifiez la structure du DOM.");
-          throw new Error("Le champ 'message' est introuvable dans le DOM.");
-      }
+    // Vérification de l'existence du champ "message"
+    if (!messageField) {
+      logEvent('error', "Champ 'message' introuvable. Vérifiez la structure du DOM.");
+      throw new Error("Le champ 'message' est introuvable dans le DOM.");
+    }
 
-      // Vérification de l'existence du compteur de caractères
-      if (!charCounter) {
-          logEvent("warn", "Compteur de caractères introuvable. La mise à jour dynamique sera désactivée.");
-      }
+    // Vérification de l'existence du compteur de caractères
+    if (!charCounter) {
+      logEvent('warn', 'Compteur de caractères introuvable. La mise à jour dynamique sera désactivée.');
+    }
 
-      // Empêche l'attachement multiple de l'événement
-      if (messageField.dataset.eventAttached) {
-          logEvent("warn", "L'événement 'input' sur le champ message est déjà attaché.");
-          return;
-      }
+    // Empêche l'attachement multiple de l'événement
+    if (messageField.dataset.eventAttached) {
+      logEvent('warn', "L'événement 'input' sur le champ message est déjà attaché.");
+      return;
+    }
 
-      // Marque l'élément comme ayant un événement déjà attaché
-      messageField.dataset.eventAttached = "true";
-
-      
+    // Marque l'élément comme ayant un événement déjà attaché
+    messageField.dataset.eventAttached = 'true';
   } catch (error) {
-      logEvent("error", `Erreur dans setupContactFormEvents : ${error.message}`);
-      throw new Error(`Erreur lors de l'initialisation du formulaire de contact : ${error.message}`);
+    logEvent('error', `Erreur dans setupContactFormEvents : ${error.message}`);
+    throw new Error(`Erreur lors de l'initialisation du formulaire de contact : ${error.message}`);
   }
 }
-
 
 /**
  * ============================================================================
@@ -549,25 +541,53 @@ function openLightbox(src) {
  * @throws {Error} Si une erreur survient lors de l'attachement de l'événement.
  */
 function initKeyboardEvents() {
-    try {
-        logEvent("info", "Initialisation des événements clavier...");
+  try {
+    logEvent('info', 'Initialisation des événements clavier...');
 
-        // Vérifie si l'événement est déjà attaché pour éviter les doublons
-        if (document.__keyboardEventsAttached) {
-            logEvent("warn", "Les événements clavier sont déjà attachés. Aucune action requise.");
-            return;
-        }
-
-        // Attache l'événement `keydown` pour capturer les interactions clavier
-        document.addEventListener("keydown", handleKeyboardEvent);
-
-        // Marqueur interne pour éviter les attachements multiples
-        document.__keyboardEventsAttached = true;
-
-        logEvent("success", "Écoute des événements clavier activée avec succès.");
-    } catch (error) {
-        logEvent("error", `Erreur critique dans initKeyboardEvents : ${error.message}`, { error });
+    // Vérifie si l'événement est déjà attaché pour éviter les doublons
+    if (document.__keyboardEventsAttached) {
+      logEvent('warn', 'Les événements clavier sont déjà attachés. Aucune action requise.');
+      return;
     }
+
+    // Attache l'événement `keydown` pour capturer les interactions clavier
+    document.addEventListener('keydown', handleKeyboardEvent);
+
+    // Marqueur interne pour éviter les attachements multiples
+    document.__keyboardEventsAttached = true;
+
+    logEvent('success', 'Écoute des événements clavier activée avec succès.');
+  } catch (error) {
+    logEvent('error', `Erreur critique dans initKeyboardEvents : ${error.message}`, { error });
+  }
+}
+export function setupBurgerMenu() {
+  const burgerBtn = document.querySelector('.menu-toggle');
+  const { body } = document;
+
+  burgerBtn.addEventListener('click', () => {
+    body.classList.toggle('menu-open');
+  });
+
+  // (Optionnel) Clique en dehors ou sur lien = fermer
+  document.addEventListener('click', (e) => {
+    const menu = document.querySelector('.nav-links');
+
+    if (
+      body.classList.contains('menu-open')
+      && !menu.contains(e.target)
+      && !burgerBtn.contains(e.target)
+    ) {
+      body.classList.remove('menu-open');
+    }
+  });
+
+  // (Optionnel) fermeture auto après clic sur lien
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    link.addEventListener('click', () => {
+      body.classList.remove('menu-open');
+    });
+  });
 }
 
 /** ============================================================================

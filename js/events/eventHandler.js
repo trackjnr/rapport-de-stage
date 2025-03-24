@@ -20,7 +20,7 @@
 import { logEvent } from '../utils/utils.js';
 import domSelectors from '../config/domSelectors.js';
 import { closeConfirmationModal } from '../components/modal/modalManager.js';
-
+import { setupBurgerMenu, setupTabSwitching } from './eventListeners.js';
 /* ------------------ Médias ------------------*/
 import {
   openLightbox,
@@ -31,9 +31,6 @@ import {
 
 /* ------------------ Formulaire ------------------*/
 import { initvalidform } from '../components/formulaire/contactform.js';
-
-/* ------------------ Onglets Projet ------------------*/
-import { setupTabSwitching } from './eventListeners.js';
 
 /*= ============================================= */
 /*        Navigation Clavier Galerie            */
@@ -118,7 +115,6 @@ export function handleFormSubmit(event) {
     }
   } catch (error) {
     logEvent('error', `Erreur soumission formulaire : ${error.message}`, { error });
-    alert('Erreur lors de la soumission du formulaire.');
   }
 }
 
@@ -268,6 +264,7 @@ export function handleKeyboardEvent(event) {
       case ' ':
         if (activeMedia && window.MediaList) {
           const mediaId = activeMedia.getAttribute('data-id');
+          // eslint-disable-next-line eqeqeq
           const mediaIndex = window.MediaList.findIndex((media) => media.id == mediaId);
           if (mediaIndex !== -1) {
             openLightbox(mediaIndex, window.MediaList, window.globalFolderName);
@@ -289,6 +286,7 @@ export function handleKeyboardEvent(event) {
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', handleKeyboardEvent);
   logEvent('success', 'Gestion clavier activée.');
+  setupBurgerMenu();
 
   // ✅ Activation dynamique des onglets projet
   if (window.location.pathname.includes('projet.html')) {
