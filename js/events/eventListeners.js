@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/extensions */
 /**
  * ============================================================================
@@ -15,9 +16,92 @@ import { initvalidform } from '../components/formulaire/contactform.js';
 import { initGameMain } from '../components/game/core/game-init.js';
 import { handleKeyboardEvent } from './keyboardHandler.js';
 import {
+  handleLightboxOpen,
+  handleLightboxClose,
+  handleLightboxNext,
+  handleLightboxPrev,
+  handleModalClose,
+  handleModalOpen,
   handleModalConfirm,
   handleFormSubmit,
 } from './eventHandler.js';
+/*= ====================================================== */
+// UTILITAIRE : ATTACHER DES ÉVÉNEMENTS DE MANIÈRE SÉCURISÉE
+/*= ====================================================== */
+
+/**
+ * =============================================================================
+ * Fonction : attachEvent
+ * =============================================================================
+ * Attache un événement à un ou plusieurs éléments de manière sécurisée.
+ *
+ * - Supporte un seul élément ou une liste de nœuds (`NodeList` ou `HTMLElement`).
+ * - Convertit un `NodeList` en tableau pour itération sécurisée.
+ * - Gère les erreurs d'attachement et capture les exceptions dans le callback.
+ * - Permet l'exécution unique d'un événement via `{ once }`.
+ * - Fournit des logs détaillés pour le suivi des événements attachés.
+ *
+ * @param {NodeList|HTMLElement} elements - Élément(s) cible(s) pour l'événement.
+ * @param {string} eventType - Type d'événement à écouter (ex: "click").
+ * @param {Function} callback - Fonction à exécuter lors de l'événement.
+ * @param {boolean} [once=false] - Si `true`, l'événement ne s'exécute qu'une seule fois.
+ * @returns {boolean} - Retourne `true` si au moins un événement a été attaché, `false` sinon.
+ */
+export function attachEvent(elements, eventType, callback, once = false) {
+  try {
+    // Vérification des paramètres
+    if (!elements) {
+      logEvent('error', `attachEvent : Aucun élément trouvé pour l'événement "${eventType}".`);
+      return false;
+    }
+    if (typeof eventType !== 'string' || !eventType.trim()) {
+      logEvent('error', `attachEvent : Type d'événement invalide "${eventType}".`);
+      return false;
+    }
+    if (typeof callback !== 'function') {
+      logEvent('error', `attachEvent : Callback fourni invalide pour l'événement "${eventType}".`);
+      return false;
+    }
+
+    // Normalisation de `elements` en tableau pour itération sécurisée
+    const elementList = elements instanceof NodeList ? Array.from(elements) : [elements];
+
+    // Vérification : au moins un élément valide
+    if (!elementList.length) {
+      logEvent('warn', `attachEvent : Aucun élément valide pour attacher l'événement "${eventType}".`);
+      return false;
+    }
+
+    // Itération sur les éléments valides
+    elementList.forEach((element) => {
+      if (!(element instanceof HTMLElement)) {
+        logEvent('warn', 'attachEvent : Élément ignoré car non valide.', { element });
+        return;
+      }
+
+      try {
+        // Attachement de l'événement avec gestion asynchrone sécurisée
+        element.addEventListener(eventType, async (event) => {
+          try {
+            await callback(event);
+            logEvent('info', `attachEvent : Callback exécuté avec succès pour "${eventType}".`);
+          } catch (callbackError) {
+            logEvent('error', `attachEvent : Erreur dans le callback de "${eventType}".`, { callbackError });
+          }
+        }, { once });
+
+        logEvent('success', `attachEvent : Événement "${eventType}" attaché à ${element.className || element.id || 'un élément inconnu'}.`);
+      } catch (error) {
+        logEvent('error', `attachEvent : Impossible d'attacher l'événement "${eventType}" à un élément valide.`, { error });
+      }
+    });
+
+    return true;
+  } catch (error) {
+    logEvent('error', "attachEvent : Erreur inattendue lors de l'attachement des événements.", { error });
+    return false;
+  }
+}
 
 /** ============================================================================
  * INIT GLOBAL — Menu burger & Clavier
@@ -168,7 +252,9 @@ export function setupTabSwitching() {
     button.addEventListener('click', () => {
       const targetId = button.getAttribute('data-tab');
 
-      if (!targetId) return;
+      if (!targetId) {
+        return;
+      }
 
       // Récupère le conteneur parent de la carte projet
       const projectCard = button.closest('.project-card');

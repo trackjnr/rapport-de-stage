@@ -82,6 +82,122 @@ export function handleGalleryNavigation(event, direction) {
 
   logEvent('info', `Média sélectionné (Index ${currentIndex})`);
 }
+/*==============================================*/
+/*         Gestion des Modales                  */
+/*==============================================*/
+/*==============================================*/
+/*        Ouverture modale contact              */
+/*==============================================*/
+/**
+ * Gère l'ouverture de la modale de contact d'un photographe.
+ * 
+ * ### **Fonctionnement :**
+ * - Récupère les données des photographes via une requête asynchrone.
+ * - Vérifie que les données sont valides avant d'afficher la modale.
+ * - Extrait l'ID du photographe à partir de l'URL actuelle.
+ * - Recherche le photographe correspondant dans les données.
+ * - Ouvre la modale si toutes les conditions sont remplies.
+ * - Gère les erreurs et affiche un message en cas d'échec.
+ * - Utilise une classe CSS `loading` sur le `<body>` pour améliorer l'expérience utilisateur.
+ * 
+ * ### **Gestion des erreurs :**
+ * - Lève une erreur si les données des photographes sont manquantes.
+ * - Lève une erreur si l'ID du photographe est absent de l'URL.
+ * - Lève une erreur si le photographe correspondant n'est pas trouvé.
+ * - Capture et journalise toute erreur via `logEvent("error", ...)`.
+ * - Affiche une alerte utilisateur si un problème survient.
+ * 
+ * @async
+ * @function handleModalOpen
+ * @throws {Error} Génère une erreur si l'un des éléments requis (données, ID photographe, etc.) est manquant ou invalide.
+ */
+
+export async function handleModalOpen() {
+  logEvent("info", "Appel à l'ouverture de la modale.");
+  try {
+    // Récupère les données des photographes depuis l'API ou la base de données
+    const mediaData =  await fetchMedia();
+
+    if (!mediaData?.photographers) {
+      throw new Error("Données photographes manquantes.");
+    }
+
+    const photographerId = new URLSearchParams(window.location.search).get("id");
+
+    if (!photographerId) {
+      throw new Error("ID photographe introuvable dans l'URL.");
+    }
+
+    const photographerData = mediaData.photographers.find(
+      (photographer) => photographer.id === parseInt(photographerId, 10)
+    );
+
+    if (!photographerData) {
+      throw new Error(`Photographe ID ${photographerId} introuvable.`);
+    }
+
+    // Ouvre la modale avec les informations du photographe
+    launchModal(photographerData);
+
+    // Ajoute un écouteur pour la fermeture de la modale
+    setTimeout(() => {
+      const modal = document.querySelector(".modal.modal-active");
+      if (modal) {
+        const firstInput = modal.querySelector("input, textarea, select");
+        if (firstInput) {
+          firstInput.focus();
+          logEvent("success", "Focus placé sur le premier champ interactif.");
+        } else {
+          logEvent("warn", "Aucun champ interactif trouvé pour focus.");
+        }
+      }
+    }, 100); // Petit délai pour s'assurer que la modale est bien affichée
+
+    logEvent("success", "Modale ouverte avec succès.");
+  } catch (error) {
+    logEvent("error", `Erreur d'ouverture de la modale: ${error.message}`, { error });
+    alert("Erreur lors du chargement de la modale.");
+  } finally {
+    document.body.classList.remove("loading");
+  }
+}
+
+/*==============================================*/
+/*        Fermeture  modale contact             */
+/*==============================================*/
+
+/**
+ * Gère la fermeture de la modale de contact.
+ * 
+ * ### **Fonctionnement :**
+ * - Déclenche la fermeture de la modale via `closeModal()`.
+ * - Vérifie que la fermeture s'effectue sans erreur.
+ * - Capture et journalise toute erreur éventuelle.
+ * - Utilise `logEvent()` pour suivre l'état de l'opération.
+ * 
+ * ### **Gestion des erreurs :**
+ * - Capture toute exception survenant lors de la fermeture.
+ * - Journalise l'erreur via `logEvent("error", ...)`.
+ * 
+ * @function handleModalClose
+ * @throws {Error} Génère une erreur si la fermeture de la modale échoue.
+ */
+
+export function handleModalClose() {
+  // Indique dans les logs que le processus de fermeture commence
+  logEvent("info", "Fermeture de la modale.");
+
+  try {
+    // Ferme la modale via la fonction dédiée
+    closeModal();
+
+    // Enregistre dans les logs que la modale a été fermée avec succès
+    logEvent("success", "Modale fermée.");
+  } catch (error) {
+    // Capture et journalise toute erreur survenant lors de la fermeture
+    logEvent("error", "Erreur lors de la fermeture de la modale", { error });
+  }
+}
 
 /*= ============================================= */
 /*             Modale de Confirmation           */
@@ -288,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
   logEvent('success', 'Gestion clavier activée.');
   setupBurgerMenu();
 
-  // ✅ Activation dynamique des onglets projet
+  //  Activation dynamique des onglets projet
   if (window.location.pathname.includes('projet.html')) {
     setupTabSwitching();
     logEvent('success', 'Onglets projet initialisés.');
